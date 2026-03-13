@@ -42,8 +42,8 @@ export default function Footer() {
             <h4 className="footer-title">바로가기</h4>
             <ul className="footer-links">
               <li><Link href="/contact">문의하기</Link></li>
-              <li><a href="/maidShop" target="_blank" rel="noopener noreferrer">포토카드 플랫폼</a></li>
-              <li><a href="/utils" target="_blank" rel="noopener noreferrer">웹 유틸리티</a></li>
+              <li><a href="https://maidjo-test.duckdns.org" target="_blank" rel="noopener noreferrer">포토카드 플랫폼</a></li>
+              <li><a href="https://archive-utils.pages.dev" target="_blank" rel="noopener noreferrer">웹 유틸리티</a></li>
             </ul>
           </div>
         </div>

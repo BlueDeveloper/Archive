@@ -80,8 +80,8 @@ const otherProjects: Record<string, {
       '이미지 형식 변환',
       '파일 일괄 이름 변경',
     ],
-    deploy: 'Oracle Cloud + Nginx',
-    url: 'https://bdarchive.site/utils/',
+    deploy: 'Cloudflare Pages',
+    url: 'https://archive-utils.pages.dev',
     urlLabel: '유틸리티 사이트 바로가기',
   },
   corporate: {
@@ -96,8 +96,8 @@ const otherProjects: Record<string, {
       '모바일 반응형',
       'Oracle Cloud 서버 배포',
     ],
-    deploy: 'Oracle Cloud + Nginx',
-    url: 'https://bdarchive.site/corporate/',
+    deploy: 'Cloudflare Pages',
+    url: 'https://archive-corporate.pages.dev',
     urlLabel: '회사 소개 사이트 바로가기',
   },
   cafe24: {
@@ -126,8 +126,8 @@ const otherProjects: Record<string, {
       '브라운 노이즈 오디오 피드백',
       'SVG 나침반 · 수평계 UI',
     ],
-    deploy: 'Oracle Cloud + Nginx',
-    url: 'https://bdarchive.site/compass/',
+    deploy: 'Cloudflare Pages',
+    url: 'https://mpanavigation.com',
     urlLabel: 'GPS 나침반 바로가기',
   },
 };

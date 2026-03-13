@@ -12,6 +12,7 @@ const TABS = [
   { id: 'corporate', label: '회사 소개 사이트' },
   { id: 'cafe24', label: '카페24 유지보수' },
   { id: 'compass', label: 'GPS 나침반' },
+  { id: 'worldcup', label: 'K-Pop 이상형 월드컵' },
 ];
 
 /* ── 포토카드 플랫폼 데이터 ── */
@@ -129,6 +130,22 @@ const otherProjects: Record<string, {
     deploy: 'Cloudflare Pages',
     url: 'https://mpanavigation.com',
     urlLabel: 'GPS 나침반 바로가기',
+  },
+  worldcup: {
+    tier: 'Basic ~ Standard',
+    stack: ['HTML', 'CSS', 'JavaScript', 'i18n (11개 언어)'],
+    desc: 'K-Pop 아이돌 이상형 월드컵 정적 웹사이트. 7개 카테고리(걸그룹·보이그룹·솔로·애니메·축구·슈퍼히어로·게임)를 지원하며 11개 언어 자동 감지로 글로벌 타겟을 노립니다.',
+    features: [
+      '토너먼트 방식 1:1 대결',
+      '7개 카테고리',
+      '11개 언어 자동 감지 (한/영/일/독/불/포/스/인니/태/베/중)',
+      '결과 화면 및 순위 표시',
+      'SNS 공유용 OG 메타태그',
+      '광고 수익화 준비 구조',
+    ],
+    deploy: 'Cloudflare Pages',
+    url: 'https://worldcup-9oe.pages.dev',
+    urlLabel: 'K-Pop 월드컵 바로가기',
   },
 };
 

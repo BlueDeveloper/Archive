@@ -1,0 +1,11 @@
+@import './styles/base.css';
+@import './styles/navigation.css';
+@import './styles/hero.css';
+@import './styles/footer.css';
+@import './styles/shared.css';
+@import './styles/home.css';
+@import './styles/services.css';
+@import './styles/platform-case.css';
+@import './styles/architecture.css';
+@import './styles/process.css';
+@import './styles/contact.css';

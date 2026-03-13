@@ -1,0 +1,74 @@
+/* ===========================
+   PROCESS PAGE
+=========================== */
+
+.process-section {
+  background: #000;
+}
+
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 900px;
+}
+
+.process-step {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.process-step-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.process-step-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #0a0a0a;
+  border: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--primary);
+  font-family: var(--font-geist-mono), monospace;
+  flex-shrink: 0;
+}
+
+.process-step-line {
+  width: 2px;
+  flex: 1;
+  min-height: 32px;
+  background: rgba(0,212,255,0.2);
+  margin: 4px 0;
+}
+
+.process-step-content {
+  padding-bottom: 3rem;
+  padding-top: 1rem;
+}
+
+.process-step:last-child .process-step-content {
+  padding-bottom: 0;
+}
+
+.process-step-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+
+.process-step-desc {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  max-width: 600px;
+}

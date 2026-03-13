@@ -1,0 +1,41 @@
+:root {
+  /* Dark Theme - Developer Aesthetic */
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary: #00d4ff;
+  --primary-dark: #0099ff;
+  --secondary: #000000;
+  --accent: #00d4ff;
+  --card-bg: #000000;
+  --border: #1a1a1a;
+  --shadow: rgba(0, 212, 255, 0.1);
+  --shadow-lg: rgba(0, 212, 255, 0.2);
+  --code-bg: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+}

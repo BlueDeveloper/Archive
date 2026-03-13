@@ -1,0 +1,35 @@
+/* ===========================
+   SERVICES - 기술 토글
+=========================== */
+
+.tech-toggle-wrap {
+  padding: 0 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-toggle-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  width: 100%;
+}
+
+.tech-toggle-btn:hover {
+  border-color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.8);
+}
+
+.tech-toggle-content {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.5rem;
+}

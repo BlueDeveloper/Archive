@@ -1,0 +1,358 @@
+/* ===========================
+   PLATFORM CASE - 구현 기능
+=========================== */
+
+.case-features-section {
+  background: #000;
+}
+
+.case-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.case-feature-card {
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+}
+
+.case-feature-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+  .case-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================
+   PLATFORM CASE - 운영 구조
+=========================== */
+
+.case-ops-section {
+  background: #050505;
+}
+
+.case-ops-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 720px;
+}
+
+.case-ops-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.case-ops-icon {
+  color: var(--primary);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.case-ops-item strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.4rem;
+}
+
+.case-ops-item p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+/* ===========================
+   PLATFORM CASE - 사용 기술
+=========================== */
+
+.case-tech-section {
+  background: #000;
+  border-top: 1px solid var(--border);
+}
+
+.case-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.case-tech-item {
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.case-tech-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.case-tech-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--foreground);
+  font-family: var(--font-geist-mono), monospace;
+}
+
+@media (max-width: 768px) {
+  .case-tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===========================
+   PLATFORM CASE - 탭 UI
+=========================== */
+
+.case-tab-bar {
+  position: sticky;
+  top: 69px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.case-tab-inner {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.case-tab-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.case-tab-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.case-tab-btn:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.case-tab-btn--active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.case-tab-content {
+  min-height: 420px;
+  background: #000;
+}
+
+.case-tab-panel {
+  animation: tabFadeIn 0.2s ease-out;
+}
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.case-tab-note {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-geist-mono), monospace;
+}
+
+@media (max-width: 768px) {
+  .case-tab-bar {
+    top: 61px;
+  }
+
+  .case-tab-btn {
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* ===========================
+   PLATFORM CASE - 프로젝트 공통 레이아웃
+=========================== */
+
+.case-project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.case-project-tier {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-family: var(--font-geist-mono), monospace;
+  margin-bottom: 0.6rem;
+}
+
+.case-project-title {
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.case-project-desc {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.case-sub-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: var(--font-geist-mono), monospace;
+  margin-bottom: 1.25rem;
+}
+
+.case-project-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.case-project-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-project-list {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .case-project-header {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .case-project-body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ===========================
+   PLATFORM CASE - 다른 작업 사례
+=========================== */
+
+.case-other-section {
+  background: #050505;
+  border-top: 1px solid var(--border);
+}
+
+.case-other-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.case-other-card {
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.case-other-card:hover {
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-4px);
+}
+
+.case-other-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.case-other-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.3;
+}
+
+.case-other-desc {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.case-other-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.case-other-card:hover .case-other-link {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .case-other-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-other-card:hover {
+    transform: none;
+  }
+}

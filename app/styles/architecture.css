@@ -1,0 +1,20 @@
+/* ===========================
+   ARCHITECTURE PAGE
+=========================== */
+
+.arch-layout--single {
+  grid-template-columns: 1fr 1.5fr !important;
+}
+
+.arch-node-tech {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--primary);
+  font-family: var(--font-geist-mono), monospace;
+  margin-top: 0.2rem;
+  opacity: 0.8;
+}
+
+.arch-desc--page {
+  max-width: 720px;
+}

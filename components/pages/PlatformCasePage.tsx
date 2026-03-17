@@ -82,7 +82,7 @@ const otherProjects: Record<string, {
       '파일 일괄 이름 변경',
     ],
     deploy: 'Cloudflare Pages',
-    url: 'https://archive-utils.pages.dev',
+    url: 'https://utils.pages.dev',
     urlLabel: '유틸리티 사이트 바로가기',
   },
   corporate: {
@@ -98,7 +98,7 @@ const otherProjects: Record<string, {
       'Oracle Cloud 서버 배포',
     ],
     deploy: 'Cloudflare Pages',
-    url: 'https://archive-corporate.pages.dev',
+    url: 'https://corporate-egh.pages.dev',
     urlLabel: '회사 소개 사이트 바로가기',
   },
   cafe24: {

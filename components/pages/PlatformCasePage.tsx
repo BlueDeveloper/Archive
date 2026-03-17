@@ -82,7 +82,7 @@ const otherProjects: Record<string, {
       '파일 일괄 이름 변경',
     ],
     deploy: 'Cloudflare Pages',
-    url: 'https://utils.pages.dev',
+    url: 'https://utils-6if.pages.dev',
     urlLabel: '유틸리티 사이트 바로가기',
   },
   corporate: {

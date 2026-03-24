@@ -5,7 +5,7 @@ export const th = {
 
   hero: {
     badge: 'นักพัฒนา Full-Stack',
-    title: 'สร้างโซลูชั่นครบวงจร\nตั้งแต่ Frontend จนถึง Spring Boot และโครงสร้างพื้นฐานเซิร์ฟเวอร์',
+    title: 'Frontend · Backend · โครงสร้างพื้นฐาน\nสร้างด้วยเทคโนโลยีที่หลากหลายตามความต้องการ',
     subtitle: 'นักพัฒนาที่ออกแบบและพัฒนาระบบที่ใช้งานได้จริงและดูแลรักษาง่าย',
     cta1: 'ปรึกษาโครงการ',
     cta2: 'ดูผลงาน',
@@ -221,7 +221,7 @@ export const th = {
       ops: [
         {
           title: 'Frontend และ Backend แยกกัน',
-          body: 'Frontend Next.js และ API Spring Boot ทำงานอิสระเพื่อการบำรุงรักษาที่ดีขึ้น',
+          body: 'Frontend Next.js และ REST API ทำงานอิสระเพื่อการบำรุงรักษาที่ดีขึ้น',
         },
         {
           title: 'จัดการเซิร์ฟเวอร์โดยตรง',

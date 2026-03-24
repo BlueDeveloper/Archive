@@ -5,7 +5,7 @@ export const vi = {
 
   hero: {
     badge: 'Lập Trình Viên Full-Stack',
-    title: 'Xây dựng giải pháp hoàn chỉnh\ntừ frontend đến Spring Boot và hạ tầng máy chủ.',
+    title: 'Frontend, backend, hạ tầng máy chủ —\nxây dựng với bất kỳ công nghệ nào bạn cần.',
     subtitle: 'Lập trình viên thiết kế và triển khai các hệ thống vận hành được và dễ bảo trì.',
     cta1: 'Tư Vấn Dự Án',
     cta2: 'Xem Portfolio',
@@ -221,7 +221,7 @@ export const vi = {
       ops: [
         {
           title: 'Frontend và Backend Tách Biệt',
-          body: 'Frontend Next.js và API Spring Boot hoạt động độc lập để có khả năng bảo trì tốt hơn.',
+          body: 'Frontend Next.js và REST API hoạt động độc lập để có khả năng bảo trì tốt hơn.',
         },
         {
           title: 'Quản Lý Máy Chủ Trực Tiếp',

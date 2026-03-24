@@ -221,7 +221,7 @@ export const es = {
       ops: [
         {
           title: 'Frontend y Backend Separados',
-          body: 'Frontend Next.js y API Spring Boot operan de forma independiente para mejor mantenibilidad.',
+          body: 'Frontend Next.js y servidor REST API operan de forma independiente para mejor mantenibilidad.',
         },
         {
           title: 'Gestión Directa del Servidor',

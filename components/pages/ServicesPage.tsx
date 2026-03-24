@@ -64,10 +64,10 @@ export default function ServicesPage() {
                           {tier.name === 'Basic' && ['HTML / CSS / JavaScript', 'Next.js', 'Cafe24 / 고도몰'].map((t) => (
                             <span key={t} className="archive-tag">{t}</span>
                           ))}
-                          {tier.name === 'Standard' && ['Next.js', 'Node.js / Spring Boot', 'MySQL', 'Nginx', 'Oracle Cloud'].map((t) => (
+                          {tier.name === 'Standard' && ['Next.js / Vue.js', 'Node.js / Express / Spring Boot', 'MySQL / PostgreSQL', 'Nginx', 'Cloudflare / Oracle Cloud'].map((t) => (
                             <span key={t} className="archive-tag">{t}</span>
                           ))}
-                          {tier.name === 'Advanced' && ['Next.js', 'Spring Boot', 'MySQL', 'Jenkins CI/CD', 'Nginx', 'Oracle Cloud Infrastructure'].map((t) => (
+                          {tier.name === 'Advanced' && ['Next.js / React / Vue', 'Node.js / Spring Boot / NestJS', 'MySQL / PostgreSQL / MongoDB', 'Jenkins / GitHub Actions', 'Nginx / Caddy', 'OCI / AWS / GCP'].map((t) => (
                             <span key={t} className="archive-tag">{t}</span>
                           ))}
                         </div>

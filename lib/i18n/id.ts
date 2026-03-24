@@ -5,7 +5,7 @@ export const id = {
 
   hero: {
     badge: 'Pengembang Full-Stack',
-    title: 'Membangun solusi lengkap\ndari frontend hingga Spring Boot dan infrastruktur server.',
+    title: 'Frontend, backend, infrastruktur server —\ndibangun dengan tech stack apapun yang Anda butuhkan.',
     subtitle: 'Pengembang yang merancang dan mengimplementasikan sistem operasional yang dapat dipelihara.',
     cta1: 'Konsultasi Proyek',
     cta2: 'Lihat Portofolio',
@@ -221,7 +221,7 @@ export const id = {
       ops: [
         {
           title: 'Frontend dan Backend Terpisah',
-          body: 'Frontend Next.js dan API Spring Boot beroperasi secara independen untuk maintainability yang lebih baik.',
+          body: 'Frontend Next.js dan API REST beroperasi secara independen untuk maintainability yang lebih baik.',
         },
         {
           title: 'Manajemen Server Langsung',

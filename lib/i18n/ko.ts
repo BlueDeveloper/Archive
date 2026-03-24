@@ -7,7 +7,7 @@ export const ko = {
   // Hero
   hero: {
     badge: 'Full-Stack Developer',
-    title: '프론트부터 Spring Boot,\n서버 인프라까지 직접 구축합니다.',
+    title: '프론트, 백엔드, 서버 인프라까지\n기술 스택을 가리지 않고 직접 구축합니다.',
     subtitle: '운영 가능한 시스템을 설계하고 구현하는 개발자입니다.',
     cta1: '프로젝트 문의',
     cta2: '작업 사례 보기',
@@ -231,7 +231,7 @@ export const ko = {
       ops: [
         {
           title: '프론트 · 백엔드 분리 운영',
-          body: 'Next.js 프론트엔드와 Spring Boot API 서버를 독립적으로 운영해 유지보수성을 확보했습니다.',
+          body: 'Next.js 프론트엔드와 REST API 서버를 독립적으로 운영해 유지보수성을 확보했습니다.',
         },
         {
           title: '실 서버 직접 운영',

@@ -5,7 +5,7 @@ export const fr = {
 
   hero: {
     badge: 'Développeur Full-Stack',
-    title: 'Je construis des solutions complètes\ndu frontend à Spring Boot et à l\'infrastructure serveur.',
+    title: 'Frontend, backend et infrastructure —\nstack technologique au choix, tout construit directement.',
     subtitle: 'Un développeur qui conçoit et implémente des systèmes opérationnels et maintenables.',
     cta1: 'Consulter un Projet',
     cta2: 'Voir le Portfolio',
@@ -221,7 +221,7 @@ export const fr = {
       ops: [
         {
           title: 'Frontend et Backend Séparés',
-          body: 'Frontend Next.js et API Spring Boot opèrent indépendamment pour une meilleure maintenabilité.',
+          body: 'Frontend Next.js et API REST opèrent indépendamment pour une meilleure maintenabilité.',
         },
         {
           title: 'Gestion Directe du Serveur',

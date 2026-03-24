@@ -5,7 +5,7 @@ export const tr = {
 
   hero: {
     badge: 'Full-Stack Geliştirici',
-    title: 'Frontend\'den Spring Boot ve\nsunucu altyapısına eksiksiz çözümler inşa ediyorum.',
+    title: 'Frontend, backend, sunucu altyapısı —\nher türlü tech stack ile eksiksiz çözümler inşa ediyorum.',
     subtitle: 'İşlevsel ve sürdürülebilir sistemler tasarlayan ve uygulayan bir geliştirici.',
     cta1: 'Proje Hakkında Sor',
     cta2: 'Portföyü Gör',
@@ -221,7 +221,7 @@ export const tr = {
       ops: [
         {
           title: 'Ayrılmış Frontend ve Backend',
-          body: 'Next.js frontend ve Spring Boot API sunucusu daha iyi sürdürülebilirlik için bağımsız çalışır.',
+          body: 'Next.js frontend ve REST API sunucusu daha iyi sürdürülebilirlik için bağımsız çalışır.',
         },
         {
           title: 'Doğrudan Sunucu Yönetimi',

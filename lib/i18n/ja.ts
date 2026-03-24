@@ -221,7 +221,7 @@ export const ja = {
       ops: [
         {
           title: 'フロント・バックエンド分離運用',
-          body: 'Next.jsフロントエンドとSpring Boot APIサーバーを独立して運用し、保守性を確保しました。',
+          body: 'Next.jsフロントエンドとREST APIサーバーを独立して運用し、保守性を確保しました。',
         },
         {
           title: '実サーバー直接運用',

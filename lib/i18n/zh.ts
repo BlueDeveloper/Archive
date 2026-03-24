@@ -221,7 +221,7 @@ export const zh = {
       ops: [
         {
           title: '前后端分离运营',
-          body: 'Next.js前端和Spring Boot API服务器独立运营，确保可维护性。',
+          body: 'Next.js前端和REST API服务器独立运营，确保可维护性。',
         },
         {
           title: '实体服务器直接运营',

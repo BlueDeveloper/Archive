@@ -8,9 +8,9 @@
 
 .arch-node-tech {
   display: block;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--primary);
-  font-family: var(--font-geist-mono), monospace;
   margin-top: 0.2rem;
   opacity: 0.8;
 }

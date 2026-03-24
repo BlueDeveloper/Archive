@@ -55,6 +55,20 @@ export default function Navigation() {
           />
         </Link>
 
+        <ul className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
+          {NAV_LINKS.map((link) => (
+            <li key={link.href} className="nav-item">
+              <Link
+                href={link.href}
+                className={`nav-link ${pathname === link.href ? 'nav-link--active' : ''}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
         <div className="nav-right">
           <div className="lang-dropdown" ref={langRef}>
             <button
@@ -91,20 +105,6 @@ export default function Navigation() {
         >
           <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
         </button>
-
-        <ul className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
-          {NAV_LINKS.map((link) => (
-            <li key={link.href} className="nav-item">
-              <Link
-                href={link.href}
-                className={`nav-link ${pathname === link.href ? 'nav-link--active' : ''}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
     </nav>
   );

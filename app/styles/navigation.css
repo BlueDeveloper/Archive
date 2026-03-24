@@ -317,6 +317,15 @@
   .logo-image {
     height: 40px;
   }
+
+  .lang-dropdown__label,
+  .lang-dropdown__arrow {
+    display: none;
+  }
+
+  .lang-dropdown__trigger {
+    padding: 0.35rem 0.5rem;
+  }
 }
 
 @media (min-width: 1920px) {

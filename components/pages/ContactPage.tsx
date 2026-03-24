@@ -1,20 +1,29 @@
+'use client';
+
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import MobileFixedCTA from '@/components/MobileFixedCTA';
 import ContactForm from '@/components/ContactForm';
+import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function ContactPage() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Navigation />
       <main className="main-container">
         <section className="section page-hero-section">
           <div className="section-inner">
-            <p className="page-hero-label">Contact</p>
-            <h1 className="page-hero-title">프로젝트 문의</h1>
+            <p className="page-hero-label">{t.contact.pageLabel}</p>
+            <h1 className="page-hero-title">{t.contact.title}</h1>
             <p className="page-hero-desc">
-              요구사항을 간단히 정리해서 보내주시면 빠르게 검토 후 회신드립니다.<br />
-              단가 협의 및 범위 확인은 부담 없이 문의해주세요.
+              {t.contact.desc.split('\n').map((line, idx) => (
+                <span key={idx}>
+                  {line}
+                  {idx < t.contact.desc.split('\n').length - 1 && <br />}
+                </span>
+              ))}
             </p>
           </div>
         </section>

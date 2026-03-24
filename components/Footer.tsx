@@ -3,9 +3,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <footer className="footer">
@@ -24,13 +26,13 @@ export default function Footer() {
                 />
               </div>
               <p className="footer-text">
-                프론트엔드부터 인프라까지 직접 구축합니다.
+                {t.footer.desc}
               </p>
             </div>
           </div>
 
           <div className="footer-section">
-            <h4 className="footer-title">페이지</h4>
+            <h4 className="footer-title">{t.footer.pageTitle}</h4>
             <ul className="footer-links">
               <li><Link href="/services">Services</Link></li>
               <li><Link href="/platform-case">Platform Case</Link></li>
@@ -39,18 +41,18 @@ export default function Footer() {
           </div>
 
           <div className="footer-section">
-            <h4 className="footer-title">바로가기</h4>
+            <h4 className="footer-title">{t.footer.linkTitle}</h4>
             <ul className="footer-links">
-              <li><Link href="/contact">문의하기</Link></li>
-              <li><a href="https://maidjo-test.duckdns.org" target="_blank" rel="noopener noreferrer">포토카드 플랫폼</a></li>
-              <li><a href="https://archive-utils.pages.dev" target="_blank" rel="noopener noreferrer">웹 유틸리티</a></li>
+              <li><Link href="/contact">{t.footer.contact}</Link></li>
+              <li><a href="https://maidjo-test.duckdns.org" target="_blank" rel="noopener noreferrer">{t.footer.photocard}</a></li>
+              <li><a href="https://archive-utils.pages.dev" target="_blank" rel="noopener noreferrer">{t.footer.utils}</a></li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
           <p className="copyright">
-            &copy; {currentYear} BD. All rights reserved.
+            &copy; {currentYear} {t.footer.copyright}
           </p>
         </div>
       </div>

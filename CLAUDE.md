@@ -1,3 +1,14 @@
+# CLAUDE.md — Archive 프로젝트 가이드
+
+## 글로벌 인프라 참조 🌐
+
+📖 **[글로벌 인프라 참조 가이드](C:\Users\bluee\.claude\INFRASTRUCTURE_GLOBAL_REFERENCE.md)**
+  - 포트폴리오 사이트 인프라 (Next.js + Cloudflare Pages)
+  - 커스텀 도메인 및 DNS 설정
+  - SEO 및 Google Search Console 설정
+
+---
+
 # CLAUDE.md
 
 이 파일은 Claude Code가 이 저장소에서 작업할 때 참고하는 가이드입니다.

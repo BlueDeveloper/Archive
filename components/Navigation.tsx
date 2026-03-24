@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useTranslation } from '@/lib/i18n/LanguageContext';
+import type { Language } from '@/lib/i18n';
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -16,6 +18,7 @@ const NAV_LINKS = [
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { language, setLanguage, t } = useTranslation();
 
   return (
     <nav className="navigation">
@@ -32,10 +35,30 @@ export default function Navigation() {
           />
         </Link>
 
+        <div className="nav-right">
+          <div className="nav-language-toggle">
+            <button
+              onClick={() => setLanguage('ko')}
+              className={`lang-btn ${language === 'ko' ? 'lang-btn--active' : ''}`}
+              aria-label="한국어"
+            >
+              KO
+            </button>
+            <span className="lang-separator">|</span>
+            <button
+              onClick={() => setLanguage('en')}
+              className={`lang-btn ${language === 'en' ? 'lang-btn--active' : ''}`}
+              aria-label="English"
+            >
+              EN
+            </button>
+          </div>
+        </div>
+
         <button
           className="nav-toggle"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="메뉴 열기"
+          aria-label={t.nav.menuLabel}
         >
           <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
         </button>

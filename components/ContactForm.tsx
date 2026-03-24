@@ -1,22 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-
-const PROJECT_TYPES = [
-  '랜딩페이지 / 회사 소개',
-  '기업 홈페이지',
-  '쇼핑몰 / 판매 플랫폼',
-  '관리자 시스템',
-  '유지보수 / 기능 추가',
-  '기타',
-];
-
-const BUDGET_RANGES = [
-  '10 ~ 50만원',
-  '50 ~ 150만원',
-  '150 ~ 300만원',
-  '협의 가능',
-];
+import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 type FormState = {
   name: string;
@@ -27,6 +12,7 @@ type FormState = {
 };
 
 export default function ContactForm() {
+  const { t } = useTranslation();
   const [form, setForm] = useState<FormState>({
     name: '',
     contact: '',
@@ -72,10 +58,10 @@ export default function ContactForm() {
       if (result.success) {
         setSubmitted(true);
       } else {
-        setError('전송에 실패했습니다. 다시 시도해주세요.');
+        setError(t.form.errorMessage);
       }
     } catch (err) {
-      setError('전송 중 오류가 발생했습니다. 다시 시도해주세요.');
+      setError(t.form.errorNetworkMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -84,7 +70,7 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="contact-thanks">
-        <p className="contact-thanks-text">문의가 전송되었습니다. 빠르게 검토 후 회신드립니다.</p>
+        <p className="contact-thanks-text">{t.form.successMessage}</p>
       </div>
     );
   }
@@ -93,31 +79,31 @@ export default function ContactForm() {
     <form className="contact-form" onSubmit={handleSubmit}>
       <div className="contact-form-grid">
         <div className="form-field">
-          <label className="form-label">이름</label>
+          <label className="form-label">{t.form.labels.name}</label>
           <input
             className="form-input"
             type="text"
             name="name"
-            placeholder="홍길동"
+            placeholder={t.form.placeholders.name}
             value={form.name}
             onChange={handleChange}
             required
           />
         </div>
         <div className="form-field">
-          <label className="form-label">연락처</label>
+          <label className="form-label">{t.form.labels.contact}</label>
           <input
             className="form-input"
             type="text"
             name="contact"
-            placeholder="010-0000-0000 또는 이메일"
+            placeholder={t.form.placeholders.contact}
             value={form.contact}
             onChange={handleChange}
             required
           />
         </div>
         <div className="form-field">
-          <label className="form-label">프로젝트 유형</label>
+          <label className="form-label">{t.form.labels.type}</label>
           <select
             className="form-input form-select"
             name="type"
@@ -125,14 +111,14 @@ export default function ContactForm() {
             onChange={handleChange}
             required
           >
-            <option value="">선택해주세요</option>
-            {PROJECT_TYPES.map((t) => (
-              <option key={t} value={t}>{t}</option>
+            <option value="">{t.form.selectDefault}</option>
+            {t.form.projectTypes.map((type) => (
+              <option key={type} value={type}>{type}</option>
             ))}
           </select>
         </div>
         <div className="form-field">
-          <label className="form-label">예산 범위</label>
+          <label className="form-label">{t.form.labels.budget}</label>
           <select
             className="form-input form-select"
             name="budget"
@@ -140,19 +126,19 @@ export default function ContactForm() {
             onChange={handleChange}
             required
           >
-            <option value="">선택해주세요</option>
-            {BUDGET_RANGES.map((b) => (
-              <option key={b} value={b}>{b}</option>
+            <option value="">{t.form.selectDefault}</option>
+            {t.form.budgetRanges.map((budget) => (
+              <option key={budget} value={budget}>{budget}</option>
             ))}
           </select>
         </div>
       </div>
       <div className="form-field form-field--full">
-        <label className="form-label">간단 설명</label>
+        <label className="form-label">{t.form.labels.description}</label>
         <textarea
           className="form-input form-textarea"
           name="description"
-          placeholder="구현하고 싶은 기능이나 참고 사이트 등을 간단히 적어주세요"
+          placeholder={t.form.placeholders.description}
           value={form.description}
           onChange={handleChange}
           rows={4}
@@ -164,7 +150,7 @@ export default function ContactForm() {
         </div>
       )}
       <button type="submit" className="contact-submit" disabled={isSubmitting}>
-        {isSubmitting ? '전송 중...' : '문의 보내기'}
+        {isSubmitting ? t.form.submitting : t.form.submit}
       </button>
     </form>
   );

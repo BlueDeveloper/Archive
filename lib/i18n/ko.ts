@@ -1,0 +1,338 @@
+export const ko = {
+  // Navigation
+  nav: {
+    menuLabel: '메뉴 열기',
+  },
+
+  // Hero
+  hero: {
+    badge: 'Full-Stack Developer',
+    title: '프론트부터 Spring Boot,\n서버 인프라까지 직접 구축합니다.',
+    subtitle: '운영 가능한 시스템을 설계하고 구현하는 개발자입니다.',
+    cta1: '프로젝트 문의',
+    cta2: '작업 사례 보기',
+  },
+
+  // Footer
+  footer: {
+    desc: '프론트엔드부터 인프라까지 직접 구축합니다.',
+    pageTitle: '페이지',
+    linkTitle: '바로가기',
+    contact: '문의하기',
+    photocard: '포토카드 플랫폼',
+    utils: '웹 유틸리티',
+    copyright: 'BD. All rights reserved.',
+  },
+
+  // HomePage
+  home: {
+    serviceTitle: '서비스',
+    serviceDesc: '규모에 맞는 개발 범위를 제안합니다',
+    tiers: [
+      {
+        name: 'Basic',
+        range: '10 ~ 50만원',
+        summary: '랜딩페이지, 회사 소개 사이트, 유지보수',
+      },
+      {
+        name: 'Standard',
+        range: '50 ~ 150만원',
+        summary: '기업 홈페이지, 예약·문의 시스템, 서버 배포',
+      },
+      {
+        name: 'Advanced',
+        range: '150 ~ 300만원',
+        summary: '판매 플랫폼, 결제·관리자 시스템, 인프라 구성',
+      },
+    ],
+    serviceMore: '서비스 상세 보기 →',
+    caseLabel: 'Platform Case',
+    caseTitle: '관리자와 결제가 포함된\n판매 플랫폼 구축 경험이 있습니다',
+    caseDesc: '상품 관리부터 주문·결제·서버 운영까지 직접 설계하고 구현했습니다.',
+    caseMore: '구축 사례 보기 →',
+    midCta: '어떤 규모든 부담 없이 문의해주세요',
+    midCtaBtn: '프로젝트 문의',
+  },
+
+  // ServicesPage
+  services: {
+    pageLabel: 'Services',
+    title: '서비스 안내',
+    desc: '프로젝트 규모와 목적에 맞게 범위를 구성합니다.\n단가는 요구사항에 따라 유연하게 협의 가능합니다.',
+    badge: '플랫폼 구축',
+    techOpen: '기술 상세 보기 ▼',
+    techClose: '기술 상세 닫기 ▲',
+    cta: '문의하기',
+    midCta: '범위와 단가 모두 부담 없이 상담 가능합니다',
+    midCtaBtn: '무료 견적 문의',
+    tiers: [
+      {
+        name: 'Basic',
+        range: '10 ~ 50만원',
+        items: [
+          '랜딩페이지 / 회사 소개 사이트 제작',
+          '카페24 · 고도몰 유지보수',
+          '기존 사이트 기능 추가',
+          'UI 개선 및 반응형 대응',
+        ],
+      },
+      {
+        name: 'Standard',
+        range: '50 ~ 150만원',
+        items: [
+          '기업 홈페이지 구축',
+          '예약 · 문의 시스템 구현',
+          '관리자 페이지 기본 구성',
+          '서버 배포 및 도메인 연결 포함',
+        ],
+      },
+      {
+        name: 'Advanced',
+        range: '150 ~ 300만원',
+        items: [
+          '판매 플랫폼 전체 구축',
+          '결제 시스템 연동',
+          '상품 · 주문 관리 시스템 구현',
+          '관리자 페이지 구축',
+          '서버 인프라 구성 및 운영',
+          '자동 배포 파이프라인 구축',
+          '유지보수 계약 가능',
+        ],
+      },
+    ],
+  },
+
+  // ProcessPage
+  process: {
+    pageLabel: 'Process',
+    title: '진행 프로세스',
+    desc: '요구사항 분석부터 운영·유지보수까지.\n각 단계를 명확히 공유하며 진행합니다.',
+    steps: [
+      {
+        step: '01',
+        title: '요구사항 분석',
+        desc: '프로젝트 목적, 필요 기능, 예산 범위를 함께 정리합니다. 명확한 범위를 정의해 불필요한 추가 비용을 방지합니다.',
+      },
+      {
+        step: '02',
+        title: '설계',
+        desc: 'DB 구조와 API 설계를 먼저 진행합니다. 화면 흐름과 데이터 구조를 확인한 후 개발에 착수합니다.',
+      },
+      {
+        step: '03',
+        title: '개발',
+        desc: '프론트엔드와 백엔드를 병렬로 개발합니다. 주요 기능 완성 시마다 중간 확인을 진행합니다.',
+      },
+      {
+        step: '04',
+        title: '테스트',
+        desc: '기능 동작 검증 및 모바일 반응형 확인을 수행합니다. 발견된 문제는 즉시 수정합니다.',
+      },
+      {
+        step: '05',
+        title: '배포',
+        desc: '서버 환경 구성 후 도메인·SSL 설정을 완료합니다. Jenkins CI/CD가 필요한 경우 자동 배포 파이프라인도 구축합니다.',
+      },
+      {
+        step: '06',
+        title: '운영 및 유지보수',
+        desc: '운영 중 발생하는 버그 수정과 기능 개선을 담당합니다. 유지보수 계약을 통해 지속적인 관리가 가능합니다.',
+      },
+    ],
+    midCta: '이 프로세스로 프로젝트를 시작하고 싶으신가요?',
+    midCtaBtn: '문의하기',
+  },
+
+  // ContactPage
+  contact: {
+    pageLabel: 'Contact',
+    title: '프로젝트 문의',
+    desc: '요구사항을 간단히 정리해서 보내주시면 빠르게 검토 후 회신드립니다.\n단가 협의 및 범위 확인은 부담 없이 문의해주세요.',
+  },
+
+  // ContactForm
+  form: {
+    labels: {
+      name: '이름',
+      contact: '연락처',
+      type: '프로젝트 유형',
+      budget: '예산 범위',
+      description: '간단 설명',
+    },
+    placeholders: {
+      name: '홍길동',
+      contact: '010-0000-0000 또는 이메일',
+      description: '구현하고 싶은 기능이나 참고 사이트 등을 간단히 적어주세요',
+    },
+    selectDefault: '선택해주세요',
+    projectTypes: [
+      '랜딩페이지 / 회사 소개',
+      '기업 홈페이지',
+      '쇼핑몰 / 판매 플랫폼',
+      '관리자 시스템',
+      '유지보수 / 기능 추가',
+      '기타',
+    ],
+    budgetRanges: [
+      '10 ~ 50만원',
+      '50 ~ 150만원',
+      '150 ~ 300만원',
+      '협의 가능',
+    ],
+    submit: '문의 보내기',
+    submitting: '전송 중...',
+    successMessage: '문의가 전송되었습니다. 빠르게 검토 후 회신드립니다.',
+    errorMessage: '전송에 실패했습니다. 다시 시도해주세요.',
+    errorNetworkMessage: '전송 중 오류가 발생했습니다. 다시 시도해주세요.',
+  },
+
+  // MobileFixedCTA
+  mobileCta: {
+    button: '프로젝트 문의하기',
+  },
+
+  // PlatformCasePage
+  platformCase: {
+    pageLabel: 'Platform Case',
+    title: '작업 사례',
+    desc: '직접 설계하고 운영까지 참여한 프로젝트 사례입니다.\n탭을 선택해 각 프로젝트의 상세 내용을 확인하세요.',
+    tabs: [
+      { id: 'photocard', label: '포토카드 플랫폼' },
+      { id: 'utils', label: '웹 유틸리티' },
+      { id: 'corporate', label: '회사 소개 사이트' },
+      { id: 'cafe24', label: '카페24 유지보수' },
+      { id: 'compass', label: 'GPS 나침반' },
+      { id: 'worldcup', label: 'K-Pop 이상형 월드컵' },
+    ],
+    photocard: {
+      tier: 'Advanced · 150 ~ 300만원',
+      title: '포토카드 판매 플랫폼',
+      desc: '단순 UI 작업이 아닌 비즈니스 로직 중심의 백엔드 개발.\n상품 관리부터 결제·주문·서버 운영까지 전체 플로우를 직접 설계·구현했습니다.',
+      urlLabel: '운영 사이트 바로가기 →',
+      features: [
+        {
+          category: '상품 관리',
+          items: ['상품 등록 · 수정 · 삭제', '이미지 업로드 및 관리', '카테고리 분류'],
+        },
+        {
+          category: '주문 관리',
+          items: ['주문 내역 조회 및 상태 변경', '배송 처리 흐름 구현', '고객별 주문 이력'],
+        },
+        {
+          category: '결제 시스템',
+          items: ['결제 모듈 연동', '결제 완료 후 주문 처리', '환불 처리 흐름'],
+        },
+        {
+          category: '관리자 페이지',
+          items: ['상품 · 주문 통합 관리 화면', '관리자 계정 분리', '매출 현황 확인'],
+        },
+      ],
+      opsTitle: '운영 구조',
+      ops: [
+        {
+          title: '프론트 · 백엔드 분리 운영',
+          body: 'Next.js 프론트엔드와 Spring Boot API 서버를 독립적으로 운영해 유지보수성을 확보했습니다.',
+        },
+        {
+          title: '실 서버 직접 운영',
+          body: 'Oracle Cloud 인스턴스에서 Nginx 설정, 도메인 연결, SSL 인증서 관리를 직접 수행했습니다.',
+        },
+        {
+          title: '자동 배포 파이프라인',
+          body: 'Jenkins를 통해 코드 push 시 자동으로 빌드·배포되는 CI/CD 파이프라인을 구축했습니다.',
+        },
+      ],
+      techTitle: '사용 기술',
+      techNote: '기술적 검증이 필요한 경우 참고해주세요',
+      tech: [
+        { label: 'Frontend', value: 'Next.js (React)' },
+        { label: 'Backend', value: 'Spring Boot (REST API)' },
+        { label: 'Database', value: 'MySQL' },
+        { label: 'Infra', value: 'Oracle Cloud Infrastructure' },
+        { label: 'Server', value: 'Nginx (Reverse Proxy + SSL)' },
+        { label: 'CI/CD', value: 'Jenkins' },
+      ],
+    },
+    otherProjects: {
+      utils: {
+        tier: 'Basic ~ Standard',
+        desc: '사무 업무 효율화를 위한 브라우저 기반 유틸리티 서비스. 모든 처리는 서버 없이 클라이언트에서 안전하게 수행됩니다.',
+        features: [
+          'PDF 병합 / 분할',
+          'CSV ↔ JSON 변환',
+          'D-Day · 날짜 계산',
+          'SQL → CSV 변환',
+          '이미지 형식 변환',
+          '파일 일괄 이름 변경',
+        ],
+        stack: ['Next.js', 'React', 'TypeScript'],
+        deploy: 'Cloudflare Pages',
+        urlLabel: '유틸리티 사이트 바로가기',
+      },
+      corporate: {
+        tier: 'Basic ~ Standard',
+        desc: '인테리어 회사 홈페이지 템플릿. 이미지 캐러셀, 서비스 소개, 문의 폼, 반응형 레이아웃이 포함된 기업 사이트입니다.',
+        features: [
+          '이미지 캐러셀 (Hero)',
+          '서비스 상세 페이지',
+          '회사 소개 · 팀 구성',
+          '문의 폼',
+          '모바일 반응형',
+          'Oracle Cloud 서버 배포',
+        ],
+        stack: ['Next.js', 'TypeScript', 'CSS Modules'],
+        deploy: 'Cloudflare Pages',
+        urlLabel: '회사 소개 사이트 바로가기',
+      },
+      cafe24: {
+        tier: 'Basic',
+        desc: '기존 운영 중인 카페24 쇼핑몰의 유지보수 및 기능 추가 작업. 기존 구조를 유지하면서 필요한 부분만 정확하게 개선했습니다.',
+        features: [
+          '기존 레이아웃 유지',
+          'UI 개선 및 리터치',
+          '커스텀 기능 추가',
+          '모바일 반응형 개선',
+        ],
+        stack: ['HTML', 'CSS', 'JavaScript', 'Cafe24'],
+        deploy: 'Cafe24 호스팅',
+        urlLabel: '세라스룸 쇼핑몰 바로가기',
+      },
+      compass: {
+        tier: 'Standard',
+        desc: '좌표를 입력하면 실시간 GPS와 기기 방향 센서로 목적지를 안내하는 브라우저 기반 나침반. 레트로 터미널 UI와 오디오 피드백이 적용된 MVP 프로토타입입니다.',
+        features: [
+          'GPS 실시간 위치 추적',
+          '기기 방향 센서 연동',
+          '목적지 방향 · 거리 실시간 계산',
+          '도착 판정 (50m 이내)',
+          '브라운 노이즈 오디오 피드백',
+          'SVG 나침반 · 수평계 UI',
+        ],
+        stack: ['Next.js', 'TypeScript', 'Geolocation API', 'DeviceOrientation API', 'Web Audio API'],
+        deploy: 'Cloudflare Pages',
+        urlLabel: 'GPS 나침반 바로가기',
+      },
+      worldcup: {
+        tier: 'Basic ~ Standard',
+        desc: 'K-Pop 아이돌 이상형 월드컵 정적 웹사이트. 7개 카테고리(걸그룹·보이그룹·솔로·애니메·축구·슈퍼히어로·게임)를 지원하며 11개 언어 자동 감지로 글로벌 타겟을 노립니다.',
+        features: [
+          '토너먼트 방식 1:1 대결',
+          '7개 카테고리',
+          '11개 언어 자동 감지 (한/영/일/독/불/포/스/인니/태/베/중)',
+          '결과 화면 및 순위 표시',
+          'SNS 공유용 OG 메타태그',
+          '광고 수익화 준비 구조',
+        ],
+        stack: ['HTML', 'CSS', 'JavaScript', 'i18n (11개 언어)'],
+        deploy: 'Cloudflare Pages',
+        urlLabel: 'K-Pop 월드컵 바로가기',
+      },
+    },
+    midCta: '유사한 프로젝트가 필요하신가요?',
+    midCtaBtn: '문의하기',
+    mainFeatures: '구현 기능',
+    mainFeatures2: '주요 기능',
+    mainTech: '기술 스택',
+    mainDeploy: '배포 방식',
+  },
+} as const;

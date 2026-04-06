@@ -53,7 +53,7 @@ export default function ContactForm() {
         }),
       });
 
-      const result = await response.json();
+      const result = await response.json() as { success: boolean };
 
       if (result.success) {
         setSubmitted(true);

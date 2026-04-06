@@ -13,10 +13,15 @@ function statusBadge(status: string) {
     case "진행중":
       return styles.badgeIng;
     case "AS":
+    case "A/S":
       return styles.badgeAs;
     default:
       return styles.badge;
   }
+}
+
+function statusLabel(status: string) {
+  return status === "AS" ? "A/S" : status;
 }
 
 function subBadge() {
@@ -50,7 +55,7 @@ export default function ProjectCard({ project }: Props) {
           </div>
         </div>
         <div>
-          <span className={statusBadge(project.status)}>{project.status}</span>
+          <span className={statusBadge(project.status)}>{statusLabel(project.status)}</span>
           {project.statusSub && (
             <>
               {" "}

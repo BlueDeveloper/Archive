@@ -54,9 +54,7 @@ export default function Finance({ settlements, expenses }: Props) {
         </div>
 
         <div className={styles.card}>
-          <h3 className={styles.colorRed}>
-            숨고 포인트 충전 내역 (견적 발송 비용)
-          </h3>
+          <h3 className={styles.colorRed}>투자비용</h3>
           {expenses.map((e) => (
             <div className={styles.row} key={e.id}>
               <span className={styles.rowLabel}>{e.label}</span>
@@ -66,7 +64,7 @@ export default function Finance({ settlements, expenses }: Props) {
             </div>
           ))}
           <div className={styles.total}>
-            <span>포인트 비용 합계</span>
+            <span>투자비용 합계</span>
             <span className={styles.colorRed}>
               -{formatMoney(expenseTotal)}
             </span>

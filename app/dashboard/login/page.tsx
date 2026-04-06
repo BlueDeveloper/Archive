@@ -8,6 +8,7 @@ export const runtime = "edge";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
 
@@ -18,7 +19,7 @@ export default function LoginPage() {
     const res = await fetch("/api/auth", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
+      body: JSON.stringify({ password, remember }),
     });
 
     if (res.ok) {
@@ -43,6 +44,14 @@ export default function LoginPage() {
             placeholder="비밀번호"
             autoFocus
           />
+          <label className={styles.remember}>
+            <input
+              type="checkbox"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+            />
+            자동 로그인 (30일)
+          </label>
           {error && <p className={styles.error}>{error}</p>}
           <button className={styles.button} type="submit">
             로그인

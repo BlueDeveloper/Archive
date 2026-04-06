@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     ) {
       return NextResponse.json({ error: "Bad request" }, { status: 400 });
     }
-    const { password } = body as { password: string };
+    const { password, remember = false } = body as { password: string; remember?: boolean };
 
     const row = await db()
       .select()
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       httpOnly: true,
       secure: true,
       sameSite: "strict",
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: remember ? 60 * 60 * 24 * 30 : 60 * 60 * 24 * 7,
       path: "/",
     });
     return res;

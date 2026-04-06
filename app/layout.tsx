@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
+import PwaRegister from "@/components/dashboard/PwaRegister";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,8 +20,18 @@ const syne = Syne({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#07070f",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://bdarchive.site"),
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    title: "BD 포트폴리오",
+    statusBarStyle: "black-translucent",
+  },
   title: {
     default: "BD - 프론트엔드 · 백엔드 · 인프라 통합 개발",
     template: "%s | BD 개발 외주",
@@ -66,6 +77,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}
       >
+        <PwaRegister />
         <LanguageProvider>
           {children}
         </LanguageProvider>

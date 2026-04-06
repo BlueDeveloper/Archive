@@ -1,0 +1,55 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 480px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    padding: 14px 16px;
+  }
+
+  .value {
+    font-size: 20px;
+  }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.label {
+  font-size: 11px;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.desc {
+  font-size: 11px;
+  color: var(--dim);
+  margin-top: 3px;
+}
+
+.valueRed    { color: var(--red); }
+.valueGreen  { color: var(--green); }
+.valueTeal   { color: var(--teal); }
+.valueYellow { color: var(--yellow); }
+.valueAccent { color: var(--accent); }

@@ -23,6 +23,22 @@
 - **플랫폼**: Cloudflare Pages
 - **레포**: BlueDeveloper/archive-portfolio
 - **브랜치**: main
-- **빌드 명령어**: `npm install --legacy-peer-deps && npm run build`
-- **출력 디렉토리**: `out`
+- **빌드 명령어**: `npm install --legacy-peer-deps && npx @cloudflare/next-on-pages`
+- **출력 디렉토리**: `.vercel/output/static`
 - **도메인**: bdarchive.site
+
+## 라우트 구조
+
+- `/` ~ `/contact` : 포트폴리오 공개 페이지 (수정 금지)
+- `/dashboard/*` : 비공개 대시보드 (인증 필요, middleware.ts로 보호)
+  - `/dashboard` : 메인 대시보드
+  - `/dashboard/schedule` : 일정 D-Day
+  - `/dashboard/work` : 작업시간 분석
+  - `/dashboard/login` : 로그인
+
+## Dashboard 관련 파일 위치
+
+- `components/dashboard/` : Dashboard 전용 컴포넌트
+- `lib/types.ts`, `lib/data.ts`, `lib/dashboard-utils.ts`, `lib/d1.ts` : Dashboard 전용 lib
+- `db/` : Drizzle ORM 스키마 및 D1 연결
+- `app/api/` : API 라우트 (auth, projects, expenses, settlements, timelines, work-hours)

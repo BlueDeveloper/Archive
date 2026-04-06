@@ -1,0 +1,89 @@
+import Stats from "@/components/dashboard/Stats";
+import Insights from "@/components/dashboard/Insights";
+import ProjectCard from "@/components/dashboard/ProjectCard";
+import Finance from "@/components/dashboard/Finance";
+import { fetchDashboardData } from "@/lib/data";
+import styles from "@/components/dashboard/Section.module.css";
+import pageStyles from "./page.module.css";
+
+export const runtime = "edge";
+
+export default async function DashboardHome() {
+  const data = await fetchDashboardData();
+  const { projects } = data;
+
+  const done = projects.filter(
+    (p) => p.status === "완료" || p.status === "AS"
+  );
+  const inProgress = projects.filter((p) => p.status === "진행중");
+  const doneOnly = projects.filter((p) => p.status === "완료");
+  const asOnly = projects.filter((p) => p.status === "AS");
+
+  const today = new Date()
+    .toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\. /g, ".")
+    .replace(/\.$/, "");
+
+  return (
+    <>
+      <p className={pageStyles.updateInfo}>
+        최종 업데이트: {today} | 총 {projects.length}건 (완료 {doneOnly.length} /
+        진행중 {inProgress.length} / AS {asOnly.length})
+      </p>
+
+      <Stats data={data} />
+
+      <div className={styles.section}>
+        <span className={`${styles.dot} ${styles.dotAccent}`} />
+        비즈니스 인사이트
+      </div>
+      <Insights
+        projects={projects}
+        settlements={data.settlements}
+        expenses={data.expenses}
+      />
+
+      {inProgress.length > 0 && (
+        <>
+          <div className={styles.section}>
+            <span className={`${styles.dot} ${styles.dotYellow}`} />
+            진행중 프로젝트
+          </div>
+          <div className={styles.projectGrid}>
+            {inProgress.map((p) => (
+              <ProjectCard key={p.id} project={p} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {done.length > 0 && (
+        <>
+          <div className={styles.section}>
+            <span className={`${styles.dot} ${styles.dotGreen}`} />
+            완료 프로젝트
+          </div>
+          <div className={styles.projectGrid}>
+            {done.map((p) => (
+              <ProjectCard key={p.id} project={p} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {data.settlements.length > 0 && (
+        <>
+          <div className={styles.section}>
+            <span className={`${styles.dot} ${styles.dotGreen}`} />
+            정산 현황 &amp; 순수익
+          </div>
+          <Finance settlements={data.settlements} expenses={data.expenses} />
+        </>
+      )}
+    </>
+  );
+}

@@ -1,0 +1,23 @@
+import { NextRequest, NextResponse } from "next/server";
+
+export const config = {
+  matcher: ["/dashboard/:path*", "/dashboard/login"],
+};
+
+export function middleware(req: NextRequest) {
+  const cookie = req.cookies.get("auth");
+  const isLoginPage = req.nextUrl.pathname === "/dashboard/login";
+
+  if (cookie?.value === "authenticated") {
+    if (isLoginPage) {
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    }
+    return NextResponse.next();
+  }
+
+  if (isLoginPage) {
+    return NextResponse.next();
+  }
+
+  return NextResponse.redirect(new URL("/dashboard/login", req.url));
+}

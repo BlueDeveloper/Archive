@@ -1,0 +1,147 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(540px, 1fr));
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.top {
+  padding: 22px 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.client {
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 2px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.badgeDone {
+  composes: badge;
+  background: rgba(52, 211, 153, 0.14);
+  color: var(--green);
+}
+
+.badgeIng {
+  composes: badge;
+  background: rgba(251, 191, 36, 0.14);
+  color: var(--yellow);
+}
+
+.badgeAs {
+  composes: badge;
+  background: rgba(251, 146, 60, 0.14);
+  color: var(--orange);
+}
+
+.body {
+  padding: 16px 24px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 0;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(42, 46, 61, 0.45);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowKey {
+  color: var(--dim);
+  font-size: 12px;
+  min-width: 90px;
+}
+
+.rowVal {
+  font-weight: 500;
+  text-align: right;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0 24px 6px;
+}
+
+.tag {
+  background: rgba(108, 126, 255, 0.09);
+  color: var(--accent);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.timeline {
+  padding: 12px 24px 20px;
+  border-top: 1px solid var(--border);
+}
+
+.tlItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.tlDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.tlDate {
+  color: var(--dim);
+  min-width: 86px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.rowValGreen  { color: var(--green); }
+.rowValYellow { color: var(--yellow); }
+
+.folder {
+  font-family: "Consolas", "Fira Code", monospace;
+  font-size: 11px;
+  color: var(--purple);
+  background: rgba(167, 139, 250, 0.08);
+  padding: 2px 6px;
+  border-radius: 3px;
+}

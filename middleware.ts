@@ -6,7 +6,8 @@ export const config = {
 
 export function middleware(req: NextRequest) {
   const cookie = req.cookies.get("auth");
-  const isLoginPage = req.nextUrl.pathname === "/dashboard/login";
+  const pathname = req.nextUrl.pathname.replace(/\/$/, "");
+  const isLoginPage = pathname === "/dashboard/login";
 
   if (cookie?.value === "authenticated") {
     if (isLoginPage) {

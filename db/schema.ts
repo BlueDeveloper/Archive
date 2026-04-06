@@ -60,6 +60,11 @@ export const workHours = sqliteTable("work_hours", {
   note: text("note"),
 });
 
+export const settings = sqliteTable("settings", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
+});
+
 export const deadlines = sqliteTable("deadlines", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   projectId: integer("project_id"),

@@ -8,7 +8,8 @@ export async function fetchDashboardData(): Promise<DashboardData> {
     const { env } = getRequestContext();
     const { getDb } = await import("@/db");
     db = getDb(env.DB);
-  } catch {
+  } catch (e) {
+    console.error("[fetchDashboardData] DB 연결 실패:", e);
     return {
       projects: [],
       settlements: [],

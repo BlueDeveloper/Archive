@@ -10,23 +10,32 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     setError("");
 
-    const res = await fetch("/api/auth", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password, remember }),
-    });
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, remember }),
+      });
 
-    if (res.ok) {
-      router.push("/dashboard");
-      router.refresh();
-    } else {
-      setError("비밀번호가 올바르지 않습니다.");
+      if (res.ok) {
+        router.push("/dashboard");
+        router.refresh();
+      } else {
+        setError("비밀번호가 올바르지 않습니다.");
+        setIsSubmitting(false);
+      }
+    } catch {
+      setError("네트워크 오류가 발생했습니다.");
+      setIsSubmitting(false);
     }
   }
 
@@ -43,18 +52,20 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="비밀번호"
             autoFocus
+            disabled={isSubmitting}
           />
           <label className={styles.remember}>
             <input
               type="checkbox"
               checked={remember}
               onChange={(e) => setRemember(e.target.checked)}
+              disabled={isSubmitting}
             />
             자동 로그인 (30일)
           </label>
           {error && <p className={styles.error}>{error}</p>}
-          <button className={styles.button} type="submit">
-            로그인
+          <button className={styles.button} type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "로그인 중..." : "로그인"}
           </button>
         </form>
       </div>

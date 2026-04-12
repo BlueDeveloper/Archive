@@ -75,7 +75,7 @@ export default function ProjectCard({ project }: Props) {
           <span className={styles.rowVal}>{project.platform || "-"}</span>
         </div>
         <div className={styles.row}>
-          <span className={styles.rowKey}>정산</span>
+          <span className={styles.rowKey}>견적</span>
           <span
             className={`${styles.rowVal} ${project.status === "완료" ? styles.rowValGreen : styles.rowValYellow}`}
           >

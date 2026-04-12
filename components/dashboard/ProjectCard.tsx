@@ -92,7 +92,7 @@ export default function ProjectCard({ project }: Props) {
         )}
         {project.contractDate && (
           <div className={styles.row}>
-            <span className={styles.rowKey}>계약</span>
+            <span className={styles.rowKey}>계약기간</span>
             <span className={styles.rowVal}>
               {formatDate(project.contractDate)}
               {project.endDate && ` ~ ${formatDate(project.endDate)}`}

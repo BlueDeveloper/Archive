@@ -14,6 +14,7 @@ export interface Project {
   endDate: string | null;
   asInfo: string | null;
   note: string | null;
+  service: string | null;
   sortOrder: number | null;
   createdAt: string;
   updatedAt: string;

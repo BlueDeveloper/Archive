@@ -113,6 +113,12 @@ export default function ProjectCard({ project }: Props) {
             <span className={styles.rowVal}>{project.asInfo}</span>
           </div>
         )}
+        {project.service && (
+          <div className={styles.row}>
+            <span className={styles.rowKey}>서비스</span>
+            <span className={styles.rowVal}>{project.service}</span>
+          </div>
+        )}
       </div>
 
       {tags.length > 0 && (

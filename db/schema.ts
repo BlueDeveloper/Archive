@@ -16,6 +16,7 @@ export const projects = sqliteTable("projects", {
   endDate: text("end_date"),
   asInfo: text("as_info"),
   note: text("note"),
+  service: text("service"),
   sortOrder: integer("sort_order").default(0),
   createdAt: text("created_at").notNull().default("(datetime('now'))"),
   updatedAt: text("updated_at").notNull().default("(datetime('now'))"),

@@ -24,7 +24,7 @@ export async function fetchDashboardData(): Promise<DashboardData> {
   });
 
   const allTimelines = await db.query.timelines.findMany({
-    orderBy: (t, { asc }) => [asc(t.sortOrder)],
+    orderBy: (t, { asc }) => [asc(t.sortOrder), asc(t.date)],
   });
 
   const allSettlements = await db.query.settlements.findMany();

@@ -57,6 +57,11 @@ export default function ProjectCard({ project }: Props) {
   const tags = parseJsonArray(project.techStack);
   const [detailOpen, setDetailOpen] = useState(false);
   const details = parseAmountDetail(project.amountDetail);
+  const hasDetail = details.length > 0;
+
+  const handleDetailToggle = () => {
+    if (hasDetail) setDetailOpen((prev) => !prev);
+  };
 
   return (
     <div className={styles.card}>
@@ -91,16 +96,19 @@ export default function ProjectCard({ project }: Props) {
         </div>
         <div className={styles.row}>
           <span className={styles.rowKey}>플랫폼</span>
-          <span className={styles.rowVal}>{project.platform || "-"}</span>
+          <span className={styles.rowVal}>{project.platform || "없음"}</span>
         </div>
         <div
-          className={`${styles.row} ${details.length > 0 ? styles.rowClickable : ""}`}
-          onClick={() => details.length > 0 && setDetailOpen(!detailOpen)}
+          className={`${styles.row} ${hasDetail ? styles.rowClickable : ""}`}
+          onClick={handleDetailToggle}
+          role={hasDetail ? "button" : undefined}
+          tabIndex={hasDetail ? 0 : undefined}
+          onKeyDown={hasDetail ? (e) => { if (e.key === "Enter" || e.key === " ") handleDetailToggle(); } : undefined}
         >
           <span className={styles.rowKey}>
             견적
-            {details.length > 0 && (
-              <span className={styles.expandIcon}>{detailOpen ? "▾" : "▸"}</span>
+            {hasDetail && (
+              <span className={`${styles.expandIcon} ${detailOpen ? styles.expandIconOpen : ""}`}>&#9660;</span>
             )}
           </span>
           <span
@@ -109,7 +117,7 @@ export default function ProjectCard({ project }: Props) {
             {formatMoney(project.amount)}원
           </span>
         </div>
-        {detailOpen && details.length > 0 && (
+        {detailOpen && hasDetail && (
           <div className={styles.detailWrap}>
             {details.map((item, i) => (
               <div className={styles.detailRow} key={i}>
@@ -121,23 +129,23 @@ export default function ProjectCard({ project }: Props) {
         )}
         <div className={styles.row}>
           <span className={styles.rowKey}>배포</span>
-          <span className={styles.rowVal}>{project.deployMethod || "-"}</span>
+          <span className={styles.rowVal}>{project.deployMethod || "없음"}</span>
         </div>
         <div className={styles.row}>
           <span className={styles.rowKey}>계약기간</span>
           <span className={styles.rowVal}>
             {project.contractDate
               ? `${formatDate(project.contractDate)}${project.endDate ? ` ~ ${formatDate(project.endDate)}` : ""}`
-              : "-"}
+              : "없음"}
           </span>
         </div>
         <div className={styles.row}>
-          <span className={styles.rowKey}>AS</span>
-          <span className={styles.rowVal}>{project.asInfo || "-"}</span>
+          <span className={styles.rowKey}>A/S</span>
+          <span className={styles.rowVal}>{project.asInfo || "없음"}</span>
         </div>
         <div className={styles.row}>
           <span className={styles.rowKey}>서비스</span>
-          <span className={styles.rowVal}>{project.service || "-"}</span>
+          <span className={styles.rowVal}>{project.service || "없음"}</span>
         </div>
       </div>
 

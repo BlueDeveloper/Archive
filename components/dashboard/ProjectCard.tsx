@@ -70,12 +70,10 @@ export default function ProjectCard({ project }: Props) {
           <span className={styles.rowKey}>유형</span>
           <span className={styles.rowVal}>{project.type}</span>
         </div>
-        {project.platform && (
-          <div className={styles.row}>
-            <span className={styles.rowKey}>플랫폼</span>
-            <span className={styles.rowVal}>{project.platform}</span>
-          </div>
-        )}
+        <div className={styles.row}>
+          <span className={styles.rowKey}>플랫폼</span>
+          <span className={styles.rowVal}>{project.platform || "-"}</span>
+        </div>
         <div className={styles.row}>
           <span className={styles.rowKey}>정산</span>
           <span
@@ -84,41 +82,26 @@ export default function ProjectCard({ project }: Props) {
             {formatMoney(project.amount)}원
           </span>
         </div>
-        {project.deployMethod && (
-          <div className={styles.row}>
-            <span className={styles.rowKey}>배포</span>
-            <span className={styles.rowVal}>{project.deployMethod}</span>
-          </div>
-        )}
-        {project.contractDate && (
-          <div className={styles.row}>
-            <span className={styles.rowKey}>계약기간</span>
-            <span className={styles.rowVal}>
-              {formatDate(project.contractDate)}
-              {project.endDate && ` ~ ${formatDate(project.endDate)}`}
-            </span>
-          </div>
-        )}
-        {!project.endDate && (
-          <div className={styles.row}>
-            <span className={styles.rowKey}>종료예정</span>
-            <span className={`${styles.rowVal} ${styles.rowValYellow}`}>
-              {project.note || "미정"}
-            </span>
-          </div>
-        )}
-        {project.asInfo && (
-          <div className={styles.row}>
-            <span className={styles.rowKey}>AS</span>
-            <span className={styles.rowVal}>{project.asInfo}</span>
-          </div>
-        )}
-        {project.service && (
-          <div className={styles.row}>
-            <span className={styles.rowKey}>서비스</span>
-            <span className={styles.rowVal}>{project.service}</span>
-          </div>
-        )}
+        <div className={styles.row}>
+          <span className={styles.rowKey}>배포</span>
+          <span className={styles.rowVal}>{project.deployMethod || "-"}</span>
+        </div>
+        <div className={styles.row}>
+          <span className={styles.rowKey}>계약기간</span>
+          <span className={styles.rowVal}>
+            {project.contractDate
+              ? `${formatDate(project.contractDate)}${project.endDate ? ` ~ ${formatDate(project.endDate)}` : ""}`
+              : "-"}
+          </span>
+        </div>
+        <div className={styles.row}>
+          <span className={styles.rowKey}>AS</span>
+          <span className={styles.rowVal}>{project.asInfo || "-"}</span>
+        </div>
+        <div className={styles.row}>
+          <span className={styles.rowKey}>서비스</span>
+          <span className={styles.rowVal}>{project.service || "-"}</span>
+        </div>
       </div>
 
       {tags.length > 0 && (

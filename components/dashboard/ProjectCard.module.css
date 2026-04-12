@@ -195,3 +195,57 @@
   padding: 2px 6px;
   border-radius: 3px;
 }
+
+@media (max-width: 600px) {
+  .top {
+    padding: 16px 16px 0;
+  }
+
+  .name {
+    font-size: 15px;
+  }
+
+  .body {
+    padding: 12px 16px;
+  }
+
+  .row {
+    padding: 6px 0;
+    font-size: 12px;
+  }
+
+  .rowKey {
+    font-size: 11px;
+    min-width: 70px;
+  }
+
+  .rowClickable {
+    margin: 0 -4px;
+    padding: 6px 4px;
+  }
+
+  .detailWrap {
+    padding: 4px 10px;
+  }
+
+  .detailRow {
+    font-size: 11px;
+  }
+
+  .tags {
+    padding: 0 16px 6px;
+  }
+
+  .timeline {
+    padding: 10px 16px 16px;
+  }
+
+  .tlItem {
+    font-size: 11px;
+    gap: 8px;
+  }
+
+  .tlDate {
+    min-width: 72px;
+  }
+}

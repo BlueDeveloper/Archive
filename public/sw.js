@@ -1,18 +1,6 @@
-const CACHE_NAME = 'bd-portfolio-v1';
-const PRECACHE = [
-  '/',
-  '/services/',
-  '/process/',
-  '/platform-case/',
-  '/contact/',
-  '/logo.png',
-  '/manifest.json',
-];
+const CACHE_NAME = 'brp-dashboard-v1';
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE))
-  );
+self.addEventListener('install', () => {
   self.skipWaiting();
 });
 
@@ -32,10 +20,13 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(event.request.url);
 
-  // API 요청 및 대시보드는 캐싱 제외
-  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/dashboard')) return;
+  // API는 캐싱 제외
+  if (url.pathname.startsWith('/api/')) return;
 
-  // Network-first: 네트워크 우선, 실패 시 캐시 사용
+  // /dashboard 경로만 캐싱 대상
+  if (!url.pathname.startsWith('/dashboard')) return;
+
+  // Network-first
   event.respondWith(
     fetch(event.request)
       .then((response) => {

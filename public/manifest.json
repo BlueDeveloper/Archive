@@ -1,15 +1,15 @@
 {
-  "name": "BD - 풀스택 개발 외주",
-  "short_name": "BD 포트폴리오",
-  "description": "프론트엔드부터 백엔드, 인프라까지 직접 구축하는 풀스택 개발자 포트폴리오",
-  "start_url": "/",
-  "scope": "/",
+  "name": "BRP 대시보드",
+  "short_name": "BRP",
+  "description": "비알피 비즈니스 대시보드 - 프로젝트 관리, 정산, 일정",
+  "start_url": "/dashboard",
+  "scope": "/dashboard",
   "display": "standalone",
-  "background_color": "#07070f",
-  "theme_color": "#07070f",
+  "background_color": "#0f1117",
+  "theme_color": "#0f1117",
   "orientation": "portrait-primary",
   "lang": "ko",
-  "categories": ["portfolio", "business"],
+  "categories": ["business", "productivity"],
   "icons": [
     {
       "src": "/logo.png",

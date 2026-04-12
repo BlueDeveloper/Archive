@@ -10,6 +10,7 @@ export const projects = sqliteTable("projects", {
   status: text("status").notNull().default("진행중"),
   statusSub: text("status_sub"),
   amount: integer("amount").notNull().default(0),
+  amountDetail: text("amount_detail"),
   deployMethod: text("deploy_method"),
   techStack: text("tech_stack"),
   contractDate: text("contract_date"),

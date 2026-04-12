@@ -8,6 +8,7 @@ export interface Project {
   status: string;
   statusSub: string | null;
   amount: number;
+  amountDetail: string | null;
   deployMethod: string | null;
   techStack: string | null;
   contractDate: string | null;

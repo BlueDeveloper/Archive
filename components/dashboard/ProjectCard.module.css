@@ -137,6 +137,49 @@
 .rowValGreen  { color: var(--green); }
 .rowValYellow { color: var(--yellow); }
 
+.rowClickable {
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+  border-radius: 4px;
+  margin: 0 -6px;
+  padding: 7px 6px;
+}
+
+.rowClickable:hover {
+  background: rgba(108, 126, 255, 0.06);
+}
+
+.expandIcon {
+  margin-left: 4px;
+  font-size: 10px;
+  color: var(--accent);
+}
+
+.detailWrap {
+  background: rgba(108, 126, 255, 0.04);
+  border-left: 2px solid var(--accent);
+  margin: 2px 0 4px 0;
+  padding: 6px 12px;
+  border-radius: 0 6px 6px 0;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 12px;
+}
+
+.detailLabel {
+  color: var(--dim);
+}
+
+.detailAmount {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
 .folder {
   font-family: "Consolas", "Fira Code", monospace;
   font-size: 11px;

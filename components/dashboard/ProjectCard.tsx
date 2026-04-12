@@ -1,9 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./ProjectCard.module.css";
 import { formatMoney, formatDate, parseJsonArray } from "@/lib/dashboard-utils";
 import type { Project, Timeline } from "@/lib/types";
 
 interface Props {
   project: Project & { timelines: Timeline[] };
+}
+
+interface AmountItem {
+  label: string;
+  amount: number;
 }
 
 function statusBadge(status: string) {
@@ -36,8 +44,19 @@ const colorMap: Record<string, string> = {
   dim: "var(--dim)",
 };
 
+function parseAmountDetail(json: string | null): AmountItem[] {
+  if (!json) return [];
+  try {
+    return JSON.parse(json);
+  } catch {
+    return [];
+  }
+}
+
 export default function ProjectCard({ project }: Props) {
   const tags = parseJsonArray(project.techStack);
+  const [detailOpen, setDetailOpen] = useState(false);
+  const details = parseAmountDetail(project.amountDetail);
 
   return (
     <div className={styles.card}>
@@ -74,14 +93,32 @@ export default function ProjectCard({ project }: Props) {
           <span className={styles.rowKey}>플랫폼</span>
           <span className={styles.rowVal}>{project.platform || "-"}</span>
         </div>
-        <div className={styles.row}>
-          <span className={styles.rowKey}>견적</span>
+        <div
+          className={`${styles.row} ${details.length > 0 ? styles.rowClickable : ""}`}
+          onClick={() => details.length > 0 && setDetailOpen(!detailOpen)}
+        >
+          <span className={styles.rowKey}>
+            견적
+            {details.length > 0 && (
+              <span className={styles.expandIcon}>{detailOpen ? "▾" : "▸"}</span>
+            )}
+          </span>
           <span
             className={`${styles.rowVal} ${project.status === "완료" ? styles.rowValGreen : styles.rowValYellow}`}
           >
             {formatMoney(project.amount)}원
           </span>
         </div>
+        {detailOpen && details.length > 0 && (
+          <div className={styles.detailWrap}>
+            {details.map((item, i) => (
+              <div className={styles.detailRow} key={i}>
+                <span className={styles.detailLabel}>{item.label}</span>
+                <span className={styles.detailAmount}>{formatMoney(item.amount)}원</span>
+              </div>
+            ))}
+          </div>
+        )}
         <div className={styles.row}>
           <span className={styles.rowKey}>배포</span>
           <span className={styles.rowVal}>{project.deployMethod || "-"}</span>

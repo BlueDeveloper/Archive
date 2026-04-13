@@ -42,7 +42,6 @@ export default function Calendar({ deadlines }: Props) {
     ...PERSONAL_DEADLINES,
   ];
 
-  // 날짜별 이벤트 맵
   const eventMap = new Map<string, DeadlineItem[]>();
   for (const item of allItems) {
     const key = item.date;
@@ -74,10 +73,8 @@ export default function Calendar({ deadlines }: Props) {
     setSelectedDate(null);
   };
 
-  // 달력 셀 생성
   const cells: { day: number; dateStr: string; inMonth: boolean }[] = [];
 
-  // 이전 달
   for (let i = firstDay - 1; i >= 0; i--) {
     const d = prevMonthDays - i;
     const m = month === 0 ? 12 : month;
@@ -85,13 +82,11 @@ export default function Calendar({ deadlines }: Props) {
     cells.push({ day: d, dateStr: `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`, inMonth: false });
   }
 
-  // 현재 달
   for (let d = 1; d <= daysInMonth; d++) {
     const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
     cells.push({ day: d, dateStr, inMonth: true });
   }
 
-  // 다음 달 (6주 채우기)
   const remaining = 42 - cells.length;
   for (let d = 1; d <= remaining; d++) {
     const m = month === 11 ? 1 : month + 2;
@@ -99,16 +94,21 @@ export default function Calendar({ deadlines }: Props) {
     cells.push({ day: d, dateStr: `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`, inMonth: false });
   }
 
-  // 선택된 날짜 이벤트
   const selectedEvents = selectedDate ? (eventMap.get(selectedDate) || []) : [];
 
-  // 이번 달 예정 이벤트 (리스트)
   const monthEvents = allItems
     .filter((item) => {
       const [iy, im] = item.date.split("-").map(Number);
       return iy === year && im === month + 1;
     })
     .sort((a, b) => a.date.localeCompare(b.date));
+
+  const handleCellClick = (cell: { dateStr: string; inMonth: boolean }) => {
+    if (!cell.inMonth) return;
+    setSelectedDate(cell.dateStr === selectedDate ? null : cell.dateStr);
+  };
+
+  const closeModal = () => setSelectedDate(null);
 
   return (
     <div className={styles.wrap}>
@@ -141,23 +141,37 @@ export default function Calendar({ deadlines }: Props) {
             return (
               <div
                 key={idx}
-                className={`${styles.cell} ${!cell.inMonth ? styles.outside : ""} ${isToday ? styles.today : ""} ${isSelected ? styles.selected : ""}`}
-                onClick={() => cell.inMonth && setSelectedDate(cell.dateStr === selectedDate ? null : cell.dateStr)}
+                className={`${styles.cell} ${!cell.inMonth ? styles.outside : ""} ${isToday ? styles.today : ""} ${isSelected ? styles.selected : ""} ${events.length > 0 ? styles.hasEvent : ""}`}
+                onClick={() => handleCellClick(cell)}
               >
                 <span className={`${styles.dayNum} ${dayOfWeek === 0 ? styles.sun : dayOfWeek === 6 ? styles.sat : ""}`}>
                   {cell.day}
                 </span>
+                {/* PC: 텍스트 라벨 ���시 */}
+                {events.length > 0 && (
+                  <div className={styles.cellEvents}>
+                    {events.slice(0, 2).map((ev, i) => {
+                      const days = daysUntil(ev.date);
+                      const color = deadlineColor(days);
+                      return (
+                        <div key={i} className={styles.cellEvent} style={{ background: `var(--${color})` }}>
+                          <span className={styles.cellEventText}>{ev.label}</span>
+                        </div>
+                      );
+                    })}
+                    {events.length > 2 && (
+                      <div className={styles.cellMore}>+{events.length - 2}</div>
+                    )}
+                  </div>
+                )}
+                {/* 모바일: 도트만 */}
                 {events.length > 0 && (
                   <div className={styles.dots}>
                     {events.slice(0, 3).map((ev, i) => {
                       const days = daysUntil(ev.date);
                       const color = deadlineColor(days);
                       return (
-                        <span
-                          key={i}
-                          className={styles.dot}
-                          style={{ background: `var(--${color})` }}
-                        />
+                        <span key={i} className={styles.dot} style={{ background: `var(--${color})` }} />
                       );
                     })}
                   </div>
@@ -168,9 +182,43 @@ export default function Calendar({ deadlines }: Props) {
         </div>
       </div>
 
-      {/* 선택된 날짜 상세 */}
+      {/* PC ���업 모달 */}
       {selectedDate && selectedEvents.length > 0 && (
-        <div className={styles.detail}>
+        <div className={styles.overlay} onClick={closeModal}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalHeader}>
+              <span className={styles.modalTitle}>{selectedDate.replace(/-/g, ".")} 일정</span>
+              <button className={styles.modalClose} onClick={closeModal}>&#10005;</button>
+            </div>
+            <div className={styles.modalBody}>
+              {selectedEvents.map((ev) => {
+                const days = daysUntil(ev.date);
+                const color = deadlineColor(days);
+                const isPast = days < 0;
+                const dDayText = isPast ? `D+${Math.abs(days)}` : days === 0 ? "D-Day" : `D-${days}`;
+
+                return (
+                  <div key={ev.id} className={styles.modalItem}>
+                    <span className={styles.modalDday} style={{ color: `var(--${color})` }}>{dDayText}</span>
+                    <div className={styles.modalInfo}>
+                      <div className={styles.modalName}>
+                        {ev.category === "personal" && <span className={styles.personalBadge}>개인</span>}
+                        {ev.label}
+                      </div>
+                      {ev.description && <div className={styles.modalDesc}>{ev.description}</div>}
+                      {ev.type && <div className={styles.modalType}>{ev.type}</div>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 모바일: 선택 날짜 상세 (인라인) */}
+      {selectedDate && selectedEvents.length > 0 && (
+        <div className={styles.mobileDetail}>
           <div className={styles.detailTitle}>
             {selectedDate.replace(/-/g, ".")} 일정
           </div>
@@ -182,15 +230,13 @@ export default function Calendar({ deadlines }: Props) {
 
             return (
               <div key={ev.id} className={styles.detailItem}>
-                <div className={styles.detailLeft}>
-                  <span className={styles.detailDday} style={{ color: `var(--${color})` }}>{dDayText}</span>
-                  <div>
-                    <div className={styles.detailName}>
-                      {ev.category === "personal" && <span className={styles.personalBadge}>개인</span>}
-                      {ev.label}
-                    </div>
-                    {ev.description && <div className={styles.detailDesc}>{ev.description}</div>}
+                <span className={styles.detailDday} style={{ color: `var(--${color})` }}>{dDayText}</span>
+                <div>
+                  <div className={styles.detailName}>
+                    {ev.category === "personal" && <span className={styles.personalBadge}>개인</span>}
+                    {ev.label}
                   </div>
+                  {ev.description && <div className={styles.detailDesc}>{ev.description}</div>}
                 </div>
               </div>
             );
@@ -198,7 +244,7 @@ export default function Calendar({ deadlines }: Props) {
         </div>
       )}
 
-      {/* 이번 달 일정 목록 */}
+      {/* 모바일: 월간 리스트 */}
       <div className={styles.monthList}>
         <div className={styles.monthListTitle}>
           {month + 1}월 일정 ({monthEvents.length}건)

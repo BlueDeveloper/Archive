@@ -123,6 +123,26 @@ export default function Calendar({ deadlines }: Props) {
           <button className={styles.navBtn} onClick={goNext}>&#8250;</button>
         </div>
 
+        {/* 범례 */}
+        <div className={styles.legend}>
+          <div className={styles.legendItem}>
+            <span className={styles.legendDot} style={{ background: "var(--red)" }} />
+            <span>7일 이내</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span className={styles.legendDot} style={{ background: "var(--yellow)" }} />
+            <span>21일 이내</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span className={styles.legendDot} style={{ background: "var(--green)" }} />
+            <span>21일 이상</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span className={styles.legendDot} style={{ background: "var(--dim)" }} />
+            <span>지난 일정</span>
+          </div>
+        </div>
+
         {/* 요일 */}
         <div className={styles.weekdays}>
           {WEEKDAYS.map((w, i) => (

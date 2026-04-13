@@ -1,4 +1,4 @@
-import Deadlines from "@/components/dashboard/Deadlines";
+import Calendar from "@/components/dashboard/Calendar";
 import { fetchDashboardData } from "@/lib/data";
 import styles from "@/components/dashboard/Section.module.css";
 
@@ -11,9 +11,9 @@ export default async function SchedulePage() {
     <>
       <div className={styles.section}>
         <span className={`${styles.dot} ${styles.dotRed}`} />
-        일정 (D-Day)
+        일정
       </div>
-      <Deadlines deadlines={data.deadlines} />
+      <Calendar deadlines={data.deadlines} />
     </>
   );
 }

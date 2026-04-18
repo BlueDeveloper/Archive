@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import styles from "./ProjectCard.module.css";
 import { formatMoney, formatDate, parseJsonArray } from "@/lib/dashboard-utils";
 import type { Project, Timeline } from "@/lib/types";
@@ -67,7 +68,12 @@ export default function ProjectCard({ project }: Props) {
     <div className={styles.card}>
       <div className={styles.top}>
         <div>
-          <div className={styles.name}>{project.name}</div>
+          <div className={styles.nameRow}>
+            <span className={styles.name}>{project.name}</span>
+            <Link href={`/dashboard/projects/${project.id}/edit`} className={styles.editBtn}>
+              편집
+            </Link>
+          </div>
           <div className={styles.client}>
             {project.client}
             {project.folder && (

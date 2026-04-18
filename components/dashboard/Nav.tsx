@@ -9,6 +9,7 @@ const MENU = [
   { href: "/dashboard", label: "대시보드" },
   { href: "/dashboard/schedule", label: "일정" },
   { href: "/dashboard/work", label: "작업시간" },
+  { href: "/dashboard/projects/new", label: "프로젝트 등록" },
 ] as const;
 
 export default function Nav() {

@@ -1,0 +1,311 @@
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.backLink {
+  color: var(--dim);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.backLink:hover {
+  color: var(--accent);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(42, 46, 61, 0.45);
+}
+
+.group:last-of-type {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 13px;
+  color: var(--dim);
+  font-weight: 500;
+}
+
+.required::after {
+  content: " *";
+  color: var(--red);
+  font-size: 11px;
+}
+
+.input,
+.select,
+.textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 13px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+  font-family: inherit;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--accent);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(139, 143, 163, 0.5);
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b8fa3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.select option {
+  background: var(--card);
+  color: var(--text);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* 견적 상세 */
+.detailSection {
+  margin-top: 4px;
+}
+
+.detailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.detailLabel {
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.addBtn {
+  background: rgba(108, 126, 255, 0.1);
+  border: 1px solid rgba(108, 126, 255, 0.2);
+  color: var(--accent);
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.addBtn:hover {
+  background: rgba(108, 126, 255, 0.2);
+}
+
+.detailRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 36px;
+  gap: 8px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+.detailInput {
+  composes: input;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: var(--red);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeBtn:hover {
+  background: rgba(248, 113, 113, 0.1);
+}
+
+/* 기술스택 태그 입력 */
+.tagWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background: rgba(108, 126, 255, 0.09);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tagRemove {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+
+.tagRemove:hover {
+  opacity: 1;
+}
+
+.tagInput {
+  composes: input;
+  flex: 1;
+}
+
+/* 액션 */
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.cancelBtn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--dim);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.cancelBtn:hover {
+  border-color: var(--dim);
+  color: var(--text);
+}
+
+.submitBtn {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  padding: 10px 32px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.submitBtn:hover {
+  opacity: 0.85;
+}
+
+.submitBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.error {
+  color: var(--red);
+  font-size: 12px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.success {
+  color: var(--green);
+  font-size: 12px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .group {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 10px 0;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .submitBtn,
+  .cancelBtn {
+    width: 100%;
+    text-align: center;
+  }
+}

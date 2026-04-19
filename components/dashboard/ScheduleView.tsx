@@ -191,7 +191,7 @@ function GanttView({ projects }: { projects: ProjectWithTimelines[] }) {
                 </div>
               )}
 
-              {/* 타임라인 마일스톤 도트 */}
+              {/* 타임라인 마일스톤 — 도트만, 호버시 툴팁 */}
               {p.timelines.map((tl) => {
                 const pos = toPercent(tl.date);
                 if (pos < 0 || pos > 100) return null;
@@ -201,10 +201,12 @@ function GanttView({ projects }: { projects: ProjectWithTimelines[] }) {
                     key={tl.id}
                     className={styles.ganttMilestone}
                     style={{ left: `${pos}%` }}
-                    title={`${formatDate(tl.date)} - ${tl.description}`}
                   >
                     <div className={styles.ganttMilestoneDot} style={{ background: dotColor }} />
-                    <span className={styles.ganttMilestoneLabel}>{tl.description}</span>
+                    <div className={styles.ganttTooltip}>
+                      <span className={styles.ganttTooltipDate}>{formatDate(tl.date)}</span>
+                      <span>{tl.description}</span>
+                    </div>
                   </div>
                 );
               })}

@@ -173,6 +173,7 @@
   display: flex;
   border-bottom: 1px solid rgba(42, 46, 61, 0.4);
   transition: background 0.12s;
+  min-height: 72px;
 }
 
 .ganttRow:last-child {
@@ -223,19 +224,15 @@
 /* Bar */
 .ganttBar {
   position: absolute;
-  top: 14px;
-  height: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 32px;
   border-radius: 6px;
   border-left: 3px solid;
   display: flex;
   align-items: center;
   padding: 0 10px;
   z-index: 2;
-  transition: opacity 0.15s;
-}
-
-.ganttBar:hover {
-  opacity: 0.9;
 }
 
 .ganttBarText {
@@ -246,33 +243,67 @@
   text-overflow: ellipsis;
 }
 
-/* Milestone dots */
+/* Milestone dots — 호버 툴팁 방식 */
 .ganttMilestone {
   position: absolute;
-  top: 48px;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  cursor: pointer;
 }
 
 .ganttMilestoneDot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   border: 2px solid var(--card);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+  transition: transform 0.15s;
 }
 
-.ganttMilestoneLabel {
-  font-size: 9px;
-  color: var(--dim);
+.ganttMilestone:hover .ganttMilestoneDot {
+  transform: scale(1.4);
+}
+
+/* 호버 툴팁 */
+.ganttTooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
   white-space: nowrap;
-  max-width: 80px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 11px;
+  color: var(--fg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ganttTooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--border);
+}
+
+.ganttMilestone:hover .ganttTooltip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ganttTooltipDate {
+  font-size: 10px;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ============ HISTORY / VERTICAL TIMELINE ============ */
@@ -450,12 +481,9 @@
     font-size: 9px;
   }
 
-  .ganttMilestone {
-    top: 42px;
-  }
-
-  .ganttMilestoneLabel {
-    display: none;
+  .ganttMilestoneDot {
+    width: 8px;
+    height: 8px;
   }
 
   /* History mobile */

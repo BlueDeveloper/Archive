@@ -54,11 +54,31 @@ function parseAmountDetail(json: string | null): AmountItem[] {
   }
 }
 
+const SETTLEMENT_OPTIONS = ["미정산", "정산완료"];
+
 export default function ProjectCard({ project }: Props) {
   const tags = parseJsonArray(project.techStack);
   const [detailOpen, setDetailOpen] = useState(false);
+  const [settlementStatus, setSettlementStatus] = useState(project.settlementStatus || "미정산");
+  const [settlementSaving, setSettlementSaving] = useState(false);
   const details = parseAmountDetail(project.amountDetail);
   const hasDetail = details.length > 0;
+
+  const handleSettlementChange = async (value: string) => {
+    setSettlementStatus(value);
+    setSettlementSaving(true);
+    try {
+      await fetch("/api/projects", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: project.id, settlementStatus: value }),
+      });
+    } catch {
+      setSettlementStatus(settlementStatus);
+    } finally {
+      setSettlementSaving(false);
+    }
+  };
 
   const handleDetailToggle = () => {
     if (hasDetail) setDetailOpen((prev) => !prev);
@@ -84,7 +104,7 @@ export default function ProjectCard({ project }: Props) {
             )}
           </div>
         </div>
-        <div>
+        <div className={styles.badgeRow}>
           <span className={statusBadge(project.status)}>{statusLabel(project.status)}</span>
           {project.statusSub && (
             <>
@@ -92,6 +112,16 @@ export default function ProjectCard({ project }: Props) {
               <span className={subBadge()}>{project.statusSub}</span>
             </>
           )}
+          <select
+            className={`${styles.settlementSelect} ${settlementStatus === "정산완료" ? styles.settlementDone : styles.settlementPending}`}
+            value={settlementStatus}
+            onChange={(e) => handleSettlementChange(e.target.value)}
+            disabled={settlementSaving}
+          >
+            {SETTLEMENT_OPTIONS.map((opt) => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
+          </select>
         </div>
       </div>
 

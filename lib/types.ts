@@ -16,6 +16,7 @@ export interface Project {
   asInfo: string | null;
   note: string | null;
   service: string | null;
+  settlementStatus: string | null;
   sortOrder: number | null;
   createdAt: string;
   updatedAt: string;

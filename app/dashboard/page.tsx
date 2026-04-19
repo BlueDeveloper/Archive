@@ -1,7 +1,6 @@
 import Stats from "@/components/dashboard/Stats";
 import Insights from "@/components/dashboard/Insights";
 import ProjectCard from "@/components/dashboard/ProjectCard";
-import Finance from "@/components/dashboard/Finance";
 import { fetchDashboardData } from "@/lib/data";
 import styles from "@/components/dashboard/Section.module.css";
 import pageStyles from "./page.module.css";
@@ -75,15 +74,6 @@ export default async function DashboardHome() {
         </>
       )}
 
-      {data.settlements.length > 0 && (
-        <>
-          <div className={styles.section}>
-            <span className={`${styles.dot} ${styles.dotGreen}`} />
-            정산 현황 &amp; 순수익
-          </div>
-          <Finance settlements={data.settlements} expenses={data.expenses} />
-        </>
-      )}
     </>
   );
 }

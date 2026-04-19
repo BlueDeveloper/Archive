@@ -1,31 +1,47 @@
-.stats {
+/* Grid rows */
+.row4 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.row1 {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 14px;
   margin-bottom: 36px;
 }
 
-@media (max-width: 480px) {
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-
-  .card {
-    padding: 14px 16px;
-  }
-
-  .value {
-    font-size: 20px;
-  }
-}
-
+/* Card */
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 18px 20px;
+  position: relative;
+}
+
+.cardTeal {
+  border-color: rgba(45, 212, 191, 0.25);
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.04), var(--card));
+}
+
+.cardRed {
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.cardInline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .label {
@@ -48,8 +64,152 @@
   margin-top: 3px;
 }
 
+/* Value colors */
 .valueRed    { color: var(--red); }
 .valueGreen  { color: var(--green); }
 .valueTeal   { color: var(--teal); }
 .valueYellow { color: var(--yellow); }
 .valueAccent { color: var(--accent); }
+.valueOrange { color: var(--orange); }
+
+/* Detail button */
+.detailBtn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(108, 126, 255, 0.08);
+  border: 1px solid rgba(108, 126, 255, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.detailBtn:hover {
+  background: rgba(108, 126, 255, 0.15);
+  border-color: var(--accent);
+}
+
+/* Modal overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modalHeader h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.modalClose {
+  background: none;
+  border: none;
+  color: var(--dim);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.modalClose:hover {
+  color: var(--fg);
+}
+
+.modalBody {
+  padding: 12px 24px;
+}
+
+.modalRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(42, 46, 61, 0.4);
+}
+
+.modalRow:last-child {
+  border-bottom: none;
+}
+
+.modalLabel {
+  color: var(--dim);
+}
+
+.modalAmount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.modalTotal {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-top: 2px solid var(--border);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Color classes for modal */
+.colorGreen  { color: var(--green); }
+.colorYellow { color: var(--yellow); }
+.colorRed    { color: var(--red); }
+.colorTeal   { color: var(--teal); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .row4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .row3 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .row1 {
+    margin-bottom: 24px;
+  }
+
+  .card {
+    padding: 14px 16px;
+  }
+
+  .value {
+    font-size: 20px;
+  }
+
+  .modal {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+}

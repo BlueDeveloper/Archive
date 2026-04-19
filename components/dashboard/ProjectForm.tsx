@@ -17,6 +17,7 @@ interface Props {
 
 const STATUS_OPTIONS = ["진행중", "완료", "AS"];
 const TYPE_OPTIONS = ["웹", "앱", "웹+앱", "API", "기타"];
+const SETTLEMENT_OPTIONS = ["미정산", "정산완료"];
 
 export default function ProjectForm({ project }: Props) {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function ProjectForm({ project }: Props) {
   const [platform, setPlatform] = useState(project?.platform ?? "");
   const [status, setStatus] = useState(project?.status ?? "진행중");
   const [statusSub, setStatusSub] = useState(project?.statusSub ?? "");
+  const [settlementStatus, setSettlementStatus] = useState(project?.settlementStatus ?? "미정산");
   const [amount, setAmount] = useState(project?.amount ?? 0);
   const [amountDetails, setAmountDetails] = useState<AmountItem[]>(() => {
     if (project?.amountDetail) {
@@ -115,6 +117,7 @@ export default function ProjectForm({ project }: Props) {
       platform: platform.trim() || null,
       status,
       statusSub: statusSub.trim() || null,
+      settlementStatus,
       amount,
       amountDetail: amountDetails.length > 0 ? JSON.stringify(amountDetails) : null,
       deployMethod: deployMethod.trim() || null,
@@ -237,6 +240,20 @@ export default function ProjectForm({ project }: Props) {
               placeholder="상태 세부 (선택)"
             />
           </div>
+        </div>
+
+        {/* 정산 상태 */}
+        <div className={styles.group}>
+          <label className={styles.label}>정산 상태</label>
+          <select
+            className={styles.select}
+            value={settlementStatus}
+            onChange={(e) => setSettlementStatus(e.target.value)}
+          >
+            {SETTLEMENT_OPTIONS.map((s) => (
+              <option key={s} value={s}>{s}</option>
+            ))}
+          </select>
         </div>
 
         {/* 견적 */}

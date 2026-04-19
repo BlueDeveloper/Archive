@@ -112,6 +112,13 @@
   flex-shrink: 0;
 }
 
+.legendBar {
+  width: 20px;
+  height: 8px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
 /* 그리드 */
 .grid {
   display: grid;
@@ -142,6 +149,11 @@
 .outside {
   opacity: 0.25;
   pointer-events: none;
+}
+
+.inRange {
+  background: rgba(108, 126, 255, 0.06);
+  border-left: 2px solid rgba(108, 126, 255, 0.2);
 }
 
 .today {
@@ -327,6 +339,69 @@
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+}
+
+.modalSection {
+  margin-bottom: 8px;
+}
+
+.modalSectionLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.modalSection:first-child .modalSectionLabel {
+  border-top: none;
+  padding-top: 0;
+}
+
+.modalBadge {
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 56px;
+  text-align: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.statusBadge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+.statusBadge[data-status="진행중"] {
+  background: rgba(251, 191, 36, 0.14);
+  color: var(--yellow);
+}
+
+.statusBadge[data-status="완료"] {
+  background: rgba(52, 211, 153, 0.14);
+  color: var(--green);
+}
+
+.statusBadge[data-status="AS"] {
+  background: rgba(251, 146, 60, 0.14);
+  color: var(--orange);
+}
+
+.listType {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--dim);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-right: 4px;
 }
 
 /* 모바일 인라인 상세 (PC에서 숨김) */

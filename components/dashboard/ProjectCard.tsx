@@ -55,12 +55,23 @@ function parseAmountDetail(json: string | null): AmountItem[] {
 }
 
 const SETTLEMENT_OPTIONS = ["미정산", "정산완료"];
+const COLOR_OPTIONS = ["green", "yellow", "red", "orange", "dim"];
 
 export default function ProjectCard({ project }: Props) {
   const tags = parseJsonArray(project.techStack);
   const [detailOpen, setDetailOpen] = useState(false);
   const [settlementStatus, setSettlementStatus] = useState(project.settlementStatus || "미정산");
   const [settlementSaving, setSettlementSaving] = useState(false);
+  const [tlList, setTlList] = useState<Timeline[]>(project.timelines);
+  const [editTlId, setEditTlId] = useState<number | null>(null);
+  const [editTlDate, setEditTlDate] = useState("");
+  const [editTlDesc, setEditTlDesc] = useState("");
+  const [editTlColor, setEditTlColor] = useState("green");
+  const [addingTl, setAddingTl] = useState(false);
+  const [newTlDate, setNewTlDate] = useState(new Date().toISOString().slice(0, 10));
+  const [newTlDesc, setNewTlDesc] = useState("");
+  const [newTlColor, setNewTlColor] = useState("green");
+  const [tlSaving, setTlSaving] = useState(false);
   const details = parseAmountDetail(project.amountDetail);
   const hasDetail = details.length > 0;
 
@@ -82,6 +93,74 @@ export default function ProjectCard({ project }: Props) {
 
   const handleDetailToggle = () => {
     if (hasDetail) setDetailOpen((prev) => !prev);
+  };
+
+  const startTlEdit = (tl: Timeline) => {
+    setEditTlId(tl.id);
+    setEditTlDate(tl.date);
+    setEditTlDesc(tl.description);
+    setEditTlColor(tl.color || "green");
+  };
+
+  const handleTlUpdate = async () => {
+    if (editTlId === null || !editTlDesc.trim()) return;
+    setTlSaving(true);
+    try {
+      const res = await fetch("/api/timelines", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: editTlId, date: editTlDate, description: editTlDesc.trim(), color: editTlColor }),
+      });
+      if (res.ok) {
+        const updated = (await res.json()) as Timeline;
+        setTlList(tlList.map((t) => (t.id === editTlId ? updated : t)));
+        setEditTlId(null);
+      }
+    } finally {
+      setTlSaving(false);
+    }
+  };
+
+  const handleTlDelete = async (id: number) => {
+    setTlSaving(true);
+    try {
+      const res = await fetch("/api/timelines", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      if (res.ok) setTlList(tlList.filter((t) => t.id !== id));
+    } finally {
+      setTlSaving(false);
+    }
+  };
+
+  const handleTlAdd = async () => {
+    if (!newTlDesc.trim()) return;
+    setTlSaving(true);
+    try {
+      const res = await fetch("/api/timelines", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          projectId: project.id,
+          date: newTlDate,
+          description: newTlDesc.trim(),
+          color: newTlColor,
+          sortOrder: tlList.length,
+        }),
+      });
+      if (res.ok) {
+        const created = (await res.json()) as Timeline;
+        setTlList([...tlList, created]);
+        setAddingTl(false);
+        setNewTlDesc("");
+        setNewTlDate(new Date().toISOString().slice(0, 10));
+        setNewTlColor("green");
+      }
+    } finally {
+      setTlSaving(false);
+    }
   };
 
   return (
@@ -195,22 +274,83 @@ export default function ProjectCard({ project }: Props) {
         </div>
       )}
 
-      {project.timelines.length > 0 && (
-        <div className={styles.timeline}>
-          {project.timelines.map((tl) => (
+      <div className={styles.timeline}>
+        {tlList.map((tl) =>
+          editTlId === tl.id ? (
+            <div className={styles.tlEditRow} key={tl.id}>
+              <select
+                className={styles.tlColorSelect}
+                value={editTlColor}
+                onChange={(e) => setEditTlColor(e.target.value)}
+              >
+                {COLOR_OPTIONS.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+              <input
+                type="date"
+                className={styles.tlInput}
+                value={editTlDate}
+                onChange={(e) => setEditTlDate(e.target.value)}
+              />
+              <input
+                className={styles.tlInput}
+                value={editTlDesc}
+                onChange={(e) => setEditTlDesc(e.target.value)}
+              />
+              <div className={styles.tlActions}>
+                <button className={styles.tlSaveBtn} onClick={handleTlUpdate} disabled={tlSaving}>저장</button>
+                <button className={styles.tlCancelBtn} onClick={() => setEditTlId(null)}>취소</button>
+              </div>
+            </div>
+          ) : (
             <div className={styles.tlItem} key={tl.id}>
               <span
                 className={styles.tlDot}
-                style={{
-                  background: colorMap[tl.color || "green"] || "var(--green)",
-                }}
+                style={{ background: colorMap[tl.color || "green"] || "var(--green)" }}
               />
               <span className={styles.tlDate}>{formatDate(tl.date)}</span>
-              <span>{tl.description}</span>
+              <span className={styles.tlDesc}>{tl.description}</span>
+              <span className={styles.tlBtns}>
+                <button className={styles.tlEditBtn} onClick={() => startTlEdit(tl)}>수정</button>
+                <button className={styles.tlDelBtn} onClick={() => handleTlDelete(tl.id)}>삭제</button>
+              </span>
             </div>
-          ))}
-        </div>
-      )}
+          )
+        )}
+
+        {addingTl ? (
+          <div className={styles.tlEditRow}>
+            <select
+              className={styles.tlColorSelect}
+              value={newTlColor}
+              onChange={(e) => setNewTlColor(e.target.value)}
+            >
+              {COLOR_OPTIONS.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+            <input
+              type="date"
+              className={styles.tlInput}
+              value={newTlDate}
+              onChange={(e) => setNewTlDate(e.target.value)}
+            />
+            <input
+              className={styles.tlInput}
+              value={newTlDesc}
+              onChange={(e) => setNewTlDesc(e.target.value)}
+              placeholder="설명"
+            />
+            <div className={styles.tlActions}>
+              <button className={styles.tlSaveBtn} onClick={handleTlAdd} disabled={tlSaving}>추가</button>
+              <button className={styles.tlCancelBtn} onClick={() => setAddingTl(false)}>취소</button>
+            </div>
+          </div>
+        ) : (
+          <button className={styles.tlAddBtn} onClick={() => setAddingTl(true)}>+ 타임라인 추가</button>
+        )}
+      </div>
     </div>
   );
 }

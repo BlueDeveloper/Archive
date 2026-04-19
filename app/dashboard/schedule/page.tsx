@@ -13,7 +13,7 @@ export default async function SchedulePage() {
         <span className={`${styles.dot} ${styles.dotRed}`} />
         일정
       </div>
-      <Calendar deadlines={data.deadlines} />
+      <Calendar projects={data.projects} />
     </>
   );
 }

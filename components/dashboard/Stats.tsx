@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./Stats.module.css";
 import { formatMoney } from "@/lib/dashboard-utils";
-import type { DashboardData, Settlement, Expense } from "@/lib/types";
+import type { DashboardData } from "@/lib/types";
 
 interface Props {
   data: DashboardData;
@@ -63,21 +63,23 @@ export default function Stats({ data }: Props) {
   const done = projects.filter((p) => p.status === "완료");
   const as = projects.filter((p) => p.status === "AS");
 
-  const totalRevenue = settlements.reduce((s, r) => s + r.amount, 0);
   const totalExpense = expenses.reduce((s, e) => s + e.amount, 0);
 
-  const confirmedSettlements = settlements.filter((s) => s.category === "확정");
-  const pendingSettlements = settlements.filter((s) => s.category === "예정");
-  const confirmedRevenue = confirmedSettlements.reduce((s, r) => s + r.amount, 0);
-  const pendingRevenue = pendingSettlements.reduce((s, r) => s + r.amount, 0);
+  // 프로젝트 정산상태 기준으로 분류
+  const settledProjects = projects.filter((p) => p.settlementStatus === "정산완료");
+  const unsettledProjects = projects.filter((p) => p.settlementStatus !== "정산완료");
+
+  const confirmedRevenue = settledProjects.reduce((s, p) => s + p.amount, 0);
+  const pendingRevenue = unsettledProjects.reduce((s, p) => s + p.amount, 0);
+  const totalRevenue = confirmedRevenue + pendingRevenue;
 
   const totalProfit = confirmedRevenue + pendingRevenue;
   const confirmedNetProfit = confirmedRevenue - totalExpense;
   const totalNetProfit = totalProfit - totalExpense;
 
   const expenseItems = expenses.map((e) => ({ label: e.label, amount: e.amount }));
-  const confirmedItems = confirmedSettlements.map((s) => ({ label: s.label, amount: s.amount }));
-  const pendingItems = pendingSettlements.map((s) => ({ label: s.label, amount: s.amount }));
+  const confirmedItems = settledProjects.map((p) => ({ label: `${p.client} - ${p.name}`, amount: p.amount }));
+  const pendingItems = unsettledProjects.map((p) => ({ label: `${p.client} - ${p.name}`, amount: p.amount }));
 
   return (
     <>

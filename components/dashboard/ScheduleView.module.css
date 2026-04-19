@@ -1,421 +1,289 @@
-.wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+.wrap { display: flex; flex-direction: column; gap: 16px; }
 
-/* ============ VIEW TOGGLE ============ */
-.viewToggle {
-  display: flex;
-  gap: 4px;
+/* ══════ TABS ══════ */
+.tabs {
+  display: inline-flex;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 4px;
-  width: fit-content;
+  padding: 3px;
 }
-
-.toggleBtn {
-  padding: 8px 20px;
+.tab {
+  padding: 7px 22px;
   font-size: 12px;
   font-weight: 600;
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  transition: all 0.15s;
   background: transparent;
   color: var(--dim);
+  transition: all .15s;
 }
+.tab:hover { color: var(--fg); }
+.tabOn { background: rgba(108,126,255,.12); color: var(--accent); }
+.empty { text-align: center; padding: 48px; color: var(--dim); font-size: 14px; }
 
-.toggleBtn:hover {
-  color: var(--fg);
-  background: rgba(108, 126, 255, 0.06);
-}
-
-.toggleActive {
-  background: rgba(108, 126, 255, 0.12);
-  color: var(--accent);
-}
-
-/* ============ LEGEND ============ */
-.legendRow {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 8px 14px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-}
-
-.legendItem {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--dim);
-}
-
-.legendDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.legendBar {
-  width: 20px;
-  height: 10px;
-  border-radius: 3px;
-  flex-shrink: 0;
-  border: 1px solid;
-}
-
-.empty {
-  text-align: center;
-  padding: 40px;
-  color: var(--dim);
-  font-size: 14px;
-}
-
-/* ============ GANTT TIMELINE ============ */
-.ganttWrap {
+/* ══════ GANTT ══════ */
+.gantt {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow-x: auto;
-  overflow-y: visible;
-  min-width: 0;
 }
 
-.ganttHeader {
+/* 행 공통 */
+.gRow {
   display: flex;
-  border-bottom: 2px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: var(--card);
+  border-bottom: 1px solid rgba(42,46,61,.35);
 }
+.gRow:last-child { border-bottom: none; }
 
-.ganttLabelCol {
-  min-width: 180px;
-  max-width: 180px;
-  padding: 12px 16px;
+/* 좌측 라벨 */
+.gLabel {
+  width: 170px;
+  min-width: 170px;
+  padding: 14px 16px;
   border-right: 1px solid var(--border);
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+.gName { font-size: 13px; font-weight: 700; }
+.gSub {
+  font-size: 11px;
+  color: var(--dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+.gMeta { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+.gBadge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.gDday {
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
-.ganttTimeline {
+/* 우측 트랙 */
+.gTrack {
   flex: 1;
+  min-width: 550px;
+  height: 80px;
   position: relative;
-  min-width: 600px;
-  min-height: 40px;
 }
 
-.ganttMonth {
+/* 월 라벨 (헤더 전용) */
+.gMonth {
   position: absolute;
-  top: 0;
-  height: 100%;
+  top: 0; height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
   font-weight: 600;
   color: var(--dim);
-  letter-spacing: 0.3px;
   border-left: 1px solid var(--border);
-  box-sizing: border-box;
 }
 
-.ganttGridLine {
+/* 월 구분선 */
+.gGrid {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 0; bottom: 0;
   width: 1px;
   background: var(--border);
-  opacity: 0.4;
+  opacity: .3;
 }
 
-/* Today */
-.todayLine {
+/* 오늘 마커 — 헤더 */
+.gToday {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 0; bottom: 0;
   width: 2px;
   background: var(--red);
-  z-index: 3;
+  z-index: 4;
 }
-
-.todayLabel {
+.gTodayTag {
   position: absolute;
-  top: -2px;
+  top: 2px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 800;
-  color: var(--red);
-  letter-spacing: 1px;
+  color: #fff;
+  background: var(--red);
+  padding: 1px 6px;
+  border-radius: 3px;
   white-space: nowrap;
 }
 
-.todayLineRow {
+/* 오늘 마커 — 데이터행 */
+.gTodayLine {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 0; bottom: 0;
   width: 2px;
   background: var(--red);
-  opacity: 0.5;
+  opacity: .4;
   z-index: 1;
 }
 
-/* Gantt Row */
-.ganttRow {
-  display: flex;
-  border-bottom: 1px solid rgba(42, 46, 61, 0.4);
-  transition: background 0.12s;
-  min-height: 72px;
-}
-
-.ganttRow:last-child {
-  border-bottom: none;
-}
-
-.ganttRow:hover {
-  background: rgba(108, 126, 255, 0.03);
-}
-
-.ganttProjectName {
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.ganttProjectSub {
-  font-size: 11px;
-  color: var(--dim);
-  margin-top: 2px;
-  line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.ganttMeta {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 6px;
-}
-
-.ganttStatus {
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 4px;
-  letter-spacing: 0.3px;
-}
-
-.ganttDday {
-  font-size: 11px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Bar */
-.ganttBar {
+/* ── 바 ── */
+.gBar {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  height: 32px;
-  border-radius: 6px;
-  border-left: 3px solid;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
+  height: 30px;
+  border-radius: 20px;
+  border-left: 4px solid;
   z-index: 2;
+  transition: filter .15s;
 }
+.gRow:hover .gBar { filter: brightness(1.15); }
 
-.ganttBarText {
-  font-size: 10px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Milestone dots — 호버 툴팁 방식 */
-.ganttMilestone {
+/* ── 마일스톤 도트 ── */
+.gDot {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  cursor: pointer;
+  cursor: default;
 }
-
-.ganttMilestoneDot {
+.gDotInner {
+  display: block;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   border: 2px solid var(--card);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
-  transition: transform 0.15s;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.12);
+  transition: transform .12s;
 }
+.gDot:hover .gDotInner { transform: scale(1.5); }
 
-.ganttMilestone:hover .ganttMilestoneDot {
-  transform: scale(1.4);
-}
-
-/* 호버 툴팁 */
-.ganttTooltip {
+/* 툴팁 */
+.gTip {
   display: none;
   position: absolute;
-  bottom: calc(100% + 8px);
+  bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 8px 12px;
-  white-space: nowrap;
   font-size: 11px;
   color: var(--fg);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  z-index: 10;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+  z-index: 20;
   pointer-events: none;
+  line-height: 1.5;
 }
-
-.ganttTooltip::after {
+.gTip strong {
+  display: block;
+  font-size: 10px;
+  color: var(--dim);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.gTip::after {
   content: '';
   position: absolute;
-  top: 100%;
-  left: 50%;
+  top: 100%; left: 50%;
   transform: translateX(-50%);
   border: 5px solid transparent;
   border-top-color: var(--border);
 }
+.gDot:hover .gTip { display: block; }
 
-.ganttMilestone:hover .ganttTooltip {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
+/* ══════ HISTORY ══════ */
+.hWrap { display: flex; flex-direction: column; }
 
-.ganttTooltipDate {
-  font-size: 10px;
-  color: var(--dim);
-  font-variant-numeric: tabular-nums;
-}
-
-/* ============ HISTORY / VERTICAL TIMELINE ============ */
-.historyWrap {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.historyMonth {
-  position: relative;
-}
-
-.historyMonthLabel {
+.hMonth { position: relative; }
+.hMonthTag {
   position: sticky;
-  top: 0;
-  z-index: 2;
+  top: 0; z-index: 2;
   background: var(--bg);
-  padding: 12px 0 8px;
-  font-size: 14px;
+  padding: 14px 0 8px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--accent);
   border-bottom: 1px solid var(--border);
-  margin-bottom: 4px;
 }
 
-.historyLine {
+.hLine {
   position: relative;
-  padding-left: 28px;
-  margin-left: 10px;
+  padding-left: 32px;
+  margin-left: 11px;
 }
-
-.historyLine::before {
+.hLine::before {
   content: '';
   position: absolute;
-  left: 10px;
-  top: 0;
-  bottom: 0;
+  left: 11px; top: 0; bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--border), rgba(42, 46, 61, 0.2));
+  background: linear-gradient(to bottom, var(--border), rgba(42,46,61,.15));
+  border-radius: 1px;
 }
 
-.historyItem {
+.hCard {
   position: relative;
-  display: flex;
-  gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(42, 46, 61, 0.25);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(42,46,61,.2);
 }
-
-.historyItem:last-child {
-  border-bottom: none;
-}
-
-.historyPast {
-  opacity: 0.5;
-}
-
-.historyToday {
-  opacity: 1;
-}
-
-.historyToday .historyContent {
-  background: rgba(108, 126, 255, 0.06);
+.hCard:last-child { border-bottom: none; }
+.hPast { opacity: .45; }
+.hNow { opacity: 1; }
+.hNow .hBody {
+  background: rgba(108,126,255,.06);
   border-radius: 10px;
-  padding: 10px 14px;
-  margin: -6px -8px;
+  padding: 12px 16px;
+  margin: -8px -10px;
 }
 
-.historyDot {
+.hDot {
   position: absolute;
-  left: -24px;
-  top: 20px;
-  width: 12px;
-  height: 12px;
+  left: -27px; top: 22px;
+  width: 12px; height: 12px;
   border-radius: 50%;
   border: 3px solid var(--bg);
   z-index: 1;
-  flex-shrink: 0;
 }
 
-.historyContent {
-  flex: 1;
-  min-width: 0;
-}
-
-.historyTop {
+.hBody { flex: 1; min-width: 0; }
+.hHead {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   margin-bottom: 4px;
 }
-
-.historyDate {
+.hDate {
   font-size: 11px;
   color: var(--dim);
   font-variant-numeric: tabular-nums;
 }
-
-.historyDday {
+.hTag {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(108,126,255,.1);
+  padding: 1px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+}
+.hDd {
+  margin-left: auto;
   font-size: 12px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
-
-.historyTitle {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.historyDesc {
+.hTitle { font-size: 14px; font-weight: 600; line-height: 1.4; }
+.hSub {
   font-size: 12px;
   color: var(--dim);
   margin-top: 3px;
@@ -423,75 +291,25 @@
   align-items: center;
   gap: 8px;
 }
-
-.historyStatus {
+.hStatus {
   font-size: 10px;
   font-weight: 700;
   padding: 1px 6px;
   border-radius: 4px;
-  flex-shrink: 0;
 }
 
-/* ============ RESPONSIVE ============ */
+/* ══════ RESPONSIVE ══════ */
 @media (max-width: 600px) {
-  .viewToggle {
-    width: 100%;
-  }
+  .tabs { width: 100%; }
+  .tab { flex: 1; text-align: center; }
 
-  .toggleBtn {
-    flex: 1;
-    text-align: center;
-    padding: 8px 12px;
-  }
+  .gLabel { width: 120px; min-width: 120px; padding: 10px 10px; }
+  .gName { font-size: 12px; }
+  .gSub { font-size: 10px; max-width: 100px; }
+  .gTrack { min-width: 360px; height: 70px; }
+  .gBar { height: 24px; }
+  .gDotInner { width: 8px; height: 8px; }
 
-  .legendRow {
-    gap: 10px;
-    padding: 6px 10px;
-  }
-
-  .legendItem {
-    font-size: 10px;
-  }
-
-  /* Gantt mobile */
-  .ganttLabelCol {
-    min-width: 130px;
-    max-width: 130px;
-    padding: 10px 12px;
-  }
-
-  .ganttProjectName {
-    font-size: 12px;
-  }
-
-  .ganttProjectSub {
-    font-size: 10px;
-  }
-
-  .ganttTimeline {
-    min-width: 400px;
-  }
-
-  .ganttBar {
-    height: 24px;
-    top: 12px;
-  }
-
-  .ganttBarText {
-    font-size: 9px;
-  }
-
-  .ganttMilestoneDot {
-    width: 8px;
-    height: 8px;
-  }
-
-  /* History mobile */
-  .historyTitle {
-    font-size: 13px;
-  }
-
-  .historyMonthLabel {
-    font-size: 13px;
-  }
+  .hTitle { font-size: 13px; }
+  .hMonthTag { font-size: 13px; }
 }

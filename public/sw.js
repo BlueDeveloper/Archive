@@ -1,4 +1,4 @@
-const CACHE_NAME = 'brp-dashboard-v6';
+const CACHE_NAME = 'brp-dashboard-v7';
 
 self.addEventListener('install', () => {
   self.skipWaiting();

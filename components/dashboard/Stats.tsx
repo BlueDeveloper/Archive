@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./Stats.module.css";
 import { formatMoney } from "@/lib/dashboard-utils";
-import type { DashboardData } from "@/lib/types";
+import type { DashboardData, Expense } from "@/lib/types";
 
 interface Props {
   data: DashboardData;
@@ -53,6 +53,234 @@ function DetailModal({
   );
 }
 
+const CATEGORY_OPTIONS = ["숨고포인트", "기타", "투자비"];
+
+function ExpenseModal({
+  initialExpenses,
+  onClose,
+}: {
+  initialExpenses: Expense[];
+  onClose: () => void;
+}) {
+  const [items, setItems] = useState<Expense[]>(initialExpenses);
+  const [adding, setAdding] = useState(false);
+  const [newCategory, setNewCategory] = useState("숨고포인트");
+  const [newLabel, setNewLabel] = useState("");
+  const [newAmount, setNewAmount] = useState(0);
+  const [newDate, setNewDate] = useState(new Date().toISOString().slice(0, 10));
+  const [saving, setSaving] = useState(false);
+  const [editId, setEditId] = useState<number | null>(null);
+  const [editLabel, setEditLabel] = useState("");
+  const [editAmount, setEditAmount] = useState(0);
+  const [editDate, setEditDate] = useState("");
+  const [editCategory, setEditCategory] = useState("");
+
+  const total = items.reduce((s, e) => s + e.amount, 0);
+
+  async function handleAdd() {
+    if (!newLabel.trim() || newAmount <= 0) return;
+    setSaving(true);
+    try {
+      const res = await fetch("/api/expenses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          category: newCategory,
+          label: newLabel.trim(),
+          amount: newAmount,
+          date: newDate || null,
+        }),
+      });
+      if (res.ok) {
+        const created = (await res.json()) as Expense;
+        setItems([...items, created]);
+        setAdding(false);
+        setNewLabel("");
+        setNewAmount(0);
+        setNewDate(new Date().toISOString().slice(0, 10));
+        setNewCategory("숨고포인트");
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  function startEdit(e: Expense) {
+    setEditId(e.id);
+    setEditLabel(e.label);
+    setEditAmount(e.amount);
+    setEditDate(e.date || "");
+    setEditCategory(e.category);
+  }
+
+  async function handleUpdate() {
+    if (editId === null) return;
+    setSaving(true);
+    try {
+      const res = await fetch("/api/expenses", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: editId,
+          category: editCategory,
+          label: editLabel.trim(),
+          amount: editAmount,
+          date: editDate || null,
+        }),
+      });
+      if (res.ok) {
+        const updated = (await res.json()) as Expense;
+        setItems(items.map((i) => (i.id === editId ? updated : i)));
+        setEditId(null);
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleDelete(id: number) {
+    setSaving(true);
+    try {
+      const res = await fetch("/api/expenses", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      if (res.ok) {
+        setItems(items.filter((i) => i.id !== id));
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={`${styles.modal} ${styles.modalWide}`} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.modalHeader}>
+          <h3 className={styles.colorRed}>투자비용 상세</h3>
+          <button className={styles.modalClose} onClick={onClose}>
+            &times;
+          </button>
+        </div>
+        <div className={styles.modalBody}>
+          {/* Table header */}
+          <div className={styles.expenseHeader}>
+            <span className={styles.expenseColDate}>날짜</span>
+            <span className={styles.expenseColCat}>분류</span>
+            <span className={styles.expenseColLabel}>항목</span>
+            <span className={styles.expenseColAmount}>금액</span>
+            <span className={styles.expenseColAction}></span>
+          </div>
+
+          {items.map((item) =>
+            editId === item.id ? (
+              <div className={styles.expenseEditRow} key={item.id}>
+                <input
+                  type="date"
+                  className={styles.expenseInput}
+                  value={editDate}
+                  onChange={(e) => setEditDate(e.target.value)}
+                />
+                <select
+                  className={styles.expenseSelect}
+                  value={editCategory}
+                  onChange={(e) => setEditCategory(e.target.value)}
+                >
+                  {CATEGORY_OPTIONS.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+                <input
+                  className={styles.expenseInput}
+                  value={editLabel}
+                  onChange={(e) => setEditLabel(e.target.value)}
+                />
+                <input
+                  className={styles.expenseInput}
+                  type="number"
+                  value={editAmount}
+                  onChange={(e) => setEditAmount(Number(e.target.value))}
+                />
+                <div className={styles.expenseActions}>
+                  <button className={styles.saveBtn} onClick={handleUpdate} disabled={saving}>
+                    저장
+                  </button>
+                  <button className={styles.cancelBtn} onClick={() => setEditId(null)}>
+                    취소
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.expenseRow} key={item.id}>
+                <span className={styles.expenseColDate}>{item.date || "-"}</span>
+                <span className={styles.expenseColCat}>{item.category}</span>
+                <span className={styles.expenseColLabel}>{item.label}</span>
+                <span className={styles.expenseColAmount}>-{formatMoney(item.amount)}</span>
+                <span className={styles.expenseColAction}>
+                  <button className={styles.editBtn} onClick={() => startEdit(item)}>수정</button>
+                  <button className={styles.deleteBtn} onClick={() => handleDelete(item.id)}>삭제</button>
+                </span>
+              </div>
+            )
+          )}
+
+          {/* Add form */}
+          {adding ? (
+            <div className={styles.expenseEditRow}>
+              <input
+                type="date"
+                className={styles.expenseInput}
+                value={newDate}
+                onChange={(e) => setNewDate(e.target.value)}
+              />
+              <select
+                className={styles.expenseSelect}
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+              >
+                {CATEGORY_OPTIONS.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+              <input
+                className={styles.expenseInput}
+                value={newLabel}
+                onChange={(e) => setNewLabel(e.target.value)}
+                placeholder="항목명"
+              />
+              <input
+                className={styles.expenseInput}
+                type="number"
+                value={newAmount}
+                onChange={(e) => setNewAmount(Number(e.target.value))}
+                placeholder="금액"
+              />
+              <div className={styles.expenseActions}>
+                <button className={styles.saveBtn} onClick={handleAdd} disabled={saving}>
+                  추가
+                </button>
+                <button className={styles.cancelBtn} onClick={() => setAdding(false)}>
+                  취소
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button className={styles.addBtn} onClick={() => setAdding(true)}>
+              + 투자비용 추가
+            </button>
+          )}
+        </div>
+
+        <div className={styles.modalTotal}>
+          <span>합계</span>
+          <span className={styles.colorRed}>-{formatMoney(total)}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Stats({ data }: Props) {
   const { projects, settlements, expenses } = data;
 
@@ -77,7 +305,6 @@ export default function Stats({ data }: Props) {
   const confirmedNetProfit = confirmedRevenue - totalExpense;
   const totalNetProfit = totalProfit - totalExpense;
 
-  const expenseItems = expenses.map((e) => ({ label: e.label, amount: e.amount }));
   const confirmedItems = settledProjects.map((p) => ({ label: `${p.client} - ${p.name}`, amount: p.amount }));
   const pendingItems = unsettledProjects.map((p) => ({ label: `${p.client} - ${p.name}`, amount: p.amount }));
 
@@ -111,7 +338,7 @@ export default function Stats({ data }: Props) {
         <div className={styles.card}>
           <div className={styles.label}>총 매출</div>
           <div className={styles.value}>{formatMoney(totalRevenue)}</div>
-          <div className={styles.desc}>확정 + 예정 합산</div>
+          <div className={styles.desc}>정산완료 + 미정산</div>
         </div>
         <div className={styles.card}>
           <div className={styles.label}>정산완료 수익</div>
@@ -165,10 +392,8 @@ export default function Stats({ data }: Props) {
 
       {/* Modals */}
       {modal === "expense" && (
-        <DetailModal
-          title="투자비용 상세"
-          color="colorRed"
-          items={expenseItems}
+        <ExpenseModal
+          initialExpenses={expenses}
           onClose={() => setModal(null)}
         />
       )}

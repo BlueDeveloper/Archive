@@ -29,6 +29,23 @@ export async function POST(req: NextRequest) {
   }
 }
 
+export async function PUT(req: NextRequest) {
+  const unauth = requireAuth(req);
+  if (unauth) return unauth;
+  try {
+    const body = await req.json() as Record<string, unknown>;
+    if (!body.id || typeof body.id !== "number") {
+      return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    }
+    const { id, ...data } = body;
+    const result = await db().update(expenses).set(data as never).where(eq(expenses.id, id as number)).returning();
+    if (!result[0]) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json(result[0]);
+  } catch {
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
+}
+
 export async function DELETE(req: NextRequest) {
   const unauth = requireAuth(req);
   if (unauth) return unauth;

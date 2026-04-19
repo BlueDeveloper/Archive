@@ -16,7 +16,7 @@ interface Props {
 }
 
 const STATUS_OPTIONS = ["진행중", "완료", "AS"];
-const TYPE_OPTIONS = ["웹", "앱", "웹+앱", "API", "기타"];
+const TYPE_OPTIONS = ["턴키", "기구축수정", "인프라작업", "과제풀이", "외주", "cafe24"];
 const SETTLEMENT_OPTIONS = ["미정산", "정산완료"];
 
 export default function ProjectForm({ project }: Props) {
@@ -26,7 +26,7 @@ export default function ProjectForm({ project }: Props) {
   const [name, setName] = useState(project?.name ?? "");
   const [client, setClient] = useState(project?.client ?? "");
   const [folder, setFolder] = useState(project?.folder ?? "");
-  const [type, setType] = useState(project?.type ?? "웹");
+  const [type, setType] = useState(project?.type ?? "턴키");
   const [platform, setPlatform] = useState(project?.platform ?? "");
   const [status, setStatus] = useState(project?.status ?? "진행중");
   const [statusSub, setStatusSub] = useState(project?.statusSub ?? "");

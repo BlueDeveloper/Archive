@@ -95,6 +95,7 @@ function GanttView({ projects }: { projects: ProjectWithTimelines[] }) {
       {/* ─ 월 헤더 ─ */}
       <div className={styles.gRow}>
         <div className={styles.gLabel} />
+        <div className={styles.gTrackWrap}>
         <div className={styles.gTrack}>
           {months.map((m, i) => {
             const mStart = new Date(m.y, m.m, 1);
@@ -111,6 +112,7 @@ function GanttView({ projects }: { projects: ProjectWithTimelines[] }) {
               <span className={styles.gTodayTag}>오늘</span>
             </div>
           )}
+        </div>
         </div>
       </div>
 
@@ -143,43 +145,54 @@ function GanttView({ projects }: { projects: ProjectWithTimelines[] }) {
               </span>
             </div>
 
-            {/* 트랙 */}
-            <div className={styles.gTrack}>
-              {/* 월 구분선 */}
-              {months.map((m, i) => {
-                const mStart = new Date(m.y, m.m, 1);
-                const left = (daysBetween(start, mStart) / totalDays) * 100;
-                return <div key={i} className={styles.gGrid} style={{ left: `${left}%` }} />;
-              })}
+            {/* 트랙 — 바 영역 + 마일스톤 영역 분리 */}
+            <div className={styles.gTrackWrap}>
+              {/* 바 영역 */}
+              <div className={styles.gTrack}>
+                {months.map((m, i) => {
+                  const mStart = new Date(m.y, m.m, 1);
+                  const left = (daysBetween(start, mStart) / totalDays) * 100;
+                  return <div key={i} className={styles.gGrid} style={{ left: `${left}%` }} />;
+                })}
+                {todayPct >= 0 && todayPct <= 100 && (
+                  <div className={styles.gTodayLine} style={{ left: `${todayPct}%` }} />
+                )}
+                {hasBar && (
+                  <div
+                    className={styles.gBar}
+                    style={{ left: `${barL}%`, width: `${Math.max(barW, 0.3)}%`, background: bg, borderLeftColor: color }}
+                  />
+                )}
+              </div>
 
-              {/* 오늘 */}
-              {todayPct >= 0 && todayPct <= 100 && (
-                <div className={styles.gTodayLine} style={{ left: `${todayPct}%` }} />
+              {/* 마일스톤 영역 */}
+              {p.timelines.length > 0 && (
+                <div className={styles.gMilestones}>
+                  {months.map((m, i) => {
+                    const mStart = new Date(m.y, m.m, 1);
+                    const left = (daysBetween(start, mStart) / totalDays) * 100;
+                    return <div key={i} className={styles.gGrid} style={{ left: `${left}%` }} />;
+                  })}
+                  {todayPct >= 0 && todayPct <= 100 && (
+                    <div className={styles.gTodayLine} style={{ left: `${todayPct}%` }} />
+                  )}
+                  {p.timelines.map((tl) => {
+                    const pos = pct(tl.date);
+                    if (pos < -2 || pos > 102) return null;
+                    const c = TL_COLOR[tl.color || "green"] || "var(--green)";
+                    return (
+                      <div key={tl.id} className={styles.gDot} style={{ left: `${pos}%` }}>
+                        <span className={styles.gDotInner} style={{ background: c }} />
+                        <span className={styles.gDotLabel}>{tl.description}</span>
+                        <div className={styles.gTip}>
+                          <strong>{formatDate(tl.date)}</strong>
+                          {tl.description}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               )}
-
-              {/* 바 */}
-              {hasBar && (
-                <div
-                  className={styles.gBar}
-                  style={{ left: `${barL}%`, width: `${Math.max(barW, 0.3)}%`, background: bg, borderLeftColor: color }}
-                />
-              )}
-
-              {/* 마일스톤 */}
-              {p.timelines.map((tl) => {
-                const pos = pct(tl.date);
-                if (pos < -2 || pos > 102) return null;
-                const c = TL_COLOR[tl.color || "green"] || "var(--green)";
-                return (
-                  <div key={tl.id} className={styles.gDot} style={{ left: `${pos}%` }}>
-                    <span className={styles.gDotInner} style={{ background: c }} />
-                    <div className={styles.gTip}>
-                      <strong>{formatDate(tl.date)}</strong>
-                      {tl.description}
-                    </div>
-                  </div>
-                );
-              })}
             </div>
           </div>
         );

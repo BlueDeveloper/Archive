@@ -71,12 +71,25 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* 우측 트랙 */
-.gTrack {
+/* 우측 트랙 래퍼 */
+.gTrackWrap {
   flex: 1;
   min-width: 550px;
-  height: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 바 영역 */
+.gTrack {
   position: relative;
+  height: 48px;
+}
+
+/* 마일스톤 영역 */
+.gMilestones {
+  position: relative;
+  height: 28px;
+  border-top: 1px dashed rgba(42,46,61,.25);
 }
 
 /* 월 라벨 (헤더 전용) */
@@ -149,21 +162,24 @@
 /* ── 마일스톤 도트 ── */
 .gDot {
   position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 4px;
+  transform: translateX(-50%);
   z-index: 3;
   cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 .gDotInner {
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 2px solid var(--card);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.12);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px var(--card);
   transition: transform .12s;
 }
-.gDot:hover .gDotInner { transform: scale(1.5); }
+.gDot:hover .gDotInner { transform: scale(1.4); }
 
 /* 툴팁 */
 .gTip {
@@ -199,7 +215,16 @@
   border: 5px solid transparent;
   border-top-color: var(--border);
 }
+.gDotLabel {
+  font-size: 9px;
+  color: var(--dim);
+  white-space: nowrap;
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .gDot:hover .gTip { display: block; }
+.gDot:hover .gDotLabel { color: var(--fg); }
 
 /* ══════ HISTORY ══════ */
 .hWrap { display: flex; flex-direction: column; }
@@ -306,7 +331,9 @@
   .gLabel { width: 120px; min-width: 120px; padding: 10px 10px; }
   .gName { font-size: 12px; }
   .gSub { font-size: 10px; max-width: 100px; }
-  .gTrack { min-width: 360px; height: 70px; }
+  .gTrackWrap { min-width: 360px; }
+  .gTrack { height: 40px; }
+  .gMilestones { height: 24px; }
   .gBar { height: 24px; }
   .gDotInner { width: 8px; height: 8px; }
 

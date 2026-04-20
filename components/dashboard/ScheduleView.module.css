@@ -156,8 +156,19 @@
   border-left: 4px solid;
   z-index: 2;
   transition: filter .15s;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 .gRow:hover .gBar { filter: brightness(1.15); }
+.gBarText {
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
 
 /* ── 마일스톤 도트 ── */
 .gDot {

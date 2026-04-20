@@ -161,7 +161,11 @@ function GanttView({ projects }: { projects: ProjectWithTimelines[] }) {
                   <div
                     className={styles.gBar}
                     style={{ left: `${barL}%`, width: `${Math.max(barW, 0.3)}%`, background: bg, borderLeftColor: color }}
-                  />
+                  >
+                    <span className={styles.gBarText} style={{ color }}>
+                      {formatDate(p.contractDate!)} ~ {formatDate(p.endDate!)}
+                    </span>
+                  </div>
                 )}
               </div>
 

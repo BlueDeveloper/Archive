@@ -1,4 +1,5 @@
-import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, real, index } from "drizzle-orm/sqlite-core";
+import { relations } from "drizzle-orm";
 
 export const projects = sqliteTable("projects", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -24,6 +25,13 @@ export const projects = sqliteTable("projects", {
   updatedAt: text("updated_at").notNull().default("(datetime('now'))"),
 });
 
+export const projectsRelations = relations(projects, ({ many }) => ({
+  timelines: many(timelines),
+  settlements: many(settlements),
+  workHours: many(workHours),
+  deadlines: many(deadlines),
+}));
+
 export const timelines = sqliteTable("timelines", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   projectId: integer("project_id").notNull(),
@@ -31,7 +39,16 @@ export const timelines = sqliteTable("timelines", {
   description: text("description").notNull(),
   color: text("color").default("green"),
   sortOrder: integer("sort_order").default(0),
-});
+}, (table) => ({
+  projectIdIdx: index("timelines_project_id_idx").on(table.projectId),
+}));
+
+export const timelinesRelations = relations(timelines, ({ one }) => ({
+  project: one(projects, {
+    fields: [timelines.projectId],
+    references: [projects.id],
+  }),
+}));
 
 export const settlements = sqliteTable("settlements", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -40,7 +57,16 @@ export const settlements = sqliteTable("settlements", {
   label: text("label").notNull(),
   amount: integer("amount").notNull(),
   date: text("date"),
-});
+}, (table) => ({
+  projectIdIdx: index("settlements_project_id_idx").on(table.projectId),
+}));
+
+export const settlementsRelations = relations(settlements, ({ one }) => ({
+  project: one(projects, {
+    fields: [settlements.projectId],
+    references: [projects.id],
+  }),
+}));
 
 export const expenses = sqliteTable("expenses", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -61,7 +87,16 @@ export const workHours = sqliteTable("work_hours", {
   hourlyRate: integer("hourly_rate"),
   fileCount: integer("file_count"),
   note: text("note"),
-});
+}, (table) => ({
+  projectIdIdx: index("work_hours_project_id_idx").on(table.projectId),
+}));
+
+export const workHoursRelations = relations(workHours, ({ one }) => ({
+  project: one(projects, {
+    fields: [workHours.projectId],
+    references: [projects.id],
+  }),
+}));
 
 export const settings = sqliteTable("settings", {
   key: text("key").primaryKey(),
@@ -76,4 +111,13 @@ export const deadlines = sqliteTable("deadlines", {
   date: text("date").notNull(),
   type: text("type").default("deadline"),
   sortOrder: integer("sort_order").default(0),
-});
+}, (table) => ({
+  projectIdIdx: index("deadlines_project_id_idx").on(table.projectId),
+}));
+
+export const deadlinesRelations = relations(deadlines, ({ one }) => ({
+  project: one(projects, {
+    fields: [deadlines.projectId],
+    references: [projects.id],
+  }),
+}));

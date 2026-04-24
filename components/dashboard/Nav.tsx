@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback } from "react";
 import styles from "./Nav.module.css";
 
 const MENU = [
@@ -14,6 +15,13 @@ const MENU = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = useCallback(async () => {
+    await fetch("/api/auth", { method: "DELETE" });
+    router.push("/dashboard/login");
+    router.refresh();
+  }, [router]);
 
   return (
     <nav className={styles.nav}>
@@ -44,6 +52,9 @@ export default function Nav() {
           </Link>
         );
       })}
+      <button className={styles.logoutBtn} onClick={handleLogout}>
+        로그아웃
+      </button>
       </div>
     </nav>
   );

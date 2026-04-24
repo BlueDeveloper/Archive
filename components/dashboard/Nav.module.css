@@ -58,6 +58,25 @@
   border-color: var(--border);
 }
 
+.logoutBtn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--dim);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.logoutBtn:hover {
+  color: var(--red, #ef4444);
+  background: var(--card);
+  border-color: var(--red, #ef4444);
+}
+
 @media (max-width: 480px) {
   .logoImg {
     width: 120px !important;

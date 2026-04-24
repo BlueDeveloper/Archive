@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { db, requireAuth } from "@/lib/d1";
 import { timelines } from "@/db/schema";
 import { eq } from "drizzle-orm";
+import type { InferInsertModel } from "drizzle-orm";
 
 export const runtime = "edge";
+
+type TimelineInsert = InferInsertModel<typeof timelines>;
 
 export async function GET(req: NextRequest) {
   const unauth = requireAuth(req);
@@ -21,7 +24,26 @@ export async function POST(req: NextRequest) {
   if (unauth) return unauth;
   try {
     const body = await req.json() as Record<string, unknown>;
-    const result = await db().insert(timelines).values(body as never).returning();
+
+    if (!body.projectId || typeof body.projectId !== "number") {
+      return NextResponse.json({ error: "projectId는 필수 항목입니다" }, { status: 400 });
+    }
+    if (!body.date || typeof body.date !== "string") {
+      return NextResponse.json({ error: "date는 필수 항목입니다" }, { status: 400 });
+    }
+    if (!body.description || typeof body.description !== "string") {
+      return NextResponse.json({ error: "description은 필수 항목입니다" }, { status: 400 });
+    }
+
+    const values: TimelineInsert = {
+      projectId: body.projectId,
+      date: body.date,
+      description: body.description,
+      color: (body.color as string) ?? "green",
+      sortOrder: typeof body.sortOrder === "number" ? body.sortOrder : 0,
+    };
+
+    const result = await db().insert(timelines).values(values).returning();
     if (!result[0]) return NextResponse.json({ error: "Insert failed" }, { status: 500 });
     return NextResponse.json(result[0], { status: 201 });
   } catch {
@@ -38,7 +60,11 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json({ error: "Missing id" }, { status: 400 });
     }
     const { id, ...data } = body;
-    const result = await db().update(timelines).set(data as never).where(eq(timelines.id, id as number)).returning();
+    const result = await db()
+      .update(timelines)
+      .set(data as Partial<TimelineInsert>)
+      .where(eq(timelines.id, id as number))
+      .returning();
     if (!result[0]) return NextResponse.json({ error: "Not found" }, { status: 404 });
     return NextResponse.json(result[0]);
   } catch {

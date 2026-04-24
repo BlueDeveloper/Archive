@@ -1,14 +1,27 @@
 import Stats from "@/components/dashboard/Stats";
 import Insights from "@/components/dashboard/Insights";
 import ProjectCard from "@/components/dashboard/ProjectCard";
-import { fetchDashboardData } from "@/lib/data";
+import { fetchDashboardData, DashboardDataError } from "@/lib/data";
 import styles from "@/components/dashboard/Section.module.css";
 import pageStyles from "./page.module.css";
 
 export const runtime = "edge";
 
 export default async function DashboardHome() {
-  const data = await fetchDashboardData();
+  let data;
+  try {
+    data = await fetchDashboardData();
+  } catch (e) {
+    const message = e instanceof DashboardDataError ? e.message : "알 수 없는 오류";
+    return (
+      <div className={pageStyles.errorContainer ?? ""}>
+        <h2>데이터 로딩 실패</h2>
+        <p>{message}</p>
+        <p>페이지를 새로고침하거나, 잠시 후 다시 시도해 주세요.</p>
+      </div>
+    );
+  }
+
   const { projects } = data;
 
   const done = projects.filter(

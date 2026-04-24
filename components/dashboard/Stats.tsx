@@ -301,9 +301,8 @@ export default function Stats({ data }: Props) {
   const pendingRevenue = unsettledProjects.reduce((s, p) => s + p.amount, 0);
   const totalRevenue = confirmedRevenue + pendingRevenue;
 
-  const totalProfit = confirmedRevenue + pendingRevenue;
   const confirmedNetProfit = confirmedRevenue - totalExpense;
-  const totalNetProfit = totalProfit - totalExpense;
+  const totalNetProfit = totalRevenue - totalExpense;
 
   const confirmedItems = settledProjects.map((p) => ({ label: `${p.client} - ${p.name}`, amount: p.amount }));
   const pendingItems = unsettledProjects.map((p) => ({ label: `${p.client} - ${p.name}`, amount: p.amount }));
@@ -360,7 +359,7 @@ export default function Stats({ data }: Props) {
       <div className={styles.row3}>
         <div className={`${styles.card} ${styles.cardTeal}`}>
           <div className={styles.label}>수익 합산</div>
-          <div className={`${styles.value} ${styles.valueTeal}`}>{formatMoney(totalProfit)}</div>
+          <div className={`${styles.value} ${styles.valueTeal}`}>{formatMoney(totalRevenue)}</div>
           <div className={styles.desc}>정산완료 + 미정산</div>
         </div>
         <div className={`${styles.card} ${styles.cardTeal}`}>

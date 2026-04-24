@@ -30,11 +30,17 @@ export default function LoginPage() {
         router.push("/dashboard");
         router.refresh();
       } else {
-        setError("비밀번호가 올바르지 않습니다.");
+        if (res.status === 401) {
+          setError("비밀번호가 올바르지 않습니다.");
+        } else if (res.status === 400) {
+          setError("잘못된 요청입니다. 비밀번호를 입력해 주세요.");
+        } else {
+          setError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+        }
         setIsSubmitting(false);
       }
     } catch {
-      setError("네트워크 오류가 발생했습니다.");
+      setError("네트워크 오류가 발생했습니다. 인터넷 연결을 확인해 주세요.");
       setIsSubmitting(false);
     }
   }

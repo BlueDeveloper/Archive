@@ -18,6 +18,16 @@ interface Props {
 const STATUS_OPTIONS = ["진행중", "완료", "AS"];
 const TYPE_OPTIONS = ["턴키", "기구축수정", "인프라작업", "과제풀이", "외주", "cafe24"];
 const SETTLEMENT_OPTIONS = ["미정산", "정산완료"];
+const PLATFORM_OPTIONS = ["PC", "모바일", "PC+모바일", "앱(Android)", "앱(iOS)", "앱(Android+iOS)"];
+const DEPLOY_OPTIONS = ["Cloudflare Pages", "Cloudflare Workers", "Vercel", "OCI Server", "GitHub Pages", "직접전달"];
+const TECH_PRESETS = [
+  "Next.js", "React", "React Native", "TypeScript", "JavaScript",
+  "Spring Boot", "Java", "Node.js",
+  "CSS Modules", "Tailwind CSS",
+  "Oracle", "PostgreSQL", "SQLite", "D1", "Redis", "Supabase",
+  "Drizzle ORM", "JPA", "QueryDSL",
+  "Cloudflare Workers", "Docker",
+];
 
 export default function ProjectForm({ project }: Props) {
   const router = useRouter();
@@ -198,25 +208,34 @@ export default function ProjectForm({ project }: Props) {
           />
         </div>
 
-        {/* 유형 + 플랫폼 */}
+        {/* 유형 */}
         <div className={styles.group}>
           <label className={`${styles.label} ${styles.required}`}>유형</label>
-          <div className={styles.row}>
-            <select
-              className={styles.select}
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-            >
-              {TYPE_OPTIONS.map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-            <input
-              className={styles.input}
-              value={platform}
-              onChange={(e) => setPlatform(e.target.value)}
-              placeholder="플랫폼 (PC, 모바일 등)"
-            />
+          <select
+            className={styles.select}
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          >
+            {TYPE_OPTIONS.map((t) => (
+              <option key={t} value={t}>{t}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* 플랫폼 */}
+        <div className={styles.group}>
+          <label className={styles.label}>플랫폼</label>
+          <div className={styles.chipWrap}>
+            {PLATFORM_OPTIONS.map((p) => (
+              <button
+                key={p}
+                type="button"
+                className={`${styles.chip} ${platform === p ? styles.chipActive : ""}`}
+                onClick={() => setPlatform(platform === p ? "" : p)}
+              >
+                {p}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -308,18 +327,38 @@ export default function ProjectForm({ project }: Props) {
         {/* 배포 */}
         <div className={styles.group}>
           <label className={styles.label}>배포 방법</label>
-          <input
-            className={styles.input}
-            value={deployMethod}
-            onChange={(e) => setDeployMethod(e.target.value)}
-            placeholder="Cloudflare Pages, Vercel 등"
-          />
+          <div className={styles.chipWrap}>
+            {DEPLOY_OPTIONS.map((d) => (
+              <button
+                key={d}
+                type="button"
+                className={`${styles.chip} ${deployMethod === d ? styles.chipActive : ""}`}
+                onClick={() => setDeployMethod(deployMethod === d ? "" : d)}
+              >
+                {d}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* 기술스택 */}
         <div className={styles.group}>
           <label className={styles.label}>기술스택</label>
           <div className={styles.tagWrap}>
+            <div className={styles.presetChips}>
+              {TECH_PRESETS.map((preset) => (
+                <button
+                  key={preset}
+                  type="button"
+                  className={`${styles.presetChip} ${techTags.includes(preset) ? styles.presetChipActive : ""}`}
+                  onClick={() =>
+                    techTags.includes(preset) ? removeTag(preset) : setTechTags([...techTags, preset])
+                  }
+                >
+                  {techTags.includes(preset) ? "✓ " : ""}{preset}
+                </button>
+              ))}
+            </div>
             {techTags.length > 0 && (
               <div className={styles.tagList}>
                 {techTags.map((tag) => (
@@ -342,7 +381,7 @@ export default function ProjectForm({ project }: Props) {
               onChange={(e) => setTagInput(e.target.value)}
               onKeyDown={handleTagKeyDown}
               onBlur={addTag}
-              placeholder="Enter 또는 , 로 태그 추가"
+              placeholder="프리셋에 없는 기술은 직접 입력 (Enter)"
             />
           </div>
         </div>

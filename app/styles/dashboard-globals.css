@@ -14,4 +14,11 @@
   --blue: #6bb0ff;
   --purple: #b49aff;
   --teal: #36dcc9;
+  color-scheme: dark;
+}
+
+/* 날짜 입력 캘린더 아이콘 밝게 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+  cursor: pointer;
 }

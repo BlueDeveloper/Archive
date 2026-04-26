@@ -78,6 +78,11 @@
   border-color: var(--accent);
 }
 
+.input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
 .input::placeholder,
 .textarea::placeholder {
   color: rgba(139, 143, 163, 0.5);

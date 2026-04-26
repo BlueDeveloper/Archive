@@ -271,6 +271,11 @@
   border-color: var(--accent);
 }
 
+.expenseInput[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
 .expenseSelect {
   padding: 5px 8px;
   font-size: 12px;

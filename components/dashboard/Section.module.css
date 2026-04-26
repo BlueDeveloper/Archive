@@ -1,17 +1,19 @@
 .section {
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 700;
   margin: 40px 0 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  letter-spacing: -0.2px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   display: inline-block;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
 .dotYellow { background: var(--yellow); }

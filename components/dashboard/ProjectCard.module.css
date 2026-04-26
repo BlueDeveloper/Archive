@@ -10,11 +10,13 @@
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .card:hover {
   border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(123, 140, 255, 0.1);
 }
 
 .top {

@@ -6,11 +6,12 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 3px;
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 .tab {
-  padding: 7px 22px;
-  font-size: 12px;
+  padding: 8px 24px;
+  font-size: 13px;
   font-weight: 600;
   border: none;
   border-radius: 7px;
@@ -19,8 +20,8 @@
   color: var(--dim);
   transition: all .15s;
 }
-.tab:hover { color: var(--fg); }
-.tabOn { background: rgba(108,126,255,.12); color: var(--accent); }
+.tab:hover { color: var(--text); background: rgba(123, 140, 255, 0.05); }
+.tabOn { background: rgba(123, 140, 255, 0.14); color: var(--accent); font-weight: 700; }
 .empty { text-align: center; padding: 48px; color: var(--dim); font-size: 14px; }
 
 /* ══════ GANTT ══════ */
@@ -29,6 +30,7 @@
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow-x: auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* 행 공통 */

@@ -9,7 +9,8 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 20px;
+  padding: 22px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* 헤더 */
@@ -27,44 +28,48 @@
 }
 
 .yearMonth {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
 }
 
 .navBtn {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--text);
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
+  background: rgba(123, 140, 255, 0.06);
+  border: 1px solid rgba(123, 140, 255, 0.2);
+  color: var(--accent);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   font-size: 20px;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s, border-color 0.15s;
+  transition: all 0.15s;
 }
 
 .navBtn:hover {
-  background: rgba(108, 126, 255, 0.08);
+  background: rgba(123, 140, 255, 0.14);
   border-color: var(--accent);
+  transform: scale(1.05);
 }
 
 .todayBtn {
-  background: rgba(108, 126, 255, 0.1);
+  background: rgba(123, 140, 255, 0.12);
   color: var(--accent);
-  border: none;
-  padding: 4px 10px;
-  border-radius: 6px;
+  border: 1px solid rgba(123, 140, 255, 0.25);
+  padding: 5px 14px;
+  border-radius: 8px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: all 0.15s;
 }
 
 .todayBtn:hover {
-  background: rgba(108, 126, 255, 0.2);
+  background: rgba(123, 140, 255, 0.22);
+  border-color: var(--accent);
 }
 
 /* 요일 */
@@ -91,10 +96,10 @@
   display: flex;
   gap: 16px;
   margin-bottom: 14px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 10px 14px;
+  background: rgba(123, 140, 255, 0.03);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .legendItem {
@@ -173,9 +178,10 @@
 
 .dayNum {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   line-height: 1;
+  color: var(--text);
 }
 
 /* PC: 셀 안 이벤트 텍스트 */

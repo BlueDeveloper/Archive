@@ -17,8 +17,8 @@
   color-scheme: dark;
 }
 
-/* 날짜 입력 캘린더 아이콘 밝게 */
+/* 날짜 입력 캘린더 아이콘 흰색 */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.8);
+  filter: invert(1);
   cursor: pointer;
 }

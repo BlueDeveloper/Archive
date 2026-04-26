@@ -1,6 +1,7 @@
 /** D-day 계산: 양수 = 남은 일수, 음수 = 지난 일수 */
 export function daysUntil(dateStr: string): number {
   const target = new Date(dateStr + "T00:00:00");
+  if (isNaN(target.getTime())) return 0;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return Math.ceil((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));

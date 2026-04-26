@@ -64,6 +64,12 @@ export async function POST(req: NextRequest) {
   }
 }
 
+const PROJECT_UPDATABLE_FIELDS = [
+  "name", "client", "folder", "type", "platform", "status", "statusSub",
+  "amount", "amountDetail", "deployMethod", "techStack", "contractDate",
+  "endDate", "asInfo", "note", "service", "settlementStatus", "sortOrder",
+] as const;
+
 export async function PUT(req: NextRequest) {
   const unauth = requireAuth(req);
   if (unauth) return unauth;
@@ -72,12 +78,14 @@ export async function PUT(req: NextRequest) {
     if (!body.id || typeof body.id !== "number") {
       return NextResponse.json({ error: "Missing id" }, { status: 400 });
     }
-    const { id, ...data } = body;
-    const updateData: Record<string, unknown> = { ...data, updatedAt: new Date().toISOString() };
+    const updateData: Record<string, unknown> = { updatedAt: new Date().toISOString() };
+    for (const key of PROJECT_UPDATABLE_FIELDS) {
+      if (key in body) updateData[key] = body[key];
+    }
     const result = await db()
       .update(projects)
       .set(updateData as Partial<ProjectInsert>)
-      .where(eq(projects.id, id as number))
+      .where(eq(projects.id, body.id as number))
       .returning();
     if (!result[0]) return NextResponse.json({ error: "Not found" }, { status: 404 });
     return NextResponse.json(result[0]);

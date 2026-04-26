@@ -59,11 +59,13 @@ export async function PUT(req: NextRequest) {
     if (!body.id || typeof body.id !== "number") {
       return NextResponse.json({ error: "Missing id" }, { status: 400 });
     }
-    const { id, ...data } = body;
+    const allowed = ["projectId", "date", "description", "color", "sortOrder"] as const;
+    const updateData: Record<string, unknown> = {};
+    for (const key of allowed) { if (key in body) updateData[key] = body[key]; }
     const result = await db()
       .update(timelines)
-      .set(data as Partial<TimelineInsert>)
-      .where(eq(timelines.id, id as number))
+      .set(updateData as Partial<TimelineInsert>)
+      .where(eq(timelines.id, body.id as number))
       .returning();
     if (!result[0]) return NextResponse.json({ error: "Not found" }, { status: 404 });
     return NextResponse.json(result[0]);

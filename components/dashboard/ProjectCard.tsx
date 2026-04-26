@@ -76,16 +76,18 @@ export default function ProjectCard({ project }: Props) {
   const hasDetail = details.length > 0;
 
   const handleSettlementChange = async (value: string) => {
+    const prev = settlementStatus;
     setSettlementStatus(value);
     setSettlementSaving(true);
     try {
-      await fetch("/api/projects", {
+      const res = await fetch("/api/projects", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: project.id, settlementStatus: value }),
       });
+      if (!res.ok) setSettlementStatus(prev);
     } catch {
-      setSettlementStatus(settlementStatus);
+      setSettlementStatus(prev);
     } finally {
       setSettlementSaving(false);
     }

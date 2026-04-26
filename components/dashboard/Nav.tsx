@@ -18,7 +18,9 @@ export default function Nav() {
   const router = useRouter();
 
   const handleLogout = useCallback(async () => {
-    await fetch("/api/auth", { method: "DELETE" });
+    try {
+      await fetch("/api/auth", { method: "DELETE" });
+    } catch { /* ignore */ }
     router.push("/dashboard/login");
     router.refresh();
   }, [router]);

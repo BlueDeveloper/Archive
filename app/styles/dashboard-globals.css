@@ -1,30 +1,18 @@
-/* Dashboard CSS 변수 및 기본 스타일 (포트폴리오와 분리) */
+/* Dashboard CSS 변수 및 기본 스타일 — 라이트 테마 */
 :root {
-  --bg: #0d0f14;
-  --card: #161922;
-  --card-hover: #1c2030;
-  --border: #2d3348;
-  --text: #e8eaf2;
-  --dim: #9499b0;
-  --accent: #7b8cff;
-  --green: #3ee0a5;
-  --yellow: #fcc737;
-  --red: #ff7878;
-  --orange: #ff9f4a;
-  --blue: #6bb0ff;
-  --purple: #b49aff;
-  --teal: #36dcc9;
-  color-scheme: dark;
-}
-
-/* 날짜 입력 캘린더 아이콘 흰색 — !important로 CSS Modules 스코프 오버라이드 */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1) !important;
-  cursor: pointer !important;
-  opacity: 1 !important;
-}
-
-/* Firefox 대응 */
-input[type="date"] {
-  color-scheme: dark !important;
+  --bg: #f0f2f5;
+  --card: #ffffff;
+  --card-hover: #f8f9fb;
+  --border: #dfe2e8;
+  --text: #1a1d2b;
+  --dim: #6b7280;
+  --accent: #4f5fff;
+  --green: #10b981;
+  --yellow: #f59e0b;
+  --red: #ef4444;
+  --orange: #f97316;
+  --blue: #3b82f6;
+  --purple: #8b5cf6;
+  --teal: #14b8a6;
+  color-scheme: light;
 }

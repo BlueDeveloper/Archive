@@ -38,7 +38,7 @@
   align-items: center;
   gap: 12px;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(42, 46, 61, 0.45);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .group:last-of-type {
@@ -78,10 +78,6 @@
   border-color: var(--accent);
 }
 
-.input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  cursor: pointer;
-}
 
 .input::placeholder,
 .textarea::placeholder {

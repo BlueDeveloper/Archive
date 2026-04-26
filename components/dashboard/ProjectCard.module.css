@@ -144,7 +144,7 @@
   justify-content: space-between;
   padding: 7px 0;
   font-size: 13px;
-  border-bottom: 1px solid rgba(42, 46, 61, 0.45);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .row:last-child {
@@ -273,10 +273,6 @@
   border-color: var(--accent);
 }
 
-.tlInput[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  cursor: pointer;
-}
 
 .tlColorSelect {
   padding: 4px 6px;

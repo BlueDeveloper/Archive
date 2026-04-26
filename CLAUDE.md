@@ -42,3 +42,8 @@
 - `lib/types.ts`, `lib/data.ts`, `lib/dashboard-utils.ts`, `lib/d1.ts` : Dashboard 전용 lib
 - `db/` : Drizzle ORM 스키마 및 D1 연결
 - `app/api/` : API 라우트 (auth, projects, expenses, settlements, timelines, work-hours)
+
+## 작업 로그 & 이슈
+
+- `docs/work-log/` : 날짜별 작업 내역 및 미해결 이슈 기록
+- 작업 시작 전 최신 로그를 확인하여 미해결 이슈를 파악한다

@@ -36,7 +36,7 @@
 /* 행 공통 */
 .gRow {
   display: flex;
-  border-bottom: 1px solid rgba(42,46,61,.35);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
 }
 .gRow:last-child { border-bottom: none; }
 
@@ -91,7 +91,7 @@
 .gMilestones {
   position: relative;
   height: 28px;
-  border-top: 1px dashed rgba(42,46,61,.25);
+  border-top: 1px dashed rgba(0, 0, 0, 0.05);
 }
 
 /* 월 라벨 (헤더 전용) */
@@ -208,7 +208,7 @@
   font-size: 11px;
   color: var(--fg);
   white-space: nowrap;
-  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   z-index: 20;
   pointer-events: none;
   line-height: 1.5;
@@ -264,14 +264,14 @@
   position: absolute;
   left: 11px; top: 0; bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--border), rgba(42,46,61,.15));
+  background: linear-gradient(to bottom, var(--border), rgba(0, 0, 0, 0.03));
   border-radius: 1px;
 }
 
 .hCard {
   position: relative;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(42,46,61,.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 .hCard:last-child { border-bottom: none; }
 .hPast { opacity: .45; }

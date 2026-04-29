@@ -293,19 +293,19 @@ export default function Stats({ data }: Props) {
 
   const totalExpense = expenses.reduce((s, e) => s + e.amount, 0);
 
-  // 프로젝트 정산상태 기준으로 분류
-  const settledProjects = projects.filter((p) => p.settlementStatus === "정산완료");
-  const unsettledProjects = projects.filter((p) => p.settlementStatus !== "정산완료");
+  // settlements 기준으로 매출 분류 (Insights/WorkHours와 동일 기준)
+  const confirmedSettlements = settlements.filter((s) => s.category === "확정");
+  const pendingSettlements = settlements.filter((s) => s.category !== "확정");
 
-  const confirmedRevenue = settledProjects.reduce((s, p) => s + p.amount, 0);
-  const pendingRevenue = unsettledProjects.reduce((s, p) => s + p.amount, 0);
+  const confirmedRevenue = confirmedSettlements.reduce((s, r) => s + r.amount, 0);
+  const pendingRevenue = pendingSettlements.reduce((s, r) => s + r.amount, 0);
   const totalRevenue = confirmedRevenue + pendingRevenue;
 
   const confirmedNetProfit = confirmedRevenue - totalExpense;
   const totalNetProfit = totalRevenue - totalExpense;
 
-  const confirmedItems = settledProjects.map((p) => ({ label: `${p.client} - ${p.name}`, amount: p.amount }));
-  const pendingItems = unsettledProjects.map((p) => ({ label: `${p.client} - ${p.name}`, amount: p.amount }));
+  const confirmedItems = confirmedSettlements.map((s) => ({ label: s.label, amount: s.amount }));
+  const pendingItems = pendingSettlements.map((s) => ({ label: s.label, amount: s.amount }));
 
   return (
     <>

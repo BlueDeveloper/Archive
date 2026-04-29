@@ -71,6 +71,10 @@ export default function ProjectForm({ project }: Props) {
   const [note, setNote] = useState(project?.note ?? "");
   const [sortOrder, setSortOrder] = useState(project?.sortOrder ?? 0);
 
+  // 견적 상세 항목 합계 자동 연동
+  const detailsSum = amountDetails.reduce((s, d) => s + (d.amount || 0), 0);
+  const detailsMismatch = amountDetails.length > 0 && detailsSum !== amount;
+
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -321,6 +325,25 @@ export default function ProjectForm({ project }: Props) {
                 </button>
               </div>
             ))}
+            {amountDetails.length > 0 && (
+              <div className={styles.detailFooter}>
+                <span className={styles.detailSum}>
+                  항목 합계: {detailsSum.toLocaleString("ko-KR")}원
+                </span>
+                {detailsMismatch && (
+                  <span className={styles.detailWarn}>
+                    견적 금액({amount.toLocaleString("ko-KR")}원)과 불일치
+                  </span>
+                )}
+                <button
+                  type="button"
+                  className={styles.syncBtn}
+                  onClick={() => setAmount(detailsSum)}
+                >
+                  합계로 견적 반영
+                </button>
+              </div>
+            )}
           </div>
         </div>
 

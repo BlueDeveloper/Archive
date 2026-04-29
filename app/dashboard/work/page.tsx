@@ -7,9 +7,11 @@ export const runtime = "edge";
 export default async function WorkPage() {
   const data = await fetchDashboardData();
 
-  const totalRevenue = data.settlements.reduce((s, r) => s + r.amount, 0);
+  const confirmedRevenue = data.settlements
+    .filter((s) => s.category === "확정")
+    .reduce((s, r) => s + r.amount, 0);
   const totalExpense = data.expenses.reduce((s, e) => s + e.amount, 0);
-  const netProfit = totalRevenue - totalExpense;
+  const netProfit = confirmedRevenue - totalExpense;
 
   return (
     <>
@@ -19,7 +21,7 @@ export default async function WorkPage() {
       </div>
       <WorkHours
         workHours={data.workHours}
-        totalRevenue={totalRevenue}
+        totalRevenue={confirmedRevenue}
         netProfit={netProfit}
       />
     </>

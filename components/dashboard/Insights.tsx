@@ -10,7 +10,7 @@ interface Props {
 
 export default function Insights({ projects, settlements, expenses }: Props) {
   const confirmed = settlements.filter((s) => s.category === "확정");
-  const pending = settlements.filter((s) => s.category === "예정");
+  const pending = settlements.filter((s) => s.category !== "확정");
 
   const confirmedRevenue = confirmed.reduce((s, r) => s + r.amount, 0);
   const pendingRevenue = pending.reduce((s, r) => s + r.amount, 0);
@@ -36,14 +36,18 @@ export default function Insights({ projects, settlements, expenses }: Props) {
   // CAC 대비 매출 비율
   const cacRatio = cac > 0 ? avgDealSize / cac : 0;
 
-  // 월평균 (첫 비용 날짜 ~ 오늘)
-  const sortedExpenses = [...expenses].sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""));
-  const firstDate = sortedExpenses[0]?.date;
-  let months = 2;
+  // 월평균 (첫 비용/정산 날짜 ~ 오늘)
+  const allDates = [
+    ...expenses.map((e) => e.date),
+    ...settlements.map((s) => s.date),
+  ].filter(Boolean) as string[];
+  allDates.sort((a, b) => a.localeCompare(b));
+  const firstDate = allDates[0];
+  let months = 1;
   if (firstDate) {
     const start = new Date(firstDate);
     const now = new Date();
-    months = Math.max(1, (now.getFullYear() - start.getFullYear()) * 12 + now.getMonth() - start.getMonth());
+    months = Math.max(1, (now.getFullYear() - start.getFullYear()) * 12 + now.getMonth() - start.getMonth() + 1);
   }
   const monthlyRevenue = confirmedRevenue / months;
   const monthlyProfit = confirmedProfit / months;
@@ -71,7 +75,7 @@ export default function Insights({ projects, settlements, expenses }: Props) {
     });
   }
 
-  if (totalExpense > confirmedRevenue * 0.3) {
+  if (confirmedRevenue > 0 && totalExpense > confirmedRevenue * 0.3) {
     warnings.push({
       icon: "COST",
       text: `플랫폼 비용이 확정 매출의 ${((totalExpense / confirmedRevenue) * 100).toFixed(0)}% — 비용 효율 점검`,

@@ -186,16 +186,45 @@ export const de = {
     pageLabel: 'Platform Case',
     title: 'Arbeitsportfolio',
     desc: 'Fallstudien von Projekten, die ich von Anfang bis Ende entworfen und betrieben habe.\nWählen Sie einen Tab für detaillierte Informationen.',
+tierGroups: [
+      {
+        tier: 'Advanced',
+        range: '150 ~ 300',
+        items: [
+          { id: 'foodtruck', label: 'Food Truck' },
+          { id: 'dreamway', label: 'DreamWay (App)' },
+        ],
+      },
+      {
+        tier: 'Standard',
+        range: '50 ~ 150',
+        items: [
+          { id: 'compass', label: 'GPS Compass' },
+          { id: 'telequote', label: 'Telecom Forms' },
+          { id: 'mockup', label: 'AI Data Analysis' },
+        ],
+      },
+      {
+        tier: 'Basic',
+        range: '10 ~ 50',
+        items: [
+          { id: 'utils', label: 'Web Utilities' },
+          { id: 'corporate', label: 'Corporate Site' },
+          { id: 'cafe24', label: 'Cafe24 Shop' },
+          { id: 'saveridge', label: 'Smart Fridge' },
+        ],
+      },
+    ],
     tabs: [
       { id: 'foodtruck', label: 'Food Truck' },
+      { id: 'dreamway', label: 'DreamWay (App)' },
+      { id: 'compass', label: 'GPS Compass' },
+      { id: 'telequote', label: 'Telecom Forms' },
+      { id: 'mockup', label: 'AI Data Analysis' },
       { id: 'utils', label: 'Web Utilities' },
       { id: 'corporate', label: 'Corporate Site' },
       { id: 'cafe24', label: 'Cafe24 Shop' },
-      { id: 'compass', label: 'GPS Compass' },
-      { id: 'telequote', label: 'Telecom Forms' },
-      { id: 'mockup', label: 'Mockup Site' },
       { id: 'saveridge', label: 'Smart Fridge' },
-      { id: 'dreamway', label: 'DreamWay (AI)' },
     ],
     foodtruck: {
       tier: 'Advanced',

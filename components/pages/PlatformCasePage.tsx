@@ -52,17 +52,24 @@ export default function PlatformCasePage() {
           </div>
         </section>
 
-        {/* Tab Bar */}
+        {/* Tab Bar — Tier Groups */}
         <div className="case-tab-bar">
           <div className="section-inner case-tab-inner">
-            {t.platformCase.tabs.map((tab) => (
-              <button
-                key={tab.id}
-                className={`case-tab-btn ${activeTab === tab.id ? 'case-tab-btn--active' : ''}`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.label}
-              </button>
+            {t.platformCase.tierGroups.map((group) => (
+              <div key={group.tier} className="case-tab-group">
+                <span className="case-tab-group-label">{group.tier}<span className="case-tab-group-range">{group.range}</span></span>
+                <div className="case-tab-group-items">
+                  {group.items.map((tab) => (
+                    <button
+                      key={tab.id}
+                      className={`case-tab-btn ${activeTab === tab.id ? 'case-tab-btn--active' : ''}`}
+                      onClick={() => setActiveTab(tab.id)}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

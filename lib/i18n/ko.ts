@@ -196,16 +196,45 @@ export const ko = {
     pageLabel: 'Platform Case',
     title: '작업 사례',
     desc: '직접 설계하고 운영까지 참여한 프로젝트 사례입니다.\n탭을 선택해 각 프로젝트의 상세 내용을 확인하세요.',
+    tierGroups: [
+      {
+        tier: 'Advanced',
+        range: '150 ~ 300만원',
+        items: [
+          { id: 'foodtruck', label: '푸드트럭 플랫폼' },
+          { id: 'dreamway', label: '꿈지럭 (모바일 앱)' },
+        ],
+      },
+      {
+        tier: 'Standard',
+        range: '50 ~ 150만원',
+        items: [
+          { id: 'compass', label: 'GPS 나침반' },
+          { id: 'telequote', label: '통신사 견적서' },
+          { id: 'mockup', label: 'AI 데이터 분석 데모' },
+        ],
+      },
+      {
+        tier: 'Basic',
+        range: '10 ~ 50만원',
+        items: [
+          { id: 'utils', label: '웹 유틸리티' },
+          { id: 'corporate', label: '회사 소개 사이트' },
+          { id: 'cafe24', label: '카페24 쇼핑몰' },
+          { id: 'saveridge', label: '냉장고를 부탁해' },
+        ],
+      },
+    ],
     tabs: [
       { id: 'foodtruck', label: '푸드트럭 플랫폼' },
-      { id: 'utils', label: '웹 유틸리티' },
-      { id: 'corporate', label: '회사 소개 사이트' },
-      { id: 'cafe24', label: '카페24 쇼핑몰' },
+      { id: 'dreamway', label: '꿈지럭 (모바일 앱)' },
       { id: 'compass', label: 'GPS 나침반' },
       { id: 'telequote', label: '통신사 견적서' },
       { id: 'mockup', label: 'AI 데이터 분석 데모' },
+      { id: 'utils', label: '웹 유틸리티' },
+      { id: 'corporate', label: '회사 소개 사이트' },
+      { id: 'cafe24', label: '카페24 쇼핑몰' },
       { id: 'saveridge', label: '냉장고를 부탁해' },
-      { id: 'dreamway', label: '꿈지럭 (모바일 앱)' },
     ],
     foodtruck: {
       tier: 'Advanced · 150 ~ 300만원',

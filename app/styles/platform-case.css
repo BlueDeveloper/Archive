@@ -137,90 +137,126 @@
 }
 
 /* ===========================
-   PLATFORM CASE - 탭 UI
+   PLATFORM CASE - 사이드바 + 상세 레이아웃
 =========================== */
 
-.case-tab-bar {
+.case-layout {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%);
+  min-height: 420px;
+}
+
+.case-layout-inner {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Sidebar */
+.case-sidebar {
   position: sticky;
-  top: 63px;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(20px) saturate(180%);
-}
-
-.case-tab-inner {
-  display: flex;
-  gap: 1.25rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0.65rem 1.5rem;
-}
-
-.case-tab-group {
+  top: 80px;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  flex-shrink: 0;
+  gap: 0.25rem;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 0.75rem;
+  backdrop-filter: blur(4px);
 }
 
-.case-tab-group-label {
+.case-sidebar-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-sidebar-tier {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.6rem 0.75rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s ease;
+}
+
+.case-sidebar-tier:hover {
+  background: rgba(16, 19, 26, 0.04);
+}
+
+.case-sidebar-tier-label {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg-subtle);
-  padding-left: 0.5rem;
+  color: var(--fg-muted);
 }
 
-.case-tab-group-range {
+.case-sidebar-tier-range {
   font-weight: 500;
   margin-left: 0.4rem;
-  opacity: 0.7;
+  opacity: 0.65;
+  font-size: 0.65rem;
 }
 
-.case-tab-group-items {
-  display: flex;
-  gap: 0.3rem;
-}
-
-.case-tab-inner::-webkit-scrollbar {
-  display: none;
-}
-
-.case-tab-btn {
-  flex-shrink: 0;
-  background: rgba(16, 19, 26, 0.035);
-  border: 1px solid transparent;
+.case-sidebar-arrow {
+  font-size: 0.65rem;
   color: var(--fg-subtle);
+  transition: transform 0.2s ease;
+}
+
+.case-sidebar-arrow.open {
+  transform: rotate(0deg);
+}
+
+.case-sidebar-arrow:not(.open) {
+  transform: rotate(-90deg);
+}
+
+.case-sidebar-items {
+  list-style: none;
+  padding: 0 0 0.25rem 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.case-sidebar-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.5rem 0.75rem 0.5rem 1.5rem;
   font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 0.62rem 1rem;
-  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--fg-muted);
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease;
-  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
-.case-tab-btn:hover {
+.case-sidebar-item:hover {
   color: var(--foreground);
-  background: rgba(16, 19, 26, 0.055);
+  background: rgba(16, 19, 26, 0.04);
 }
 
-.case-tab-btn--active {
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-color: transparent;
-  box-shadow: 0 10px 24px rgba(21, 93, 252, 0.18);
+.case-sidebar-item--active {
+  color: var(--primary);
+  background: rgba(21, 93, 252, 0.08);
+  font-weight: 600;
 }
 
-.case-tab-content {
-  min-height: 420px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%);
+/* Detail */
+.case-detail {
+  min-width: 0;
 }
 
 .case-tab-panel {
@@ -240,17 +276,14 @@
 }
 
 @media (max-width: 768px) {
-  .case-tab-bar {
-    top: 61px;
+  .case-layout-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .case-tab-inner {
-    padding: 0 1rem;
-  }
-
-  .case-tab-btn {
-    padding: 0.875rem 1rem;
-    font-size: 0.875rem;
+  .case-sidebar {
+    position: static;
+    flex-direction: column;
   }
 }
 

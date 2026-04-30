@@ -54,7 +54,7 @@
 }
 
 .form-input::placeholder {
-  color: var(--fg-subtle);
+  color: rgba(16, 19, 26, 0.5);
 }
 
 .form-select {

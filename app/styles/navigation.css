@@ -129,16 +129,6 @@
   display: block;
 }
 
-.nav-link-sub {
-  display: inline;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--fg-subtle);
-  margin-left: 0.35rem;
-  font-family: var(--font-body);
-  letter-spacing: 0;
-}
-
 .nav-link:hover {
   color: var(--foreground);
   background: rgba(16, 19, 26, 0.045);

@@ -9,11 +9,11 @@ import { SUPPORTED_LANGUAGES, LANGUAGE_META } from '@/lib/i18n';
 import type { Language } from '@/lib/i18n';
 
 const NAV_LINKS = [
-  { label: 'Home', sub: '홈', href: '/' },
-  { label: 'Services', sub: '서비스', href: '/services' },
-  { label: 'Case', sub: '사례', href: '/platform-case' },
-  { label: 'Process', sub: '프로세스', href: '/process' },
-  { label: 'Contact', sub: '문의', href: '/contact' },
+  { label: '홈', href: '/' },
+  { label: '서비스', href: '/services' },
+  { label: '사례', href: '/platform-case' },
+  { label: '프로세스', href: '/process' },
+  { label: '문의', href: '/contact' },
 ];
 
 export default function Navigation() {
@@ -63,7 +63,7 @@ export default function Navigation() {
                 className={`nav-link ${pathname === link.href ? 'nav-link--active' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                {link.label}<span className="nav-link-sub">{link.sub}</span>
+                {link.label}
               </Link>
             </li>
           ))}

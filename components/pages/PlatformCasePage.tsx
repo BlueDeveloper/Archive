@@ -13,10 +13,14 @@ export default function PlatformCasePage() {
 
   const project = activeTab !== 'foodtruck' ? t.platformCase.otherProjects[activeTab as keyof typeof t.platformCase.otherProjects] : null;
 
-  const projectUrls: Record<string, string | null> = {
+  const projectUrls: Record<string, string | string[] | null> = {
     utils: 'https://archive-utils.pages.dev',
     corporate: 'https://corporate-egh.pages.dev',
-    cafe24: 'https://serasroom.com',
+    cafe24: [
+      { label: '세라스룸', url: 'https://serasroom.com' },
+      { label: '밸런도그', url: 'https://mongyroom.cafe24.com' },
+      { label: 'LATIO', url: 'https://www.latio.kr' },
+    ] as any,
     compass: 'https://mpanavigation.com',
     telequote: 'https://hlmobile.pages.dev',
     mockup: null,
@@ -141,9 +145,23 @@ export default function PlatformCasePage() {
                     <span className="case-project-tier">{project.tier}</span>
                     <p className="case-project-desc">{project.desc}</p>
                   </div>
-                  {projectUrls[activeTab] ? (
+                  {Array.isArray(projectUrls[activeTab]) ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {(projectUrls[activeTab] as any[]).map((item: any) => (
+                        <a
+                          key={item.label}
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="featured-link"
+                        >
+                          {item.label} →
+                        </a>
+                      ))}
+                    </div>
+                  ) : projectUrls[activeTab] ? (
                     <a
-                      href={projectUrls[activeTab]!}
+                      href={projectUrls[activeTab] as string}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="featured-link"

@@ -13,14 +13,17 @@ export default function PlatformCasePage() {
 
   const project = activeTab !== 'foodtruck' ? t.platformCase.otherProjects[activeTab as keyof typeof t.platformCase.otherProjects] : null;
 
-  const projectUrls: Record<string, string | string[] | null> = {
+  interface CafeLink { label: string; url: string }
+  type ProjectUrl = string | CafeLink[] | null;
+
+  const projectUrls: Record<string, ProjectUrl> = {
     utils: 'https://archive-utils.pages.dev',
     corporate: 'https://corporate-egh.pages.dev',
     cafe24: [
       { label: '세라스룸', url: 'https://serasroom.com' },
       { label: '밸런도그', url: 'https://mongyroom.cafe24.com' },
       { label: 'LATIO', url: 'https://www.latio.kr' },
-    ] as any,
+    ],
     compass: 'https://mpanavigation.com',
     telequote: 'https://hlmobile.pages.dev',
     mockup: null,
@@ -147,7 +150,7 @@ export default function PlatformCasePage() {
                   </div>
                   {Array.isArray(projectUrls[activeTab]) ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                      {(projectUrls[activeTab] as any[]).map((item: any) => (
+                      {(projectUrls[activeTab] as CafeLink[]).map((item) => (
                         <a
                           key={item.label}
                           href={item.url}

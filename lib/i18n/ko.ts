@@ -6,16 +6,16 @@ export const ko = {
 
   // Hero
   hero: {
-    badge: 'Full-Stack Developer',
-    title: '프론트, 백엔드, 서버 인프라까지\n기술 스택을 가리지 않고 직접 구축합니다.',
-    subtitle: '운영 가능한 시스템을 설계하고 구현하는 개발자입니다.',
+    badge: 'Full-Stack Development',
+    title: '기획부터 배포, 운영까지\n한 팀이 끝냅니다.',
+    subtitle: '10년 경력 풀스택 엔지니어가 직접 설계하고 구축합니다.\n외주 프로젝트 15건+ 납품 완료.',
     cta1: '프로젝트 문의',
     cta2: '작업 사례 보기',
   },
 
   // Footer
   footer: {
-    desc: '프론트엔드부터 인프라까지 직접 구축합니다.',
+    desc: '기획부터 배포·운영까지, 한 팀이 끝냅니다.',
     pageTitle: '페이지',
     linkTitle: '바로가기',
     contact: '문의하기',
@@ -47,8 +47,8 @@ export const ko = {
     ],
     serviceMore: '서비스 상세 보기 →',
     caseLabel: 'Platform Case',
-    caseTitle: '관리자와 결제가 포함된\n판매 플랫폼 구축 경험이 있습니다',
-    caseDesc: '상품 관리부터 주문·결제·서버 운영까지 직접 설계하고 구현했습니다.',
+    caseTitle: '결제·관리자 시스템이 포함된\n실 운영 플랫폼을 구축했습니다',
+    caseDesc: '상품 관리, 주문·결제, 서버 인프라, CI/CD까지 전체 플로우를 직접 설계·구현·운영합니다.',
     caseMore: '구축 사례 보기 →',
     midCta: '어떤 규모든 부담 없이 문의해주세요',
     midCtaBtn: '프로젝트 문의',

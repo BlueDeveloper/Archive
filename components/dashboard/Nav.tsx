@@ -54,9 +54,9 @@ export default function Nav() {
           </Link>
         );
       })}
-      <a href="/" className={styles.archiveLink} title="Archive 사이트로 이동">
+      <Link href="/" className={styles.archiveLink} title="Archive 사이트로 이동">
         Archive →
-      </a>
+      </Link>
       <button className={styles.logoutBtn} onClick={handleLogout}>
         로그아웃
       </button>

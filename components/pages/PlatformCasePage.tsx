@@ -177,6 +177,9 @@ export default function PlatformCasePage() {
                   <div className="case-project-header">
                     <div>
                       <span className="case-project-tier">{project.tier}</span>
+                      <h2 className="case-project-title">
+                        {t.platformCase.tabs.find((tab) => tab.id === activeTab)?.label}
+                      </h2>
                       <p className="case-project-desc">{project.desc}</p>
                     </div>
                     {Array.isArray(projectUrls[activeTab]) ? (

@@ -30,8 +30,8 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(56, 189, 248, 0.06);
-  border: 2px solid rgba(56, 189, 248, 0.5);
+  background: rgba(37, 99, 235, 0.06);
+  border: 2px solid rgba(37, 99, 235, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +44,7 @@
 }
 
 .process-step:hover .process-step-num {
-  background: rgba(56, 189, 248, 0.12);
+  background: rgba(37, 99, 235, 0.12);
   border-color: var(--primary);
 }
 
@@ -52,7 +52,7 @@
   width: 2px;
   flex: 1;
   min-height: 32px;
-  background: linear-gradient(180deg, rgba(56, 189, 248, 0.3) 0%, rgba(56, 189, 248, 0.05) 100%);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.3) 0%, rgba(37, 99, 235, 0.05) 100%);
   margin: 4px 0;
 }
 

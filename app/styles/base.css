@@ -1,30 +1,30 @@
 :root {
-  /* ─── Palette ─────────────────────────────── */
-  --background:   #07070f;
-  --bg-surface:   #0c0c1a;
-  --bg-card:      rgba(255, 255, 255, 0.038);
-  --bg-card-hover:rgba(255, 255, 255, 0.065);
-  --foreground:   #eeeeff;
-  --fg-muted:     rgba(238, 238, 255, 0.58);
-  --fg-subtle:    rgba(238, 238, 255, 0.35);
+  /* ─── Palette (Light) ──────────────────────── */
+  --background:   #ffffff;
+  --bg-surface:   #f5f6f8;
+  --bg-card:      rgba(0, 0, 0, 0.024);
+  --bg-card-hover:rgba(0, 0, 0, 0.048);
+  --foreground:   #111827;
+  --fg-muted:     rgba(17, 24, 39, 0.62);
+  --fg-subtle:    rgba(17, 24, 39, 0.38);
 
   /* ─── Accents ─────────────────────────────── */
-  --primary:      #38bdf8;
-  --primary-dark: #0ea5e9;
-  --primary-glow: rgba(56, 189, 248, 0.18);
-  --primary-glow-lg: rgba(56, 189, 248, 0.10);
-  --accent:       #a78bfa;
-  --accent-glow:  rgba(167, 139, 250, 0.15);
+  --primary:      #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-glow: rgba(37, 99, 235, 0.12);
+  --primary-glow-lg: rgba(37, 99, 235, 0.06);
+  --accent:       #7c3aed;
+  --accent-glow:  rgba(124, 58, 237, 0.10);
 
   /* ─── Legacy aliases (keep compatibility) ─── */
-  --secondary:    #07070f;
-  --card-bg:      rgba(255, 255, 255, 0.038);
-  --shadow:       rgba(56, 189, 248, 0.08);
-  --shadow-lg:    rgba(56, 189, 248, 0.16);
+  --secondary:    #ffffff;
+  --card-bg:      rgba(0, 0, 0, 0.024);
+  --shadow:       rgba(37, 99, 235, 0.08);
+  --shadow-lg:    rgba(37, 99, 235, 0.14);
 
   /* ─── Borders ─────────────────────────────── */
-  --border:       rgba(255, 255, 255, 0.09);
-  --border-strong:rgba(255, 255, 255, 0.18);
+  --border:       rgba(0, 0, 0, 0.08);
+  --border-strong:rgba(0, 0, 0, 0.15);
 
   /* ─── Typography ─────────────────────────── */
   --font-display: var(--font-syne), 'Segoe UI', sans-serif;
@@ -60,27 +60,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Subtle grain overlay ───────────────────── */
+/* ─── Subtle grain overlay (light) ───────────── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  opacity: 0.018;
   pointer-events: none;
   z-index: 9999;
 }
 
-/* ─── Radial glow mesh on background ────────── */
+/* ─── Radial glow mesh on background (light) ─── */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 60% at 15% 20%, rgba(56, 189, 248, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 85% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(56, 189, 248, 0.03) 0%, transparent 60%);
+    radial-gradient(ellipse 90% 60% at 15% 20%, rgba(37, 99, 235, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 80%, rgba(124, 58, 237, 0.035) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(37, 99, 235, 0.02) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -98,11 +98,11 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.12);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.4);
+  background: rgba(37, 99, 235, 0.4);
 }
 
 /* ─── Scroll animations ──────────────────────── */

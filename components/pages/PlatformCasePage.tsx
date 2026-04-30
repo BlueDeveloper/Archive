@@ -9,9 +9,20 @@ import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function PlatformCasePage() {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('photocard');
+  const [activeTab, setActiveTab] = useState('foodtruck');
 
-  const project = activeTab !== 'photocard' ? t.platformCase.otherProjects[activeTab as keyof typeof t.platformCase.otherProjects] : null;
+  const project = activeTab !== 'foodtruck' ? t.platformCase.otherProjects[activeTab as keyof typeof t.platformCase.otherProjects] : null;
+
+  const projectUrls: Record<string, string | null> = {
+    utils: 'https://archive-utils.pages.dev',
+    corporate: 'https://corporate-egh.pages.dev',
+    cafe24: 'https://serasroom.com',
+    compass: 'https://mpanavigation.com',
+    telequote: 'https://hlmobile.pages.dev',
+    mockup: null,
+    saveridge: null,
+    dreamway: 'https://dreamway.bdarchive.site',
+  };
 
   return (
     <>
@@ -53,35 +64,35 @@ export default function PlatformCasePage() {
         <div className="case-tab-content section">
           <div className="section-inner">
 
-            {/* 포토카드 판매 플랫폼 */}
-            {activeTab === 'photocard' && (
+            {/* 푸드트럭 플랫폼 (Featured) */}
+            {activeTab === 'foodtruck' && (
               <div className="case-tab-panel">
                 <div className="case-project-header">
                   <div>
-                    <span className="case-project-tier">{t.platformCase.photocard.tier}</span>
-                    <h2 className="case-project-title">{t.platformCase.photocard.title}</h2>
+                    <span className="case-project-tier">{t.platformCase.foodtruck.tier}</span>
+                    <h2 className="case-project-title">{t.platformCase.foodtruck.title}</h2>
                     <p className="case-project-desc">
-                      {t.platformCase.photocard.desc.split('\n').map((line, idx) => (
+                      {t.platformCase.foodtruck.desc.split('\n').map((line, idx) => (
                         <span key={idx}>
                           {line}
-                          {idx < t.platformCase.photocard.desc.split('\n').length - 1 && <br />}
+                          {idx < t.platformCase.foodtruck.desc.split('\n').length - 1 && <br />}
                         </span>
                       ))}
                     </p>
                   </div>
                   <a
-                    href="https://maidjo-test.duckdns.org"
+                    href="https://raonfoodtruck.co.kr"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="featured-link"
                   >
-                    {t.platformCase.photocard.urlLabel}
+                    {t.platformCase.foodtruck.urlLabel}
                   </a>
                 </div>
 
                 <div className="case-sub-title">{t.platformCase.mainFeatures}</div>
                 <div className="case-features-grid">
-                  {t.platformCase.photocard.features.map((f) => (
+                  {t.platformCase.foodtruck.features.map((f) => (
                     <div key={f.category} className="case-feature-card">
                       <h3 className="case-feature-title">{f.category}</h3>
                       <ul className="tier-list">
@@ -96,9 +107,9 @@ export default function PlatformCasePage() {
                   ))}
                 </div>
 
-                <div className="case-sub-title" style={{ marginTop: '3rem' }}>{t.platformCase.photocard.opsTitle}</div>
+                <div className="case-sub-title" style={{ marginTop: '3rem' }}>{t.platformCase.foodtruck.opsTitle}</div>
                 <div className="case-ops-grid">
-                  {t.platformCase.photocard.ops.map((item) => (
+                  {t.platformCase.foodtruck.ops.map((item) => (
                     <div key={item.title} className="case-ops-item">
                       <span className="case-ops-icon">◈</span>
                       <div>
@@ -109,10 +120,10 @@ export default function PlatformCasePage() {
                   ))}
                 </div>
 
-                <div className="case-sub-title" style={{ marginTop: '3rem' }}>{t.platformCase.photocard.techTitle}</div>
-                <p className="case-tab-note">{t.platformCase.photocard.techNote}</p>
+                <div className="case-sub-title" style={{ marginTop: '3rem' }}>{t.platformCase.foodtruck.techTitle}</div>
+                <p className="case-tab-note">{t.platformCase.foodtruck.techNote}</p>
                 <div className="case-tech-grid">
-                  {t.platformCase.photocard.tech.map((tech) => (
+                  {t.platformCase.foodtruck.tech.map((tech) => (
                     <div key={tech.label} className="case-tech-item">
                       <span className="case-tech-label">{tech.label}</span>
                       <span className="case-tech-value">{tech.value}</span>
@@ -130,14 +141,20 @@ export default function PlatformCasePage() {
                     <span className="case-project-tier">{project.tier}</span>
                     <p className="case-project-desc">{project.desc}</p>
                   </div>
-                  <a
-                    href={(activeTab === 'utils' ? 'https://archive-utils.pages.dev' : activeTab === 'corporate' ? 'https://corporate-egh.pages.dev' : activeTab === 'cafe24' ? 'https://serasroom.com' : activeTab === 'compass' ? 'https://mpanavigation.com' : 'https://worldcup-9oe.pages.dev')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="featured-link"
-                  >
-                    {project.urlLabel} →
-                  </a>
+                  {projectUrls[activeTab] ? (
+                    <a
+                      href={projectUrls[activeTab]!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="featured-link"
+                    >
+                      {project.urlLabel} →
+                    </a>
+                  ) : (
+                    <span className="featured-link" style={{ opacity: 0.5, cursor: 'default' }}>
+                      {project.urlLabel}
+                    </span>
+                  )}
                 </div>
 
                 <div className="case-project-body">
@@ -161,7 +178,7 @@ export default function PlatformCasePage() {
                     </div>
                     <div className="case-sub-title" style={{ marginTop: '2rem' }}>{t.platformCase.mainDeploy}</div>
                     <p className="case-ops-item" style={{ marginTop: '0.75rem', padding: 0, border: 'none', background: 'none' }}>
-                      <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.65)' }}>{project.deploy}</span>
+                      <span style={{ fontSize: '0.9rem', color: 'var(--fg-muted)' }}>{project.deploy}</span>
                     </p>
                   </div>
                 </div>

@@ -44,7 +44,7 @@ export default function Footer() {
             <h4 className="footer-title">{t.footer.linkTitle}</h4>
             <ul className="footer-links">
               <li><Link href="/contact">{t.footer.contact}</Link></li>
-              <li><a href="https://maidjo-test.duckdns.org" target="_blank" rel="noopener noreferrer">{t.footer.photocard}</a></li>
+              <li><a href="https://raonfoodtruck.co.kr" target="_blank" rel="noopener noreferrer">{t.footer.foodtruck}</a></li>
               <li><a href="https://archive-utils.pages.dev" target="_blank" rel="noopener noreferrer">{t.footer.utils}</a></li>
             </ul>
           </div>

@@ -8,12 +8,12 @@ import { useTranslation } from '@/lib/i18n/LanguageContext';
 import { SUPPORTED_LANGUAGES, LANGUAGE_META } from '@/lib/i18n';
 import type { Language } from '@/lib/i18n';
 
-const NAV_LINKS = [
-  { label: '홈', href: '/' },
-  { label: '서비스', href: '/services' },
-  { label: '사례', href: '/platform-case' },
-  { label: '프로세스', href: '/process' },
-  { label: '문의', href: '/contact' },
+const NAV_KEYS = [
+  { key: 'home' as const, href: '/' },
+  { key: 'services' as const, href: '/services' },
+  { key: 'case' as const, href: '/platform-case' },
+  { key: 'process' as const, href: '/process' },
+  { key: 'contact' as const, href: '/contact' },
 ];
 
 export default function Navigation() {
@@ -56,14 +56,14 @@ export default function Navigation() {
         </Link>
 
         <ul className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
-          {NAV_LINKS.map((link) => (
+          {NAV_KEYS.map((link) => (
             <li key={link.href} className="nav-item">
               <Link
                 href={link.href}
                 className={`nav-link ${pathname === link.href ? 'nav-link--active' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                {link.label}
+                {t.nav[link.key]}
               </Link>
             </li>
           ))}

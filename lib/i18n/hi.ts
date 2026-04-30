@@ -1,6 +1,11 @@
 export const hi = {
   nav: {
-    menuLabel: 'मेनू खोलें',
+    menuLabel: 'Open menu',
+    home: 'होम',
+    services: 'सेवाएं',
+    case: 'केस',
+    process: 'प्रक्रिया',
+    contact: 'संपर्क',
   },
 
   hero: {

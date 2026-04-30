@@ -2,6 +2,11 @@ export const ko = {
   // Navigation
   nav: {
     menuLabel: '메뉴 열기',
+    home: '홈',
+    services: '서비스',
+    case: '사례',
+    process: '프로세스',
+    contact: '문의',
   },
 
   // Hero

@@ -1,6 +1,11 @@
 export const vi = {
   nav: {
-    menuLabel: 'Mở menu',
+    menuLabel: 'Open menu',
+    home: 'Trang chủ',
+    services: 'Dịch vụ',
+    case: 'Dự án',
+    process: 'Quy trình',
+    contact: 'Liên hệ',
   },
 
   hero: {

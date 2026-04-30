@@ -1,6 +1,11 @@
 export const ja = {
   nav: {
-    menuLabel: 'メニューを開く',
+    menuLabel: 'Open menu',
+    home: 'ホーム',
+    services: 'サービス',
+    case: '事例',
+    process: 'プロセス',
+    contact: 'お問い合わせ',
   },
 
   hero: {

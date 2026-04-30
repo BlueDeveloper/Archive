@@ -1,6 +1,11 @@
 export const pt = {
   nav: {
-    menuLabel: 'Abrir menu',
+    menuLabel: 'Open menu',
+    home: 'Início',
+    services: 'Serviços',
+    case: 'Casos',
+    process: 'Processo',
+    contact: 'Contato',
   },
 
   hero: {

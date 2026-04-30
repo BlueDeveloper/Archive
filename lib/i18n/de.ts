@@ -1,6 +1,11 @@
 export const de = {
   nav: {
-    menuLabel: 'Menü öffnen',
+    menuLabel: 'Open menu',
+    home: 'Start',
+    services: 'Leistungen',
+    case: 'Fälle',
+    process: 'Prozess',
+    contact: 'Kontakt',
   },
 
   hero: {

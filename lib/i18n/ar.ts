@@ -1,6 +1,11 @@
 export const ar = {
   nav: {
-    menuLabel: 'فتح القائمة',
+    menuLabel: 'Open menu',
+    home: 'الرئيسية',
+    services: 'الخدمات',
+    case: 'الحالات',
+    process: 'العملية',
+    contact: 'اتصل',
   },
 
   hero: {

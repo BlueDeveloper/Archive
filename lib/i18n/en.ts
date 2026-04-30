@@ -2,6 +2,11 @@ export const en = {
   // Navigation
   nav: {
     menuLabel: 'Open menu',
+    home: 'Home',
+    services: 'Services',
+    case: 'Case',
+    process: 'Process',
+    contact: 'Contact',
   },
 
   // Hero

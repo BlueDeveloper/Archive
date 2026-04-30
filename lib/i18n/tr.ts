@@ -1,6 +1,11 @@
 export const tr = {
   nav: {
-    menuLabel: 'Menüyü aç',
+    menuLabel: 'Open menu',
+    home: 'Ana Sayfa',
+    services: 'Hizmetler',
+    case: 'Vakalar',
+    process: 'Süreç',
+    contact: 'İletişim',
   },
 
   hero: {

@@ -1,6 +1,11 @@
 export const id = {
   nav: {
-    menuLabel: 'Buka menu',
+    menuLabel: 'Open menu',
+    home: 'Beranda',
+    services: 'Layanan',
+    case: 'Kasus',
+    process: 'Proses',
+    contact: 'Kontak',
   },
 
   hero: {

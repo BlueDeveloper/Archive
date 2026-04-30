@@ -1,6 +1,11 @@
 export const fr = {
   nav: {
-    menuLabel: 'Ouvrir le menu',
+    menuLabel: 'Open menu',
+    home: 'Accueil',
+    services: 'Services',
+    case: 'Cas',
+    process: 'Processus',
+    contact: 'Contact',
   },
 
   hero: {

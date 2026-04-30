@@ -1,6 +1,11 @@
 export const th = {
   nav: {
-    menuLabel: 'เปิดเมนู',
+    menuLabel: 'Open menu',
+    home: 'หน้าแรก',
+    services: 'บริการ',
+    case: 'ผลงาน',
+    process: 'กระบวนการ',
+    contact: 'ติดต่อ',
   },
 
   hero: {

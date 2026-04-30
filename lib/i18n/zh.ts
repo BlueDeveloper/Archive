@@ -1,6 +1,11 @@
 export const zh = {
   nav: {
-    menuLabel: '打开菜单',
+    menuLabel: 'Open menu',
+    home: '首页',
+    services: '服务',
+    case: '案例',
+    process: '流程',
+    contact: '联系',
   },
 
   hero: {

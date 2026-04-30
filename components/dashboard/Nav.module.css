@@ -60,6 +60,25 @@
   font-weight: 600;
 }
 
+.archiveLink {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(21, 93, 252, 0.2);
+  background: rgba(21, 93, 252, 0.05);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.archiveLink:hover {
+  background: rgba(21, 93, 252, 0.12);
+  border-color: rgba(21, 93, 252, 0.4);
+}
+
 .logoutBtn {
   padding: 8px 16px;
   border-radius: 8px;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import styles from "./ScheduleView.module.css";
 import { formatDate, daysUntil } from "@/lib/dashboard-utils";
 import type { Project, Timeline } from "@/lib/types";

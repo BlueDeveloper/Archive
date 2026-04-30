@@ -20,7 +20,7 @@ const syne = Syne({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#07070f",
+  themeColor: "#ffffff",
 };
 
 export const metadata: Metadata = {
@@ -52,6 +52,14 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     url: "https://bdarchive.site",
     siteName: "BD 개발 외주",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1024,
+        height: 1024,
+        alt: "BRP logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

@@ -47,8 +47,8 @@ export default function Navigation() {
           <Image
             src="/logo.png"
             alt="BD Logo"
-            width={50}
-            height={50}
+            width={132}
+            height={74}
             priority
             className="logo-image"
             unoptimized

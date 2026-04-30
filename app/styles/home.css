@@ -3,7 +3,8 @@
 =========================== */
 
 .home-services-section {
-  background: var(--bg-surface);
+  background:
+    linear-gradient(180deg, #f6f7fb 0%, #ffffff 100%);
 }
 
 .home-tier-grid {
@@ -14,9 +15,9 @@
 }
 
 .home-tier-card {
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.76);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: 0.65rem;
   overflow: hidden;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter: blur(4px);
@@ -25,7 +26,7 @@
 .home-tier-card:hover {
   transform: translateY(-5px);
   border-color: var(--border-strong);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 18px 44px rgba(16, 19, 26, 0.08);
 }
 
 .home-tier-card--highlight {
@@ -55,7 +56,10 @@
 =========================== */
 
 .home-case-section {
-  background: var(--background);
+  background:
+    linear-gradient(90deg, rgba(21, 93, 252, 0.07) 0%, transparent 32%),
+    linear-gradient(270deg, rgba(239, 51, 64, 0.06) 0%, transparent 30%),
+    #ffffff;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   position: relative;
@@ -66,12 +70,16 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 0% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 60%);
+  background-image:
+    linear-gradient(rgba(16,19,26,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,19,26,0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(90deg, black 0%, transparent 74%);
   pointer-events: none;
 }
 
 .home-case-inner {
-  max-width: 680px;
+  max-width: 760px;
   position: relative;
   z-index: 1;
 }

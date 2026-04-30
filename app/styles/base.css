@@ -1,30 +1,31 @@
 :root {
   /* ─── Palette (Light) ──────────────────────── */
   --background:   #ffffff;
-  --bg-surface:   #f5f6f8;
-  --bg-card:      rgba(0, 0, 0, 0.024);
-  --bg-card-hover:rgba(0, 0, 0, 0.048);
-  --foreground:   #111827;
-  --fg-muted:     rgba(17, 24, 39, 0.62);
-  --fg-subtle:    rgba(17, 24, 39, 0.38);
+  --bg-surface:   #f6f7fb;
+  --bg-card:      rgba(17, 24, 39, 0.032);
+  --bg-card-hover:rgba(17, 24, 39, 0.06);
+  --foreground:   #10131a;
+  --fg-muted:     rgba(16, 19, 26, 0.66);
+  --fg-subtle:    rgba(16, 19, 26, 0.42);
 
   /* ─── Accents ─────────────────────────────── */
-  --primary:      #2563eb;
-  --primary-dark: #1d4ed8;
-  --primary-glow: rgba(37, 99, 235, 0.12);
-  --primary-glow-lg: rgba(37, 99, 235, 0.06);
-  --accent:       #7c3aed;
-  --accent-glow:  rgba(124, 58, 237, 0.10);
+  --primary:      #155dfc;
+  --primary-dark: #0f43c8;
+  --primary-glow: rgba(21, 93, 252, 0.14);
+  --primary-glow-lg: rgba(21, 93, 252, 0.07);
+  --accent:       #ef3340;
+  --accent-dark:  #c81f2c;
+  --accent-glow:  rgba(239, 51, 64, 0.11);
 
   /* ─── Legacy aliases (keep compatibility) ─── */
   --secondary:    #ffffff;
   --card-bg:      rgba(0, 0, 0, 0.024);
-  --shadow:       rgba(37, 99, 235, 0.08);
-  --shadow-lg:    rgba(37, 99, 235, 0.14);
+  --shadow:       rgba(21, 93, 252, 0.08);
+  --shadow-lg:    rgba(21, 93, 252, 0.14);
 
   /* ─── Borders ─────────────────────────────── */
-  --border:       rgba(0, 0, 0, 0.08);
-  --border-strong:rgba(0, 0, 0, 0.15);
+  --border:       rgba(16, 19, 26, 0.09);
+  --border-strong:rgba(16, 19, 26, 0.17);
 
   /* ─── Typography ─────────────────────────── */
   --font-display: var(--font-syne), 'Segoe UI', sans-serif;
@@ -50,7 +51,8 @@ html {
 }
 
 body {
-  background: var(--background);
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f8f9fc 52%, #ffffff 100%);
   color: var(--foreground);
   font-family: var(--font-body);
   line-height: 1.65;
@@ -60,27 +62,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── Subtle grain overlay (light) ───────────── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.018;
+  opacity: 0.014;
   pointer-events: none;
   z-index: 9999;
 }
 
-/* ─── Radial glow mesh on background (light) ─── */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 90% 60% at 15% 20%, rgba(37, 99, 235, 0.04) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 85% 80%, rgba(124, 58, 237, 0.035) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(37, 99, 235, 0.02) 0%, transparent 60%);
+    linear-gradient(90deg, rgba(21, 93, 252, 0.035) 0%, transparent 26%, transparent 74%, rgba(239, 51, 64, 0.03) 100%),
+    linear-gradient(180deg, rgba(16, 19, 26, 0.018) 0%, transparent 32%);
   pointer-events: none;
   z-index: 0;
 }

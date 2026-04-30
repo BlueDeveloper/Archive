@@ -19,8 +19,8 @@ export default function Footer() {
                 <Image
                   src="/logo.png"
                   alt="Blue Dashboard Logo"
-                  width={40}
-                  height={40}
+                  width={132}
+                  height={74}
                   unoptimized
                   className="footer-logo-image"
                 />

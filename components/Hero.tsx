@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslation } from '@/lib/i18n/LanguageContext';
 
 export default function Hero() {
@@ -9,6 +10,17 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
+      <div className="hero-brand-visual" aria-hidden="true">
+        <Image
+          src="/logo.png"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 768px) 92vw, 760px"
+          className="hero-brand-image"
+          unoptimized
+        />
+      </div>
       <div className="hero-container">
         <div className="hero-content">
           <p className="hero-badge">{t.hero.badge}</p>

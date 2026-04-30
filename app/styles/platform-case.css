@@ -13,9 +13,9 @@
 }
 
 .case-feature-card {
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.78);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0.65rem;
   padding: 1.75rem;
   transition: border-color 0.25s ease, background 0.25s ease;
   backdrop-filter: blur(4px);
@@ -100,7 +100,7 @@
 }
 
 .case-tech-item {
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.78);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 1rem 1.25rem;
@@ -111,7 +111,7 @@
 }
 
 .case-tech-item:hover {
-  border-color: rgba(37, 99, 235, 0.3);
+  border-color: rgba(21, 93, 252, 0.3);
 }
 
 .case-tech-label {
@@ -142,21 +142,21 @@
 
 .case-tab-bar {
   position: sticky;
-  top: 69px;
+  top: 63px;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(20px) saturate(180%);
 }
 
 .case-tab-inner {
   display: flex;
-  gap: 0;
+  gap: 0.35rem;
   overflow-x: auto;
   scrollbar-width: none;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0.55rem 1.5rem;
 }
 
 .case-tab-inner::-webkit-scrollbar {
@@ -165,31 +165,34 @@
 
 .case-tab-btn {
   flex-shrink: 0;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
+  background: rgba(16, 19, 26, 0.035);
+  border: 1px solid transparent;
   color: var(--fg-subtle);
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 600;
-  padding: 1rem 1.25rem;
+  padding: 0.62rem 1rem;
+  border-radius: 999px;
   cursor: pointer;
   transition: color 0.2s ease, border-color 0.2s ease;
   white-space: nowrap;
 }
 
 .case-tab-btn:hover {
-  color: var(--fg-muted);
+  color: var(--foreground);
+  background: rgba(16, 19, 26, 0.055);
 }
 
 .case-tab-btn--active {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(21, 93, 252, 0.18);
 }
 
 .case-tab-content {
   min-height: 420px;
-  background: var(--background);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fc 100%);
 }
 
 .case-tab-panel {
@@ -261,7 +264,7 @@
   font-size: 0.9375rem;
   color: var(--fg-muted);
   line-height: 1.75;
-  max-width: 560px;
+  max-width: 680px;
 }
 
 .case-sub-title {
@@ -319,9 +322,9 @@
 }
 
 .case-other-card {
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.78);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0.65rem;
   padding: 1.75rem;
   text-decoration: none;
   display: flex;

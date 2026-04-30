@@ -15,7 +15,7 @@
 .navigation {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
   backdrop-filter: blur(24px) saturate(180%);
@@ -26,7 +26,7 @@
 .nav-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0.875rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -49,15 +49,15 @@
 }
 
 .nav-logo:hover {
-  transform: scale(1.04);
-  filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.5));
+  transform: translateY(-1px);
+  filter: drop-shadow(0 10px 22px rgba(16, 19, 26, 0.12));
 }
 
 .logo-image {
-  width: auto;
+  width: 116px;
   height: 48px;
   object-fit: contain;
-  background: transparent !important;
+  border-radius: 0.45rem;
 }
 
 /* Hamburger */
@@ -124,19 +124,19 @@
   font-size: 0.9rem;
   letter-spacing: 0.01em;
   transition: color 0.2s ease, background 0.2s ease;
-  padding: 0.45rem 0.875rem;
+  padding: 0.5rem 0.9rem;
   border-radius: var(--radius-sm);
   display: block;
 }
 
 .nav-link:hover {
   color: var(--foreground);
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(16, 19, 26, 0.045);
 }
 
 .nav-link--active {
   color: var(--primary) !important;
-  background: rgba(37, 99, 235, 0.08) !important;
+  background: rgba(21, 93, 252, 0.08) !important;
 }
 
 /* Right side */
@@ -158,7 +158,7 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem 0.8rem;
-  background: rgba(0, 0, 0, 0.035);
+  background: rgba(16, 19, 26, 0.035);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--fg-muted);
@@ -172,7 +172,7 @@
 .lang-dropdown__trigger:hover {
   border-color: var(--primary);
   color: var(--primary);
-  background: rgba(37, 99, 235, 0.06);
+  background: rgba(21, 93, 252, 0.06);
 }
 
 .lang-dropdown__flag   { font-size: 1rem; line-height: 1; }
@@ -257,6 +257,7 @@
 /* ─── Responsive ──────────────────── */
 @media (max-width: 768px) {
   .logo-image {
+    width: 104px;
     height: 42px;
   }
 
@@ -321,6 +322,7 @@
   }
 
   .logo-image {
+    width: 92px;
     height: 38px;
   }
 

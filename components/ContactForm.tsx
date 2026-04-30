@@ -60,7 +60,7 @@ export default function ContactForm() {
       } else {
         setError(t.form.errorMessage);
       }
-    } catch (err) {
+    } catch {
       setError(t.form.errorNetworkMessage);
     } finally {
       setIsSubmitting(false);

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styles from "./Calendar.module.css";
-import { daysUntil, deadlineColor, formatDate } from "@/lib/dashboard-utils";
+import { daysUntil, formatDate } from "@/lib/dashboard-utils";
 import type { Project, Timeline } from "@/lib/types";
 
 type ProjectWithTimelines = Project & { timelines: Timeline[] };

@@ -66,6 +66,14 @@ export const metadata: Metadata = {
     title: "BD - 프론트엔드 · 백엔드 · 인프라 통합 개발",
     description: "단순 UI 작업자가 아닌 운영 가능한 시스템을 설계·구현하는 개발자",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

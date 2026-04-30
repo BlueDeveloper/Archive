@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -10,6 +10,16 @@ import { useTranslation } from '@/lib/i18n/LanguageContext';
 export default function PlatformCasePage() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('foodtruck');
+  const detailRef = useRef<HTMLDivElement>(null);
+
+  const handleTabClick = useCallback((id: string) => {
+    setActiveTab(id);
+    if (window.innerWidth <= 768 && detailRef.current) {
+      setTimeout(() => {
+        detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  }, []);
   const [expandedTiers, setExpandedTiers] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
     t.platformCase.tierGroups.forEach((group) => {
@@ -87,7 +97,7 @@ export default function PlatformCasePage() {
                         <li key={item.id}>
                           <button
                             className={`case-sidebar-item ${activeTab === item.id ? 'case-sidebar-item--active' : ''}`}
-                            onClick={() => setActiveTab(item.id)}
+                            onClick={() => handleTabClick(item.id)}
                           >
                             {item.label}
                           </button>
@@ -100,7 +110,7 @@ export default function PlatformCasePage() {
             </aside>
 
             {/* Right Detail */}
-            <div className="case-detail">
+            <div className="case-detail" ref={detailRef}>
 
               {/* 푸드트럭 플랫폼 (Featured) */}
               {activeTab === 'foodtruck' && (

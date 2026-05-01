@@ -5,6 +5,11 @@ export const config = {
 };
 
 export function middleware(req: NextRequest) {
+  // 로컬 개발 시 인증 우회
+  if (process.env.NODE_ENV === "development") {
+    return NextResponse.next();
+  }
+
   const cookie = req.cookies.get("auth");
   const pathname = req.nextUrl.pathname.replace(/\/$/, "");
   const isLoginPage = pathname === "/dashboard/login";

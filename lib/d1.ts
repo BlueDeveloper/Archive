@@ -9,6 +9,7 @@ export function db() {
 
 /** API 라우트에서 인증 쿠키 확인 */
 export function requireAuth(req: NextRequest): NextResponse | null {
+  if (process.env.NODE_ENV === "development") return null;
   const cookie = req.cookies.get("auth");
   if (cookie?.value !== "authenticated") {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

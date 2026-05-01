@@ -28,13 +28,13 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <Link href="/dashboard" className={styles.logo}>
-        <Image
-          src="/BRP_logo_final.webp"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brp_logo_animated.svg"
           alt="BRP 로고"
           width={160}
-          height={93}
+          height={64}
           className={styles.logoImg}
-          unoptimized
         />
       </Link>
       <div className={styles.menu}>

@@ -44,14 +44,12 @@ export default function Navigation() {
     <nav className="navigation">
       <div className="nav-container">
         <Link href="/" className="nav-logo" onClick={() => setIsMenuOpen(false)}>
-          <Image
-            src="/logo.png"
-            alt="BD Logo"
-            width={132}
-            height={74}
-            priority
+          <object
+            type="image/svg+xml"
+            data="/brp_logo_animated.svg"
+            aria-label="BRP Logo"
+            style={{ width: 132, height: 53, pointerEvents: 'none' }}
             className="logo-image"
-            unoptimized
           />
         </Link>
 

@@ -28,12 +28,11 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <Link href="/dashboard" className={styles.logo}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/brp_logo_animated.svg"
-          alt="BRP 로고"
-          width={160}
-          height={64}
+        <object
+          type="image/svg+xml"
+          data="/brp_logo_animated.svg"
+          aria-label="BRP 로고"
+          style={{ width: 160, height: 64, pointerEvents: 'none' }}
           className={styles.logoImg}
         />
       </Link>

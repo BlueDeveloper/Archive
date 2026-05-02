@@ -1,23 +1,16 @@
 import Nav from "@/components/dashboard/Nav";
-import PwaRegister from "@/components/dashboard/PwaRegister";
 import footerStyles from "@/components/dashboard/Footer.module.css";
 import styles from "./layout.module.css";
 import "@/app/styles/dashboard-globals.css";
 
 export const metadata = {
   title: "BRP 대시보드",
-  manifest: "/manifest.json",
   icons: {
     icon: [
       { url: "/favicon.ico?v=2", sizes: "any" },
       { url: "/favicon-32.png?v=2", sizes: "32x32", type: "image/png" },
     ],
     apple: "/apple-touch-icon.png?v=2",
-  },
-  appleWebApp: {
-    capable: true,
-    title: "BRP 대시보드",
-    statusBarStyle: "black-translucent",
   },
 };
 
@@ -28,7 +21,6 @@ export default function DashboardLayout({
 }) {
   return (
     <div className={styles.dashboardRoot}>
-      <PwaRegister />
       <div className={styles.dashboardInner}>
         <Nav />
         {children}

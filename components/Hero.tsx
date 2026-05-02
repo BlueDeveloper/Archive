@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="hero-brand-visual" aria-hidden="true">
         <Image
           src="/logo.png"
-          alt=""
+          alt="BRP 로고 - 풀스택 개발 외주 서비스"
           fill
           priority
           sizes="(max-width: 768px) 92vw, 760px"

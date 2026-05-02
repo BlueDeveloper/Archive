@@ -44,6 +44,16 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* CTA 배너 - 서비스 섹션 아래 */}
+        <div className="inline-cta">
+          <div className="section-inner inline-cta-inner">
+            <p className="inline-cta-text">프로젝트 견적이 궁금하시면 부담 없이 문의해 주세요</p>
+            <Link href="/contact" className="cta-button primary">
+              무료 상담 신청
+            </Link>
+          </div>
+        </div>
+
         {/* 대표 사례 1줄 강조 */}
         <section className="section home-case-section">
           <div className="section-inner home-case-inner">
@@ -64,6 +74,16 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
+
+        {/* CTA 배너 - 사례 섹션 아래 */}
+        <div className="inline-cta">
+          <div className="section-inner inline-cta-inner">
+            <p className="inline-cta-text">프로젝트 견적이 궁금하시면 부담 없이 문의해 주세요</p>
+            <Link href="/contact" className="cta-button primary">
+              무료 상담 신청
+            </Link>
+          </div>
+        </div>
 
         {/* Mid CTA */}
         <div className="mid-cta">

@@ -16,7 +16,7 @@ export const posts: BlogPost[] = [
     tags: ["Next.js", "Cloudflare", "배포"],
     content: `## 왜 Cloudflare Pages인가
 
-Vercel은 편리하지만 무료 티어 제한이 빡빡합니다. Cloudflare Pages는 무제한 대���폭, 빠른 글로벌 CDN, 그리고 D1/R2/KV 같은 서버리스 스토리지와의 자연스러운 통합을 제공합니다.
+Vercel은 편리하지만 무료 티어 제한이 빡빡합니다. Cloudflare Pages는 무제한 대역폭, 빠른 글로벌 CDN, 그리고 D1/R2/KV 같은 서버리스 스토리지와의 자연스러운 통합을 제공합니다.
 
 ## 핵심 설정
 
@@ -69,7 +69,7 @@ Oracle Cloud Infrastructure는 ARM 기반 Ampere A1 인스턴스를 월 3,000 OC
 
 ## 배포 파이프라인
 
-Jenkins를 같은 인스턴���에 설치하고, GitHub Webhook으로 push 이벤트를 수신합니다.
+Jenkins를 같은 인스턴스에 설치하고, GitHub Webhook으로 push 이벤트를 수신합니다.
 
 \`\`\`
 GitHub Push → Jenkins Build → JAR 교체 → systemd restart
@@ -165,7 +165,7 @@ npx wrangler d1 migrations apply DB_NAME
     tags: ["CI/CD", "GitHub Actions", "자동화"],
     content: `## CI/CD가 필요한 이유
 
-1인 개발이라도 수동 배포는 실수를 만듭니다. "빌드 안 됨 → 롤백 �� 다시 수정" 사이클을 경험하면 자동화의 가치를 체감합니다.
+1인 개발이라도 수동 배포는 실수를 만듭니다. "빌드 안 됨 → 롤백 → 다시 수정" 사이클을 경험하면 자동화의 가치를 체감합니다.
 
 ## 기본 워크플로우 구조
 
@@ -265,7 +265,7 @@ android {
 \`\`\`
 
 ### 2. Metro 번들러 충돌
-여러 RN 프로젝트를 동시에 개발할 때 포트가 충돌합���다. \`package.json\`에서 포트를 고정하세요:
+여러 RN 프로젝트를 동시에 개발할 때 포트가 충돌합니다. \`package.json\`에서 포트를 고정하세요:
 \`\`\`json
 "scripts": {
   "start": "react-native start --port 8081"
@@ -279,7 +279,7 @@ android {
 
 1. Google Play Console에서 앱 등록
 2. 내부 테스트 트랙에 AAB 업로드
-3. 테스트 완료 후 프로덕션 트랙���로 승격
+3. 테스트 완료 후 프로덕션 트랙으로 승격
 4. 스토어 등록정보 (스크린샷, 설명) 작성
 
 ## CI 자동화 (GitHub Actions)

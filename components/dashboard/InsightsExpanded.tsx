@@ -86,13 +86,13 @@ export default function InsightsExpanded({ projects, settlements, expenses, work
     {
       label: "평균 객단가",
       value: `${formatMoney(Math.round(avgDealSize))}원`,
-      description: "프로���트 1건의 평균 계약 금액. 높을수록 효율적인 영업을 하�� 있습니다.",
+      description: "프로젝트 1건의 평균 계약 금액. 높을수록 효율적인 영업을 하고 있습니다.",
       color: "neutral",
     },
     {
       label: "CAC 대비 매출",
       value: `${cacRatio.toFixed(1)}배`,
-      description: "고객 획득에 쓴 비용 대비 매출 비율. 3배 이상이면 건전한 구조입니���.",
+      description: "고객 획득에 쓴 비용 대비 매출 비율. 3배 이상이면 건전한 구조입니다.",
       color: cacRatio >= 3 ? "good" : "warn",
     },
     {
@@ -110,13 +110,13 @@ export default function InsightsExpanded({ projects, settlements, expenses, work
     {
       label: "실질 시급",
       value: `${formatMoney(effectiveHourlyRate)}원`,
-      description: `총 ${totalHours.toFixed(1)}시간 투입 기준. 확정 순수익을 총 작업시간으로 나눈 값입���다.`,
+      description: `총 ${totalHours.toFixed(1)}시간 투입 기준. 확정 순수익을 총 작업시간으로 나눈 값입니다.`,
       color: effectiveHourlyRate >= 30000 ? "good" : "warn",
     },
     {
       label: "세금 적립 권장액",
       value: `${formatMoney(taxReserve)}원`,
-      description: "확정 매출의 10%를 종합소득세 대비 적립 권�� 금액으로 산정합니다.",
+      description: "확정 매출의 10%를 종합소득세 대비 적립 권장 금액으로 산정합니다.",
       color: "warn",
     },
   ];
@@ -164,14 +164,14 @@ export default function InsightsExpanded({ projects, settlements, expenses, work
   levers.push({
     icon: "RPT",
     text: `회전율 올리기 (현재 월 ${(totalProjects / months).toFixed(1)}건)`,
-    detail: "월 5건 목표. 소규모 반��� 프로젝트로 파이프라인을 채우세요.",
+    detail: "월 5건 목표. 소규모 반복 프로젝트로 파이프라인을 채우세요.",
   });
 
   if (cacRatio < 10) {
     levers.push({
       icon: "CAC",
       text: `CAC 효율 개선 (건당 ${formatMoney(Math.round(cac))}원)`,
-      detail: "��피트/소개 비중을 높이면 획득 비용 없이 매출이 증가합니다.",
+      detail: "리피트/소개 비중을 높이면 획득 비용 없이 매출이 증가합니다.",
     });
   }
 

@@ -161,7 +161,7 @@ export default function ProjectForm({ project }: Props) {
       }
 
       setSuccess(isEdit ? "수정 완료" : "등록 완료");
-      setTimeout(() => router.push("/dashboard"), 800);
+      setTimeout(() => router.push("/dashboard/projects"), 800);
     } catch (err) {
       setError(err instanceof Error ? err.message : "오류가 발생했습니다.");
     } finally {
@@ -173,8 +173,8 @@ export default function ProjectForm({ project }: Props) {
     <div className={styles.wrap}>
       <div className={styles.header}>
         <h1 className={styles.title}>{isEdit ? "프로젝트 수정" : "프로젝트 등록"}</h1>
-        <Link href="/dashboard" className={styles.backLink}>
-          ← 대시보드
+        <Link href="/dashboard/projects" className={styles.backLink}>
+          ← 프로젝트목록
         </Link>
       </div>
 

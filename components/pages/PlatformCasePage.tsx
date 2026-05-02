@@ -45,6 +45,7 @@ export default function PlatformCasePage() {
     telequote: 'https://hlmobile.pages.dev',
     mockup: null,
     saveridge: null,
+    bluepad: null,
     dreamway: 'https://dreamway.bdarchive.site',
   };
 

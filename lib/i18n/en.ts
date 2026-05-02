@@ -208,6 +208,7 @@ tierGroups: [
         items: [
           { id: 'foodtruck', label: 'Food Truck' },
           { id: 'dreamway', label: 'DreamWay (App)' },
+          { id: 'bluepad', label: 'BluePad (Desktop)' },
         ],
       },
       {
@@ -233,6 +234,7 @@ tierGroups: [
     tabs: [
       { id: 'foodtruck', label: 'Food Truck' },
       { id: 'dreamway', label: 'DreamWay (App)' },
+      { id: 'bluepad', label: 'BluePad (Desktop)' },
       { id: 'compass', label: 'GPS Compass' },
       { id: 'telequote', label: 'Telecom Forms' },
       { id: 'mockup', label: 'AI Data Analysis' },
@@ -346,6 +348,14 @@ tierGroups: [
         stack: ['Python', 'Flask', 'PyInstaller', 'pywebview'],
         deploy: 'Desktop app (.exe)',
         urlLabel: 'Delivered',
+      },
+      bluepad: {
+        tier: 'Advanced',
+        desc: 'Desktop markdown editor built as a Typora alternative. WYSIWYG rendering, file tree, theme system, math/diagram support, and more.',
+        features: ['WYSIWYG markdown rendering', 'File tree + outline sidebar', 'Theme system (4 themes)', 'Math (KaTeX) + Diagrams (Mermaid)', 'Code highlighting (Prism)', 'Find/Replace + Focus mode', 'HTML export', 'Auto-save'],
+        stack: ['Tauri v2', 'React', 'TypeScript', 'Milkdown (ProseMirror)', 'Rust'],
+        deploy: 'Desktop app (Windows .exe)',
+        urlLabel: 'Product (Coming soon)',
       },
       dreamway: {
         tier: 'Advanced',

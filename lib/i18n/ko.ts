@@ -208,6 +208,7 @@ export const ko = {
         items: [
           { id: 'foodtruck', label: '푸드트럭 플랫폼' },
           { id: 'dreamway', label: '꿈지럭 (모바일 앱)' },
+          { id: 'bluepad', label: 'BluePad (데스크탑 앱)' },
         ],
       },
       {
@@ -233,6 +234,7 @@ export const ko = {
     tabs: [
       { id: 'foodtruck', label: '푸드트럭 플랫폼' },
       { id: 'dreamway', label: '꿈지럭 (모바일 앱)' },
+      { id: 'bluepad', label: 'BluePad (데스크탑 앱)' },
       { id: 'compass', label: 'GPS 나침반' },
       { id: 'telequote', label: '통신사 견적서' },
       { id: 'mockup', label: 'AI 데이터 분석 데모' },
@@ -390,6 +392,23 @@ export const ko = {
         stack: ['Python', 'Flask', 'PyInstaller', 'pywebview'],
         deploy: '데스크탑 앱 (.exe 납품)',
         urlLabel: '납품 완료',
+      },
+      bluepad: {
+        tier: 'Advanced',
+        desc: 'Typora 대체를 목표로 개발한 데스크탑 마크다운 편집기. WYSIWYG 실시간 렌더링, 파일 트리, 테마 시스템, 수식·다이어그램 지원 등 상용 에디터 수준의 기능을 구현했습니다.',
+        features: [
+          'WYSIWYG 마크다운 실시간 렌더링',
+          '파일 트리 + 개요 사이드바',
+          '테마 시스템 (Classic / BRP Blue / Red / Polarity)',
+          '수식 (KaTeX) · 다이어그램 (Mermaid) 지원',
+          '코드 하이라이팅 (Prism)',
+          '찾기/바꾸기 + 집중 모드',
+          'HTML 내보내기',
+          '자동 저장 (30초 간격)',
+        ],
+        stack: ['Tauri v2', 'React', 'TypeScript', 'Milkdown (ProseMirror)', 'Rust'],
+        deploy: '데스크탑 앱 (Windows .exe)',
+        urlLabel: '자체 제품 (판매 예정)',
       },
       dreamway: {
         tier: 'Advanced',

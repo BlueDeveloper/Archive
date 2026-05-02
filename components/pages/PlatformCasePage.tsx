@@ -43,7 +43,7 @@ export default function PlatformCasePage() {
     ],
     compass: 'https://mpanavigation.com',
     telequote: 'https://hlmobile.pages.dev',
-    mockup: null,
+    mockup: 'https://mockup-2yk.pages.dev',
     saveridge: null,
     bluepad: 'https://www.bluepad.work',
     dreamway: 'https://dreamway.bdarchive.site',

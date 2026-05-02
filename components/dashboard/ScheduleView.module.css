@@ -363,6 +363,119 @@
   border-radius: 4px;
 }
 
+/* ══════ SCHEDULE HEADER & FORM ══════ */
+.scheduleHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.addTimelineBtn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: rgba(79, 95, 255, 0.08);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.addTimelineBtn:hover {
+  background: rgba(79, 95, 255, 0.16);
+}
+
+.tlForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.tlSelect, .tlInput {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+}
+.tlSelect { min-width: 180px; }
+.tlInput { min-width: 120px; }
+
+.tlColorPicker {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.tlColorBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.tlColorBtn:hover { transform: scale(1.2); }
+.tlColorActive { border-color: var(--text); transform: scale(1.2); }
+
+.tlActions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.tlSaveBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tlSaveBtn:disabled { opacity: 0.5; }
+.tlSaveBtn:hover:not(:disabled) { filter: brightness(1.1); }
+
+.tlCancelBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--dim);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Event card actions */
+.hActions {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+
+.hEditBtn, .hDeleteBtn {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.hEditBtn { color: var(--accent); }
+.hEditBtn:hover { background: rgba(79, 95, 255, 0.1); border-color: var(--accent); }
+.hDeleteBtn { color: var(--red); }
+.hDeleteBtn:hover { background: rgba(239, 68, 68, 0.1); border-color: var(--red); }
+
 /* ══════ RESPONSIVE ══════ */
 @media (max-width: 600px) {
   .tabs { width: 100%; }

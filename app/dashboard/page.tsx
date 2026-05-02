@@ -51,7 +51,7 @@ export default async function DashboardHome() {
 
       <div className={styles.section}>
         <span className={`${styles.dot} ${styles.dotAccent}`} />
-        비즈니스 인사이트
+        비즈니스 인사이트 요약
       </div>
       <Insights
         projects={projects}

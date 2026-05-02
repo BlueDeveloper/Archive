@@ -30,9 +30,13 @@
 ## 라우트 구조
 
 - `/` ~ `/contact` : 포트폴리오 공개 페이지 (수정 금지)
+- `/blog` : 기술 블로그 (정적 글 5편)
+- `/blog/[slug]` : 블로그 개별 글
 - `/dashboard/*` : 비공개 대시보드 (인증 필요, middleware.ts로 보호)
-  - `/dashboard` : 메인 대시보드
-  - `/dashboard/schedule` : 일정 D-Day
+  - `/dashboard` : 메인 대시보드 (정산현황 + 인사이트 요약 + 프로젝���)
+  - `/dashboard/insights` : 비즈니스 인사이트 (대형 KPI + 설명)
+  - `/dashboard/settlement` : 정산현황
+  - `/dashboard/schedule` : 일정 (마일스톤 추가/수정/삭제)
   - `/dashboard/work` : 작업시간 분석
   - `/dashboard/login` : 로그인
 

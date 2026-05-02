@@ -1,20 +1,23 @@
 # Dependencies
 node_modules/
 
-# Next.js
+# Next.js / Build
 .next/
 out/
+*.tsbuildinfo
+
+# Cloudflare
 .vercel/
 .wrangler/
-.codex-screens/
 
 # IDE
 .idea/
 .vscode/
 *.iml
 
-# Claude
+# Claude / Codex
 .claude/
+.codex-screens/
 
 # Environment
 .env
@@ -22,14 +25,10 @@ out/
 .env.production
 .env.*.local
 
+# Data
+d1-backup.sql
+
 # Misc
 *.log
 .DS_Store
 Thumbs.db
-next-env.d.ts
-.idea/
-.codex-screens/
-out/
-*.iml
-*.tsbuildinfo
-d1-backup.sql

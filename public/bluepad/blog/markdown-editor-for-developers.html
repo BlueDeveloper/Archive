@@ -113,6 +113,11 @@
       .comparison-table th, .comparison-table td { padding: 8px 6px; }
       .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
     }
+  
+    .lang-switch { display: inline-flex; gap: 8px; font-size: 13px; }
+    .lang-switch a { color: var(--text-on-dark-muted); text-decoration: none; transition: color 0.2s; }
+    .lang-switch a:hover, .lang-switch a.active { color: #fff; }
+    .lang-switch span { color: var(--text-on-dark-muted); opacity: 0.4; }
   </style>
 </head>
 <body>
@@ -276,6 +281,9 @@
       <div class="footer-inner">
         <div class="footer-left">&copy; 2026 <strong>BRP</strong>. Built with Tauri.</div>
         <ul class="footer-links">
+          <li><a href="/bluepad/legal/privacy">Privacy Policy</a></li>
+          <li><a href="/bluepad/legal/eula">EULA</a></li>
+          <li><a href="/bluepad/legal/opensource">Open Source</a></li>
           <li><a href="https://github.com/BlueDeveloper/BluePad" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="https://bluepad-download.blueehdwp.workers.dev/download/BluePad_1.0.0_x64.msi" target="_blank" rel="noopener">Releases</a></li>
           <li><a href="https://github.com/BlueDeveloper/BluePad/issues" target="_blank" rel="noopener">Report a Bug</a></li>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BluePad 블로그 — 마크다운 팁 & 가이드</title>
-  <meta name="description" content="마크다운 작성자를 위한 팁, 가이드, 비교 리뷰. 최고의 에디터, 글쓰기 기법, 생산성 도구에 대해 알아보세요.">
+  <meta name="description" content="마크다운 작가를 위한 팁, 가이드, 에디터 비교. 최고의 에디터, 글쓰기 기법, 생산성 도구에 대해 알아보세요.">
   <link rel="canonical" href="https://bdarchive.site/bluepad/ko/blog/">
   <link rel="alternate" hreflang="en" href="https://bdarchive.site/bluepad/blog/">
   <link rel="alternate" hreflang="ko" href="https://bdarchive.site/bluepad/ko/blog/">
@@ -13,47 +13,235 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="BluePad 블로그 — 마크다운 팁 & 가이드">
-  <meta property="og:description" content="마크다운 작성자를 위한 팁, 가이드, 비교 리뷰.">
-  <meta property="og:url" content="https://bdarchive.site/bluepad/ko/blog/">
+  <meta property="og:description" content="마크다운 작가를 위한 팁, 가이드, 에디터 비교.">
+  <meta property="og:url" content="https://bdarchive.site/bluepad/blog/">
   <meta property="og:site_name" content="BluePad">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --blue: #155dfc; --blue-light: #3b7dff; --bg-dark: #0b0f1a; --bg-dark-2: #111827; --bg-light: #f8f9fc; --bg-white: #ffffff; --text-primary: #0f172a; --text-secondary: #475569; --text-muted: #94a3b8; --text-on-dark: #e2e8f0; --text-on-dark-muted: #94a3b8; --border: #e2e8f0; --border-dark: #1e293b; --radius: 10px; --radius-lg: 16px; --shadow-md: 0 4px 16px rgba(0,0,0,0.08); }
+
+    :root {
+      --blue: #155dfc;
+      --blue-light: #3b7dff;
+      --blue-dark: #0e47c7;
+      --bg-dark: #0b0f1a;
+      --bg-dark-2: #111827;
+      --bg-light: #f8f9fc;
+      --bg-white: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --text-on-dark: #e2e8f0;
+      --text-on-dark-muted: #94a3b8;
+      --border: #e2e8f0;
+      --border-dark: #1e293b;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color: var(--text-primary); line-height: 1.6; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
     .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-    .nav-bar { background: var(--bg-dark); border-bottom: 1px solid var(--border-dark); }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
-    .nav-logo-icon { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; font-weight: 800; }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a { color: var(--text-on-dark-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+
+    /* Nav */
+    .nav-bar {
+      background: var(--bg-dark);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
     .nav-links a:hover { color: #fff; }
-    .nav-cta { background: var(--blue) !important; color: #fff !important; padding: 8px 18px; border-radius: 8px; font-size: 14px; transition: background 0.2s !important; }
+
+    .nav-cta {
+      background: var(--blue) !important;
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: background 0.2s !important;
+    }
+
     .nav-cta:hover { background: var(--blue-light) !important; }
-    .lang-switcher { font-size: 12px; color: var(--text-on-dark-muted); }
-    .lang-switcher a { color: var(--text-on-dark-muted); text-decoration: none; }
-    .lang-switcher a:hover, .lang-switcher a.active { color: #fff; }
-    .page-header { background: var(--bg-dark); padding: 60px 0 80px; text-align: center; }
-    .page-header h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 12px; }
-    .page-header p { font-size: 18px; color: var(--text-on-dark-muted); }
-    .blog-section { padding: 60px 0 100px; background: var(--bg-light); }
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
-    .blog-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; text-decoration: none; color: inherit; transition: all 0.25s; display: flex; flex-direction: column; }
-    .blog-card:hover { border-color: rgba(21,93,252,0.25); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .blog-card-tag { display: inline-block; font-size: 12px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
-    .blog-card h2 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.4; }
-    .blog-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; flex: 1; }
-    .blog-card-meta { margin-top: 16px; font-size: 13px; color: var(--text-muted); }
-    .footer { background: var(--bg-dark); padding: 40px 0; border-top: 1px solid var(--border-dark); }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-    .footer-left { font-size: 14px; color: var(--text-on-dark-muted); }
+
+    /* Page Header */
+    .page-header {
+      background: var(--bg-dark);
+      padding: 60px 0 80px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .page-header p {
+      font-size: 18px;
+      color: var(--text-on-dark-muted);
+    }
+
+    /* Blog Grid */
+    .blog-section {
+      padding: 60px 0 100px;
+      background: var(--bg-light);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .blog-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      border-color: rgba(21,93,252,0.25);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .blog-card-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .blog-card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .blog-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .blog-card-meta {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-dark);
+      padding: 40px 0;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      font-size: 14px;
+      color: var(--text-on-dark-muted);
+    }
+
     .footer-left strong { color: var(--text-on-dark); }
-    .footer-links { display: flex; gap: 24px; list-style: none; }
-    .footer-links a { color: var(--text-on-dark-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
     .footer-links a:hover { color: #fff; }
-    @media (max-width: 768px) { .nav-links { display: none; } .blog-grid { grid-template-columns: 1fr; } .footer-inner { flex-direction: column; gap: 20px; text-align: center; } }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+    }
+  
+    .lang-switch { display: inline-flex; gap: 8px; font-size: 13px; }
+    .lang-switch a { color: var(--text-on-dark-muted); text-decoration: none; transition: color 0.2s; }
+    .lang-switch a:hover, .lang-switch a.active { color: #fff; }
+    .lang-switch span { color: var(--text-on-dark-muted); opacity: 0.4; }
   </style>
 </head>
 <body>
@@ -61,13 +249,17 @@
   <header class="nav-bar">
     <div class="container">
       <nav class="nav">
-        <a href="/bluepad/ko/" class="nav-logo"><div class="nav-logo-icon">B</div> BluePad</a>
+        <a href="/bluepad/ko/" class="nav-logo">
+          <div class="nav-logo-icon">B</div>
+          BluePad
+        </a>
         <ul class="nav-links">
           <li><a href="/bluepad/ko/#features">기능</a></li>
           <li><a href="/bluepad/ko/#pricing">가격</a></li>
           <li><a href="/bluepad/ko/blog/">블로그</a></li>
+          <li><a href="https://github.com/BlueDeveloper/BluePad" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="https://bluepad-download.blueehdwp.workers.dev/download/BluePad_1.0.0_x64.msi" target="_blank" rel="noopener" class="nav-cta">다운로드</a></li>
-          <li class="lang-switcher"><a href="/bluepad/blog/">EN</a> | <a href="/bluepad/ko/blog/" class="active">KO</a> | <a href="/bluepad/ja/blog/">JA</a></li>
+          <li style="font-size:12px;color:var(--text-on-dark-muted)"><a href="/bluepad/ko/blog/" style="color:#fff;text-decoration:none">EN</a> | <a href="/bluepad/ko/blog/" style="color:var(--text-on-dark-muted);text-decoration:none">KO</a> | <a href="/bluepad/ja/blog/" style="color:var(--text-on-dark-muted);text-decoration:none">JA</a></li>
         </ul>
       </nav>
     </div>
@@ -85,38 +277,38 @@
       <div class="blog-grid">
         <a href="/bluepad/ko/blog/best-markdown-editors-2026.html" class="blog-card">
           <span class="blog-card-tag">비교</span>
-          <h2>2026년 최고의 마크다운 에디터 5선 — 어떤 것이 나에게 맞을까?</h2>
-          <p>BluePad, Typora, Obsidian, Mark Text, VS Code를 비교하여 완벽한 마크다운 에디터를 찾아보세요.</p>
+          <h2>2026년 최고의 마크다운 에디터 5선 — 당신에게 맞는 것은?</h2>
+          <p>BluePad, Typora, Obsidian, Mark Text, VS Code를 비교해 완벽한 마크다운 에디터를 찾아보세요.</p>
           <div class="blog-card-meta">2026년 5월 2일 &middot; 5분 읽기</div>
         </a>
         <a href="/bluepad/ko/blog/typora-free-alternative.html" class="blog-card">
           <span class="blog-card-tag">대안</span>
-          <h2>무료 Typora 대안을 찾고 계신가요? BluePad를 써보세요</h2>
-          <p>Typora가 유료($14.99)로 전환되었습니다. BluePad가 무료로 유사한 위지윅 경험을 제공하는 이유를 알아보세요.</p>
+          <h2>무료 Typora 대안을 찾고 계신가요? BluePad를 사용해보세요</h2>
+          <p>Typora가 $14.99로 유료 전환되었습니다. BluePad가 유사한 위지윅 경험을 무료로 제공하는 이유를 알아보세요.</p>
           <div class="blog-card-meta">2026년 5월 2일 &middot; 4분 읽기</div>
         </a>
         <a href="/bluepad/ko/blog/markdown-writing-tips.html" class="blog-card">
           <span class="blog-card-tag">가이드</span>
           <h2>모든 작가가 알아야 할 마크다운 팁 10가지</h2>
-          <p>표, 코드 블록, 체크리스트, 수식 등 실용적인 마크다운 팁을 마스터하세요.</p>
+          <p>표, 코드 블록, 체크리스트, 수식 등 실용적인 마크다운 팁을 익혀보세요.</p>
           <div class="blog-card-meta">2026년 5월 2일 &middot; 5분 읽기</div>
         </a>
         <a href="/bluepad/ko/blog/lightweight-note-app-windows.html" class="blog-card">
           <span class="blog-card-tag">생산성</span>
           <h2>2026년 Windows용 최고의 경량 메모 앱</h2>
-          <p>Notion, Evernote 같은 무거운 앱과 기본 텍스트 에디터 사이의 이상적인 중간 지점을 찾아보세요.</p>
+          <p>Notion, Evernote 같은 무거운 앱과 경량 에디터를 비교합니다. 이상적인 중간 지점을 찾아보세요.</p>
           <div class="blog-card-meta">2026년 5월 2일 &middot; 4분 읽기</div>
         </a>
         <a href="/bluepad/ko/blog/focus-mode-distraction-free-writing.html" class="blog-card">
           <span class="blog-card-tag">글쓰기</span>
-          <h2>집중 모드로 더 좋은 글쓰기 — 방해 없는 글쓰기 가이드</h2>
-          <p>집중 모드가 있는 방해 없는 글쓰기 앱의 장점과 BluePad의 집중 모드가 생산성을 높이는 방법을 알아보세요.</p>
+          <h2>집중 모드가 글쓰기를 향상시키는 방법 — 방해 없는 글쓰기 가이드</h2>
+          <p>방해 없는 글쓰기의 장점과 BluePad 집중 모드가 생산성을 높이는 방법을 알아보세요.</p>
           <div class="blog-card-meta">2026년 5월 2일 &middot; 4분 읽기</div>
         </a>
         <a href="/bluepad/ko/blog/markdown-editor-for-developers.html" class="blog-card">
           <span class="blog-card-tag">개발자</span>
-          <h2>모든 개발자에게 전용 마크다운 에디터가 필요한 이유</h2>
-          <p>VS Code가 순수 글쓰기에 적합하지 않은 이유, 전용 마크다운 에디터가 README, 문서, 블로그 워크플로우를 개선하는 방법.</p>
+          <h2>개발자에게 전용 마크다운 에디터가 필요한 이유</h2>
+          <p>VS Code가 순수 글쓰기에 적합하지 않은 이유와, 전용 에디터가 README, 문서, 블로그 워크플로를 개선하는 방법.</p>
           <div class="blog-card-meta">2026년 5월 2일 &middot; 5분 읽기</div>
         </a>
       </div>

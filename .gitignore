@@ -27,3 +27,9 @@ out/
 .DS_Store
 Thumbs.db
 next-env.d.ts
+.idea/
+.codex-screens/
+out/
+*.iml
+*.tsbuildinfo
+d1-backup.sql

@@ -4,4 +4,3 @@ Disallow: /dashboard
 Disallow: /api
 
 Sitemap: https://bdarchive.site/sitemap.xml
-Sitemap: https://bdarchive.site/bluepad/sitemap.xml

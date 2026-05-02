@@ -16,8 +16,10 @@ interface Props {
 export default function ProjectListView({ projects }: Props) {
   const [showForm, setShowForm] = useState(false);
 
-  const inProgress = projects.filter((p) => p.status === "진행중");
-  const done = projects.filter((p) => p.status === "완료" || p.status === "AS");
+  const saas = projects.filter((p) => p.type === "SAAS");
+  const nonSaas = projects.filter((p) => p.type !== "SAAS");
+  const inProgress = nonSaas.filter((p) => p.status === "진행중");
+  const done = nonSaas.filter((p) => p.status === "완료" || p.status === "AS");
 
   return (
     <div>
@@ -38,6 +40,20 @@ export default function ProjectListView({ projects }: Props) {
         <div className={styles.formWrap}>
           <ProjectForm />
         </div>
+      )}
+
+      {saas.length > 0 && (
+        <>
+          <div className={sectionStyles.section}>
+            <span className={`${sectionStyles.dot} ${sectionStyles.dotAccent}`} />
+            SAAS ({saas.length})
+          </div>
+          <div className={sectionStyles.projectGrid}>
+            {saas.map((p) => (
+              <ProjectCard key={p.id} project={p} />
+            ))}
+          </div>
+        </>
       )}
 
       {inProgress.length > 0 && (

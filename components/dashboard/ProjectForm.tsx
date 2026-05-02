@@ -16,7 +16,7 @@ interface Props {
 }
 
 const STATUS_OPTIONS = ["진행중", "완료", "AS"];
-const TYPE_OPTIONS = ["턴키", "기구축수정", "인프라작업", "과제풀이", "외주", "cafe24"];
+const TYPE_OPTIONS = ["SAAS", "턴키", "기구축수정", "인프라작업", "과제풀이", "외주", "cafe24"];
 const SETTLEMENT_OPTIONS = ["미정산", "정산완료"];
 const PLATFORM_OPTIONS = ["PC", "모바일", "PC+모바일", "앱(Android)", "앱(iOS)", "앱(Android+iOS)"];
 const DEPLOY_OPTIONS = ["Cloudflare Pages", "Cloudflare Workers", "Vercel", "OCI Server", "GitHub Pages", "직접전달"];

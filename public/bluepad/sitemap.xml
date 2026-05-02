@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- English -->
   <url>
     <loc>https://bdarchive.site/bluepad/</loc>
     <lastmod>2026-05-02</lastmod>
@@ -13,39 +14,137 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bdarchive.site/bluepad/blog/best-markdown-editors-2026</loc>
+    <loc>https://bdarchive.site/bluepad/blog/best-markdown-editors-2026.html</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bdarchive.site/bluepad/blog/typora-free-alternative</loc>
+    <loc>https://bdarchive.site/bluepad/blog/typora-free-alternative.html</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bdarchive.site/bluepad/blog/lightweight-note-app-windows</loc>
+    <loc>https://bdarchive.site/bluepad/blog/markdown-writing-tips.html</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bdarchive.site/bluepad/blog/focus-mode-distraction-free-writing</loc>
+    <loc>https://bdarchive.site/bluepad/blog/lightweight-note-app-windows.html</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bdarchive.site/bluepad/blog/markdown-editor-for-developers</loc>
+    <loc>https://bdarchive.site/bluepad/blog/focus-mode-distraction-free-writing.html</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bdarchive.site/bluepad/blog/markdown-writing-tips</loc>
+    <loc>https://bdarchive.site/bluepad/blog/markdown-editor-for-developers.html</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <!-- Korean -->
+  <url>
+    <loc>https://bdarchive.site/bluepad/ko/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ko/blog/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ko/blog/best-markdown-editors-2026.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ko/blog/typora-free-alternative.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ko/blog/markdown-writing-tips.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ko/blog/lightweight-note-app-windows.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ko/blog/focus-mode-distraction-free-writing.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ko/blog/markdown-editor-for-developers.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- Japanese -->
+  <url>
+    <loc>https://bdarchive.site/bluepad/ja/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ja/blog/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ja/blog/best-markdown-editors-2026.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ja/blog/typora-free-alternative.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ja/blog/markdown-writing-tips.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ja/blog/lightweight-note-app-windows.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ja/blog/focus-mode-distraction-free-writing.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bdarchive.site/bluepad/ja/blog/markdown-editor-for-developers.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

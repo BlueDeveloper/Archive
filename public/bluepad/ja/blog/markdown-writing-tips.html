@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>すべてのライターが知るべきマークダウンのヒント10選 | BluePadブログ</title>
+  <meta name="description" content="表、コードブロック、タスクリスト、数式、Mermaidダイアグラムなど、実践的なマークダウンのヒント10選を例付きでマスターしましょう。">
+  <link rel="canonical" href="https://bdarchive.site/bluepad/ja/blog/markdown-writing-tips.html">
+  <link rel="alternate" hreflang="en" href="https://bdarchive.site/bluepad/blog/markdown-writing-tips.html">
+  <link rel="alternate" hreflang="ko" href="https://bdarchive.site/bluepad/ko/blog/markdown-writing-tips.html">
+  <link rel="alternate" hreflang="ja" href="https://bdarchive.site/bluepad/ja/blog/markdown-writing-tips.html">
+  <link rel="alternate" hreflang="x-default" href="https://bdarchive.site/bluepad/blog/markdown-writing-tips.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="すべてのライターが知るべきマークダウンのヒント10選">
+  <meta property="og:url" content="https://bdarchive.site/bluepad/ja/blog/markdown-writing-tips.html">
+  <meta property="og:site_name" content="BluePad">
+  <script type="application/ld+json">{ "@context": "https://schema.org", "@type": "BlogPosting", "headline": "すべてのライターが知るべきマークダウンのヒント10選", "datePublished": "2026-05-02", "author": { "@type": "Organization", "name": "BluePad Team" }, "publisher": { "@type": "Organization", "name": "BluePad" }, "mainEntityOfPage": "https://bdarchive.site/bluepad/ja/blog/markdown-writing-tips.html" }</script>
+  <style>*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } :root { --blue: #155dfc; --blue-light: #3b7dff; --bg-dark: #0b0f1a; --bg-light: #f8f9fc; --bg-white: #fff; --text-primary: #0f172a; --text-secondary: #475569; --text-muted: #94a3b8; --text-on-dark: #e2e8f0; --text-on-dark-muted: #94a3b8; --border: #e2e8f0; --border-dark: #1e293b; --radius-lg: 16px; } body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color: var(--text-primary); line-height: 1.6; } .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; } .nav-bar { background: var(--bg-dark); border-bottom: 1px solid var(--border-dark); } .nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; } .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-size: 20px; font-weight: 700; } .nav-logo-icon { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; font-weight: 800; } .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; } .nav-links a { color: var(--text-on-dark-muted); text-decoration: none; font-size: 14px; } .nav-links a:hover { color: #fff; } .nav-cta { background: var(--blue) !important; color: #fff !important; padding: 8px 18px; border-radius: 8px; } .lang-switcher { font-size: 12px; } .lang-switcher a { color: var(--text-on-dark-muted); text-decoration: none; } .lang-switcher a.active { color: #fff; } .article-header { background: var(--bg-dark); padding: 60px 0 80px; text-align: center; } .article-header h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: #fff; margin-bottom: 16px; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.2; } .article-meta { font-size: 14px; color: var(--text-on-dark-muted); } .article-body { max-width: 720px; margin: -40px auto 0; background: var(--bg-white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 48px 40px 56px; position: relative; z-index: 2; line-height: 1.8; font-size: 16px; } .article-body h2 { font-size: 24px; font-weight: 700; margin: 40px 0 16px; } .article-body p { margin-bottom: 16px; color: var(--text-secondary); } .article-body strong { color: var(--text-primary); } .code-example { background: #1e293b; border-radius: 8px; padding: 16px 20px; margin: 16px 0 24px; font-family: monospace; font-size: 14px; line-height: 1.7; color: #e2e8f0; overflow-x: auto; } .tip-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--blue); color: #fff; border-radius: 50%; font-size: 13px; font-weight: 700; margin-right: 8px; } .cta-banner { margin-top: 48px; background: linear-gradient(135deg, var(--blue), var(--blue-light)); border-radius: var(--radius-lg); padding: 40px 32px; text-align: center; } .cta-banner h3 { color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 12px; } .cta-banner p { color: rgba(255,255,255,0.85); margin-bottom: 20px; } .cta-btn { display: inline-block; background: #fff; color: var(--blue); padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; } .footer { background: var(--bg-dark); padding: 40px 0; border-top: 1px solid var(--border-dark); margin-top: 80px; } .footer-inner { display: flex; align-items: center; justify-content: space-between; } .footer-left { font-size: 14px; color: var(--text-on-dark-muted); } .footer-left strong { color: var(--text-on-dark); } .footer-links { display: flex; gap: 24px; list-style: none; } .footer-links a { color: var(--text-on-dark-muted); text-decoration: none; font-size: 14px; } @media (max-width: 768px) { .nav-links { display: none; } .article-body { padding: 32px 20px 40px; margin-top: -24px; } .footer-inner { flex-direction: column; gap: 20px; text-align: center; } }</style>
+</head>
+<body>
+  <header class="nav-bar"><div class="container"><nav class="nav"><a href="/bluepad/ja/" class="nav-logo"><div class="nav-logo-icon">B</div> BluePad</a><ul class="nav-links"><li><a href="/bluepad/ja/#features">機能</a></li><li><a href="/bluepad/ja/#pricing">価格</a></li><li><a href="/bluepad/ja/blog/">ブログ</a></li><li><a href="https://github.com/BlueDeveloper/BluePad/releases" target="_blank" rel="noopener" class="nav-cta">ダウンロード</a></li><li class="lang-switcher"><a href="/bluepad/blog/markdown-writing-tips.html">EN</a> | <a href="/bluepad/ko/blog/markdown-writing-tips.html">KO</a> | <a href="/bluepad/ja/blog/markdown-writing-tips.html" class="active">JA</a></li></ul></nav></div></header>
+
+  <section class="article-header"><div class="container"><h1>すべてのライターが知るべきマークダウンのヒント10選</h1><p class="article-meta">2026年5月2日 &middot; BluePad Team &middot; 5分で読める</p></div></section>
+
+  <article class="article-body">
+    <p>マークダウンは一見シンプルです。多くのライターは見出し、太字、イタリック、リンクなどの基本を覚えてそこで止まります。しかし、ライティングワークフローを変えるパワフルな機能があります。</p>
+
+    <h2><span class="tip-number">1</span> テーブルは難しくない</h2>
+    <p>整列を気にしなくて大丈夫 — ほとんどのパーサーは要求しません。</p>
+    <div class="code-example">| 機能 | 無料 | Pro |<br>|---|---|---|<br>| WYSIWYG | 対応 | 対応 |<br>| テーマ | 1 | 4 |</div>
+
+    <h2><span class="tip-number">2</span> コードブロックに言語タグ</h2>
+    <div class="code-example">```javascript<br>const greeting = "Hello!";<br>```</div>
+
+    <h2><span class="tip-number">3</span> タスクリスト</h2>
+    <div class="code-example">- [x] 下書き完了<br>- [ ] 校正<br>- [ ] 公開</div>
+
+    <h2><span class="tip-number">4</span> 引用でコールアウト</h2>
+    <div class="code-example">&gt; **注意:** 重要な情報をハイライトします。</div>
+
+    <h2><span class="tip-number">5</span> 水平線でセクション分割</h2>
+    <div class="code-example">---</div>
+
+    <h2><span class="tip-number">6</span> KaTeXで数式</h2>
+    <div class="code-example">インライン: $E = mc^2$<br><br>ブロック:<br>$$\frac{-b \pm \sqrt{b^2-4ac}}{2a}$$</div>
+
+    <h2><span class="tip-number">7</span> Mermaidダイアグラム</h2>
+    <div class="code-example">```mermaid<br>graph TD<br>&nbsp;&nbsp;A[開始] --&gt; B{良いアイデア?}<br>```</div>
+
+    <h2><span class="tip-number">8</span> 参照リンク</h2>
+    <div class="code-example">[ガイド][guide]を読む。<br><br>[guide]: https://example.com</div>
+
+    <h2><span class="tip-number">9</span> 脚注</h2>
+    <div class="code-example">マークダウンは2004年にJohn Gruber[^1]が作成。<br><br>[^1]: Daring Fireballのブロガー。</div>
+
+    <h2><span class="tip-number">10</span> エスケープ文字</h2>
+    <div class="code-example">\*これはイタリックではない\*</div>
+
+    <h2>練習あるのみ</h2>
+    <p>これらのヒントを適切なマークダウンエディタで定期的に使うことがマスターへの近道です。BluePadのWYSIWYGモードはレンダリング結果を即座に表示します。</p>
+
+    <div class="cta-banner">
+      <h3>BluePadを無料で試す</h3>
+      <p>高速WYSIWYGエディタですべてのマークダウンヒントを練習。</p>
+      <a href="https://github.com/BlueDeveloper/BluePad/releases" target="_blank" rel="noopener" class="cta-btn">Windows版ダウンロード</a>
+    </div>
+  </article>
+
+  <footer class="footer"><div class="container"><div class="footer-inner"><div class="footer-left">&copy; 2026 <strong>BRP</strong>. Tauriで構築。</div><ul class="footer-links"><li><a href="https://github.com/BlueDeveloper/BluePad" target="_blank" rel="noopener">GitHub</a></li><li><a href="https://github.com/BlueDeveloper/BluePad/releases" target="_blank" rel="noopener">リリース</a></li><li><a href="https://github.com/BlueDeveloper/BluePad/issues" target="_blank" rel="noopener">バグ報告</a></li></ul></div></div></footer>
+</body>
+</html>

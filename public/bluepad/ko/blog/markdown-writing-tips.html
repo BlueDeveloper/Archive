@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모든 작가가 알아야 할 마크다운 팁 10가지 | BluePad 블로그</title>
+  <meta name="description" content="표, 코드 블록, 체크리스트, 수식, Mermaid 다이어그램 등 실용적인 마크다운 팁 10가지를 예시와 함께 마스터하세요.">
+  <meta name="keywords" content="마크다운 팁, 마크다운 가이드, 마크다운 튜토리얼, 마크다운 표, 마크다운 코드블록">
+  <link rel="canonical" href="https://bdarchive.site/bluepad/ko/blog/markdown-writing-tips.html">
+  <link rel="alternate" hreflang="en" href="https://bdarchive.site/bluepad/blog/markdown-writing-tips.html">
+  <link rel="alternate" hreflang="ko" href="https://bdarchive.site/bluepad/ko/blog/markdown-writing-tips.html">
+  <link rel="alternate" hreflang="ja" href="https://bdarchive.site/bluepad/ja/blog/markdown-writing-tips.html">
+  <link rel="alternate" hreflang="x-default" href="https://bdarchive.site/bluepad/blog/markdown-writing-tips.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="모든 작가가 알아야 할 마크다운 팁 10가지">
+  <meta property="og:description" content="표, 코드 블록, 체크리스트 등 실용적인 마크다운 팁을 마스터하세요.">
+  <meta property="og:url" content="https://bdarchive.site/bluepad/ko/blog/markdown-writing-tips.html">
+  <meta property="og:site_name" content="BluePad">
+
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "BlogPosting", "headline": "모든 작가가 알아야 할 마크다운 팁 10가지", "datePublished": "2026-05-02", "dateModified": "2026-05-02", "author": { "@type": "Organization", "name": "BluePad Team" }, "publisher": { "@type": "Organization", "name": "BluePad" }, "mainEntityOfPage": "https://bdarchive.site/bluepad/ko/blog/markdown-writing-tips.html" }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --blue: #155dfc; --blue-light: #3b7dff; --bg-dark: #0b0f1a; --bg-light: #f8f9fc; --bg-white: #ffffff; --text-primary: #0f172a; --text-secondary: #475569; --text-muted: #94a3b8; --text-on-dark: #e2e8f0; --text-on-dark-muted: #94a3b8; --border: #e2e8f0; --border-dark: #1e293b; --radius: 10px; --radius-lg: 16px; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color: var(--text-primary); line-height: 1.6; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .nav-bar { background: var(--bg-dark); border-bottom: 1px solid var(--border-dark); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+    .nav-logo-icon { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; font-weight: 800; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--text-on-dark-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: var(--blue) !important; color: #fff !important; padding: 8px 18px; border-radius: 8px; font-size: 14px; }
+    .lang-switcher { font-size: 12px; color: var(--text-on-dark-muted); }
+    .lang-switcher a { color: var(--text-on-dark-muted); text-decoration: none; }
+    .lang-switcher a:hover, .lang-switcher a.active { color: #fff; }
+    .article-header { background: var(--bg-dark); padding: 60px 0 80px; text-align: center; }
+    .article-header h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 16px; max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+    .article-meta { font-size: 14px; color: var(--text-on-dark-muted); }
+    .article-body { max-width: 720px; margin: -40px auto 0; background: var(--bg-white); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 48px 40px 56px; position: relative; z-index: 2; line-height: 1.8; font-size: 16px; }
+    .article-body h2 { font-size: 24px; font-weight: 700; margin: 40px 0 16px; letter-spacing: -0.02em; }
+    .article-body p { margin-bottom: 16px; color: var(--text-secondary); }
+    .article-body strong { color: var(--text-primary); }
+    .article-body ul, .article-body ol { margin: 0 0 16px 24px; color: var(--text-secondary); }
+    .article-body li { margin-bottom: 8px; }
+    .code-example { background: #1e293b; border-radius: 8px; padding: 16px 20px; margin: 16px 0 24px; overflow-x: auto; font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace; font-size: 14px; line-height: 1.7; color: #e2e8f0; }
+    .tip-number { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--blue); color: #fff; border-radius: 50%; font-size: 13px; font-weight: 700; margin-right: 8px; vertical-align: middle; }
+    .cta-banner { margin-top: 48px; background: linear-gradient(135deg, var(--blue), var(--blue-light)); border-radius: var(--radius-lg); padding: 40px 32px; text-align: center; }
+    .cta-banner h3 { color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .cta-banner p { color: rgba(255,255,255,0.85); margin-bottom: 20px; font-size: 15px; }
+    .cta-btn { display: inline-block; background: #fff; color: var(--blue); padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; }
+    .footer { background: var(--bg-dark); padding: 40px 0; border-top: 1px solid var(--border-dark); margin-top: 80px; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-left { font-size: 14px; color: var(--text-on-dark-muted); }
+    .footer-left strong { color: var(--text-on-dark); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { color: var(--text-on-dark-muted); text-decoration: none; font-size: 14px; }
+    .footer-links a:hover { color: #fff; }
+    @media (max-width: 768px) { .nav-links { display: none; } .article-body { padding: 32px 20px 40px; margin-top: -24px; } .footer-inner { flex-direction: column; gap: 20px; text-align: center; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav-bar">
+    <div class="container">
+      <nav class="nav">
+        <a href="/bluepad/ko/" class="nav-logo"><div class="nav-logo-icon">B</div> BluePad</a>
+        <ul class="nav-links">
+          <li><a href="/bluepad/ko/#features">기능</a></li>
+          <li><a href="/bluepad/ko/#pricing">가격</a></li>
+          <li><a href="/bluepad/ko/blog/">블로그</a></li>
+          <li><a href="https://bluepad-download.blueehdwp.workers.dev/download/BluePad_1.0.0_x64.msi" target="_blank" rel="noopener" class="nav-cta">다운로드</a></li>
+          <li class="lang-switcher"><a href="/bluepad/blog/markdown-writing-tips.html">EN</a> | <a href="/bluepad/ko/blog/markdown-writing-tips.html" class="active">KO</a> | <a href="/bluepad/ja/blog/markdown-writing-tips.html">JA</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="article-header">
+    <div class="container">
+      <h1>모든 작가가 알아야 할 마크다운 팁 10가지</h1>
+      <p class="article-meta">2026년 5월 2일 &middot; BluePad Team &middot; 5분 읽기</p>
+    </div>
+  </section>
+
+  <article class="article-body">
+    <p>마크다운은 겉보기에 단순합니다. 대부분의 작가는 제목, 볼드, 이탤릭, 링크 등 기본기만 배우고 멈춥니다. 하지만 마크다운에는 글쓰기 워크플로우를 변화시킬 강력한 기능이 있습니다. 여기 마크다운 실력을 한 단계 올려줄 10가지 팁을 소개합니다.</p>
+
+    <h2><span class="tip-number">1</span> 표는 어렵지 않다</h2>
+    <p>많은 작가가 문법이 번거롭다고 생각해 마크다운 표를 피합니다. 핵심은 정렬을 신경 쓰지 않는 것 — 대부분의 파서는 정렬을 요구하지 않습니다.</p>
+    <div class="code-example">
+| 기능 | 무료 | Pro |<br>
+|---|---|---|<br>
+| 위지윅 | 지원 | 지원 |<br>
+| 테마 | 1 | 4 |<br>
+| 집중 모드 | 미지원 | 지원 |
+    </div>
+    <p><strong>팁:</strong> BluePad의 위지윅 모드에서는 비주얼 편집기로 표가 렌더링되어 문법을 건드리지 않고 행과 열을 추가할 수 있습니다.</p>
+
+    <h2><span class="tip-number">2</span> 코드 블록에 언어 태그 사용</h2>
+    <p>삼중 백틱 뒤에 항상 언어를 지정하세요. 대부분의 에디터와 렌더러에서 구문 하이라이팅이 활성화됩니다.</p>
+    <div class="code-example">
+```javascript<br>
+const greeting = "안녕, 마크다운!";<br>
+console.log(greeting);<br>
+```
+    </div>
+
+    <h2><span class="tip-number">3</span> 빠른 TODO를 위한 체크리스트</h2>
+    <p><code>[ ]</code>와 <code>[x]</code> 문법으로 리스트를 인터랙티브 체크리스트로 만드세요:</p>
+    <div class="code-example">
+- [x] 초안 작성<br>
+- [x] 코드 예시 추가<br>
+- [ ] 교정<br>
+- [ ] 게시
+    </div>
+
+    <h2><span class="tip-number">4</span> 인용문으로 콜아웃 만들기</h2>
+    <p>인용문을 사용해 중요한 정보를 강조하거나 콜아웃 박스를 만드세요:</p>
+    <div class="code-example">
+&gt; **참고:** 독자의 주의를 끄는<br>
+&gt; 중요한 콜아웃입니다.
+    </div>
+
+    <h2><span class="tip-number">5</span> 수평선으로 섹션 구분</h2>
+    <p>하이픈 세 개, 별표 세 개, 또는 밑줄 세 개로 깔끔한 섹션 구분을 만듭니다:</p>
+    <div class="code-example">
+## 첫 번째 섹션<br><br>내용...<br><br>---<br><br>## 두 번째 섹션
+    </div>
+
+    <h2><span class="tip-number">6</span> KaTeX로 수식 작성</h2>
+    <p>학술 글쓰기나 기술 문서에서 인라인 및 블록 수식 표기는 매우 유용합니다:</p>
+    <div class="code-example">
+인라인: $E = mc^2$<br><br>블록:<br>$$<br>\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}<br>$$
+    </div>
+
+    <h2><span class="tip-number">7</span> Mermaid로 텍스트 다이어그램</h2>
+    <p>그리기 도구 없이 플로우차트, 시퀀스 다이어그램 등을 만드세요:</p>
+    <div class="code-example">
+```mermaid<br>
+graph TD<br>
+&nbsp;&nbsp;A[글쓰기 시작] --&gt; B{좋은 아이디어?}<br>
+&nbsp;&nbsp;B --&gt;|네| C[초안]<br>
+&nbsp;&nbsp;B --&gt;|아니오| D[브레인스토밍]<br>
+```
+    </div>
+
+    <h2><span class="tip-number">8</span> 참조 링크로 깔끔한 문서</h2>
+    <p>긴 URL로 텍스트를 어지럽히지 말고 참조 스타일 링크를 사용하세요:</p>
+    <div class="code-example">
+[설치 가이드][install]와 [FAQ][faq]를 읽어보세요.<br><br>[install]: https://example.com/docs/install<br>[faq]: https://example.com/docs/faq
+    </div>
+
+    <h2><span class="tip-number">9</span> 학술 글쓰기를 위한 각주</h2>
+    <p>흐름을 방해하지 않으면서 추가 맥락을 제공하는 각주를 추가하세요:</p>
+    <div class="code-example">
+마크다운은 2004년 John Gruber[^1]가 만들었습니다.<br><br>[^1]: John Gruber는 블로그 Daring Fireball로도 유명합니다.
+    </div>
+
+    <h2><span class="tip-number">10</span> 필요할 때 이스케이프 문자 사용</h2>
+    <p>마크다운 문자를 그대로 표시하고 싶을 때는 백슬래시를 사용하세요:</p>
+    <div class="code-example">
+\*이것은 이탤릭이 아닙니다\*<br>
+\# 이것은 제목이 아닙니다
+    </div>
+
+    <h2>연습이 완벽을 만든다</h2>
+    <p>이 팁들을 마스터하는 가장 좋은 방법은 적절한 마크다운 에디터에서 꾸준히 사용하는 것입니다. BluePad의 위지윅 모드는 렌더링 결과를 즉시 보여주어 고급 문법을 배우고 실험하기 쉽게 만들어줍니다.</p>
+
+    <div class="cta-banner">
+      <h3>BluePad 무료 체험</h3>
+      <p>빠른 위지윅 에디터에서 모든 마크다운 팁을 연습하세요. 표, 코드 블록, 체크리스트 등 지원.</p>
+      <a href="https://bluepad-download.blueehdwp.workers.dev/download/BluePad_1.0.0_x64.msi" target="_blank" rel="noopener" class="cta-btn">Windows용 다운로드</a>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">&copy; 2026 <strong>BRP</strong>. Tauri로 제작.</div>
+        <ul class="footer-links">
+          <li><a href="https://github.com/BlueDeveloper/BluePad" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://bluepad-download.blueehdwp.workers.dev/download/BluePad_1.0.0_x64.msi" target="_blank" rel="noopener">릴리스</a></li>
+          <li><a href="https://github.com/BlueDeveloper/BluePad/issues" target="_blank" rel="noopener">버그 신고</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

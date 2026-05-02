@@ -7,12 +7,11 @@ import { useCallback } from "react";
 import styles from "./Nav.module.css";
 
 const MENU = [
-  { href: "/dashboard", label: "대시보드" },
+  { href: "/dashboard", label: "정산현황" },
+  { href: "/dashboard/projects", label: "프로젝트목록" },
   { href: "/dashboard/insights", label: "비즈니스 인사이트" },
-  { href: "/dashboard/settlement", label: "정산현황" },
   { href: "/dashboard/schedule", label: "일정" },
   { href: "/dashboard/work", label: "작업시간" },
-  { href: "/dashboard/projects/new", label: "프로젝트 등록" },
 ] as const;
 
 export default function Nav() {

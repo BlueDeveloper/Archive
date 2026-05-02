@@ -1,6 +1,4 @@
 import Stats from "@/components/dashboard/Stats";
-import Insights from "@/components/dashboard/Insights";
-import ProjectCard from "@/components/dashboard/ProjectCard";
 import { fetchDashboardData, DashboardDataError } from "@/lib/data";
 import styles from "@/components/dashboard/Section.module.css";
 import pageStyles from "./page.module.css";
@@ -23,10 +21,6 @@ export default async function DashboardHome() {
   }
 
   const { projects } = data;
-
-  const done = projects.filter(
-    (p) => p.status === "완료" || p.status === "AS"
-  );
   const inProgress = projects.filter((p) => p.status === "진행중");
   const doneOnly = projects.filter((p) => p.status === "완료");
   const asOnly = projects.filter((p) => p.status === "AS");
@@ -47,46 +41,11 @@ export default async function DashboardHome() {
         진행중 {inProgress.length} / AS {asOnly.length})
       </p>
 
-      <Stats data={data} />
-
       <div className={styles.section}>
-        <span className={`${styles.dot} ${styles.dotAccent}`} />
-        비즈니스 인사이트 요약
+        <span className={`${styles.dot} ${styles.dotGreen}`} />
+        정산현황
       </div>
-      <Insights
-        projects={projects}
-        settlements={data.settlements}
-        expenses={data.expenses}
-      />
-
-      {inProgress.length > 0 && (
-        <>
-          <div className={styles.section}>
-            <span className={`${styles.dot} ${styles.dotYellow}`} />
-            진행중 프로젝트
-          </div>
-          <div className={styles.projectGrid}>
-            {inProgress.map((p) => (
-              <ProjectCard key={p.id} project={p} />
-            ))}
-          </div>
-        </>
-      )}
-
-      {done.length > 0 && (
-        <>
-          <div className={styles.section}>
-            <span className={`${styles.dot} ${styles.dotGreen}`} />
-            완료 프로젝트
-          </div>
-          <div className={styles.projectGrid}>
-            {done.map((p) => (
-              <ProjectCard key={p.id} project={p} />
-            ))}
-          </div>
-        </>
-      )}
-
+      <Stats data={data} />
     </>
   );
 }

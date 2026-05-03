@@ -23,7 +23,7 @@ function sortByContractDate(list: ProjectWithTimelines[]) {
 
 export default function ProjectListView({ projects }: Props) {
   const [showForm, setShowForm] = useState(false);
-  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({ saas: true, inProgress: true, done: true });
 
   const toggle = (key: string) =>
     setCollapsed((prev) => ({ ...prev, [key]: !prev[key] }));

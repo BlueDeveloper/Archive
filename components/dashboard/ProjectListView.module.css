@@ -28,3 +28,23 @@
   padding: 24px;
   margin-bottom: 24px;
 }
+
+.sectionToggle {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sectionToggle:hover {
+  opacity: 0.8;
+}
+
+.chevron {
+  font-size: 11px;
+  margin-left: auto;
+  transition: transform 0.2s;
+  color: var(--dim);
+}
+
+.chevronClosed {
+  transform: rotate(-90deg);
+}

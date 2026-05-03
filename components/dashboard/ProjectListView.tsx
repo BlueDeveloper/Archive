@@ -13,13 +13,25 @@ interface Props {
   projects: ProjectWithTimelines[];
 }
 
+function sortByContractDate(list: ProjectWithTimelines[]) {
+  return [...list].sort((a, b) => {
+    const da = a.contractDate || "9999";
+    const db_ = b.contractDate || "9999";
+    return da.localeCompare(db_);
+  });
+}
+
 export default function ProjectListView({ projects }: Props) {
   const [showForm, setShowForm] = useState(false);
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
 
-  const saas = projects.filter((p) => p.type === "SAAS");
+  const toggle = (key: string) =>
+    setCollapsed((prev) => ({ ...prev, [key]: !prev[key] }));
+
+  const saas = sortByContractDate(projects.filter((p) => p.type === "SAAS"));
   const nonSaas = projects.filter((p) => p.type !== "SAAS");
-  const inProgress = nonSaas.filter((p) => p.status === "진행중");
-  const done = nonSaas.filter((p) => p.status === "완료" || p.status === "AS");
+  const inProgress = sortByContractDate(nonSaas.filter((p) => p.status === "진행중"));
+  const done = sortByContractDate(nonSaas.filter((p) => p.status === "완료" || p.status === "AS"));
 
   return (
     <div>
@@ -44,43 +56,61 @@ export default function ProjectListView({ projects }: Props) {
 
       {saas.length > 0 && (
         <>
-          <div className={sectionStyles.section}>
+          <div
+            className={`${sectionStyles.section} ${styles.sectionToggle}`}
+            onClick={() => toggle("saas")}
+          >
             <span className={`${sectionStyles.dot} ${sectionStyles.dotAccent}`} />
             SAAS ({saas.length})
+            <span className={`${styles.chevron} ${collapsed["saas"] ? styles.chevronClosed : ""}`}>&#9660;</span>
           </div>
-          <div className={sectionStyles.projectGrid}>
-            {saas.map((p) => (
-              <ProjectCard key={p.id} project={p} />
-            ))}
-          </div>
+          {!collapsed["saas"] && (
+            <div className={sectionStyles.projectGrid}>
+              {saas.map((p) => (
+                <ProjectCard key={p.id} project={p} />
+              ))}
+            </div>
+          )}
         </>
       )}
 
       {inProgress.length > 0 && (
         <>
-          <div className={sectionStyles.section}>
+          <div
+            className={`${sectionStyles.section} ${styles.sectionToggle}`}
+            onClick={() => toggle("inProgress")}
+          >
             <span className={`${sectionStyles.dot} ${sectionStyles.dotYellow}`} />
             진행중 ({inProgress.length})
+            <span className={`${styles.chevron} ${collapsed["inProgress"] ? styles.chevronClosed : ""}`}>&#9660;</span>
           </div>
-          <div className={sectionStyles.projectGrid}>
-            {inProgress.map((p) => (
-              <ProjectCard key={p.id} project={p} />
-            ))}
-          </div>
+          {!collapsed["inProgress"] && (
+            <div className={sectionStyles.projectGrid}>
+              {inProgress.map((p) => (
+                <ProjectCard key={p.id} project={p} />
+              ))}
+            </div>
+          )}
         </>
       )}
 
       {done.length > 0 && (
         <>
-          <div className={sectionStyles.section}>
+          <div
+            className={`${sectionStyles.section} ${styles.sectionToggle}`}
+            onClick={() => toggle("done")}
+          >
             <span className={`${sectionStyles.dot} ${sectionStyles.dotGreen}`} />
             완료 ({done.length})
+            <span className={`${styles.chevron} ${collapsed["done"] ? styles.chevronClosed : ""}`}>&#9660;</span>
           </div>
-          <div className={sectionStyles.projectGrid}>
-            {done.map((p) => (
-              <ProjectCard key={p.id} project={p} />
-            ))}
-          </div>
+          {!collapsed["done"] && (
+            <div className={sectionStyles.projectGrid}>
+              {done.map((p) => (
+                <ProjectCard key={p.id} project={p} />
+              ))}
+            </div>
+          )}
         </>
       )}
     </div>

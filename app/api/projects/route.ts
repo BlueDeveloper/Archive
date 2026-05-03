@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db, requireAuth } from "@/lib/d1";
-import { projects } from "@/db/schema";
+import { projects, settlements } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import type { InferInsertModel } from "drizzle-orm";
 
@@ -88,6 +88,16 @@ export async function PUT(req: NextRequest) {
       .where(eq(projects.id, body.id as number))
       .returning();
     if (!result[0]) return NextResponse.json({ error: "Not found" }, { status: 404 });
+
+    // settlementStatus 변경 시 해당 프로젝트의 settlement 레코드 category도 동기화
+    if ("settlementStatus" in body) {
+      const newCategory = body.settlementStatus === "정산완료" ? "확정" : "미확정";
+      await db()
+        .update(settlements)
+        .set({ category: newCategory })
+        .where(eq(settlements.projectId, body.id as number));
+    }
+
     return NextResponse.json(result[0]);
   } catch {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

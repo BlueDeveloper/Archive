@@ -89,13 +89,32 @@ export async function PUT(req: NextRequest) {
       .returning();
     if (!result[0]) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
-    // settlementStatus 변경 시 해당 프로젝트의 settlement 레코드 category도 동기화
+    // settlementStatus 변경 시 해당 프로젝트의 settlement 레코드 동기화
     if ("settlementStatus" in body) {
+      const projectId = body.id as number;
       const newCategory = body.settlementStatus === "정산완료" ? "확정" : "미확정";
-      await db()
-        .update(settlements)
-        .set({ category: newCategory })
-        .where(eq(settlements.projectId, body.id as number));
+      const existing = await db()
+        .select()
+        .from(settlements)
+        .where(eq(settlements.projectId, projectId));
+
+      if (existing.length > 0) {
+        // 기존 레코드가 있으면 category 업데이트
+        await db()
+          .update(settlements)
+          .set({ category: newCategory })
+          .where(eq(settlements.projectId, projectId));
+      } else if (body.settlementStatus === "정산완료") {
+        // 레코드가 없으면 프로젝트 금액으로 자동 생성
+        const proj = result[0];
+        await db().insert(settlements).values({
+          projectId,
+          category: "확정",
+          label: proj.name,
+          amount: proj.amount,
+          date: new Date().toISOString().slice(0, 10),
+        });
+      }
     }
 
     return NextResponse.json(result[0]);

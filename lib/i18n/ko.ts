@@ -153,6 +153,9 @@ export const ko = {
     pageLabel: 'Contact',
     title: '프로젝트 문의',
     desc: '요구사항을 간단히 정리해서 보내주시면 빠르게 검토 후 회신드립니다.\n단가 협의 및 범위 확인은 부담 없이 문의해주세요.',
+    kakaoLabel: '카카오톡으로 빠르게 상담받으세요',
+    kakaoChat: '1:1 채팅 상담',
+    kakaoAdd: '채널 추가',
   },
 
   // ContactForm

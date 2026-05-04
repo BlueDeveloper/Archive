@@ -49,6 +49,7 @@ export default function Footer() {
               <li><a href="https://archive-utils.pages.dev" target="_blank" rel="noopener noreferrer">웹 유틸리티</a></li>
               <li><a href="https://corporate-egh.pages.dev" target="_blank" rel="noopener noreferrer">회사 소개 사이트</a></li>
               <li><a href="https://dreamway.bdarchive.site" target="_blank" rel="noopener noreferrer">꿈지럭 (모바일 앱)</a></li>
+              <li><a href="https://pf.kakao.com/_xbzxoTX" target="_blank" rel="noopener noreferrer">카카오톡 채널</a></li>
             </ul>
           </div>
         </div>

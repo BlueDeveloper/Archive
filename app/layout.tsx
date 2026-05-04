@@ -113,6 +113,16 @@ export default function RootLayout({
           id="microsoft-clarity"
           strategy="afterInteractive"
         >{`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wklgd2iv08");`}</Script>
+        <Script
+          id="kakao-sdk"
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
+          integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmOs1lPY7Mr3bFnhLBXkWKjFMe"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+        <Script id="kakao-init" strategy="afterInteractive">{`
+          if (typeof Kakao !== 'undefined' && !Kakao.isInitialized()) { Kakao.init('79369c32154a01713d79c9d6bff0d494'); }
+        `}</Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}

@@ -4,7 +4,7 @@ export const ko = {
     menuLabel: '메뉴 열기',
     home: '홈',
     services: '서비스',
-    case: '사례',
+    case: '프로젝트 사례',
     process: '프로세스',
     contact: '문의',
   },
@@ -209,7 +209,6 @@ export const ko = {
         tier: 'Advanced',
         range: '150 ~ 300만원',
         items: [
-          { id: 'foodtruck', label: '푸드트럭 플랫폼' },
           { id: 'dreamway', label: '꿈지럭 (모바일 앱)' },
           { id: 'bluepad', label: 'BluePad (데스크탑 앱)' },
         ],
@@ -218,6 +217,7 @@ export const ko = {
         tier: 'Standard',
         range: '50 ~ 150만원',
         items: [
+          { id: 'foodtruck', label: '푸드트럭 플랫폼' },
           { id: 'compass', label: 'GPS 나침반' },
           { id: 'telequote', label: '통신사 견적서' },
           { id: 'mockup', label: 'AI 데이터 분석 데모' },
